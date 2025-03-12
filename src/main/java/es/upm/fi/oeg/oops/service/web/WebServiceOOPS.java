@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import threescale.v3.api.AuthorizeResponse;
 import threescale.v3.api.ParameterMap;
@@ -98,22 +97,6 @@ public class WebServiceOOPS {
         return str == null || str.isEmpty();
     }
 
-    private static List<Integer> getOptionList(String pitfallStringList) {
-        final List<Integer> optionsList = new ArrayList<Integer>();
-
-        if (pitfallStringList == null || pitfallStringList.equals("")) {
-            return optionsList;
-        }
-
-        StringTokenizer st = new StringTokenizer(pitfallStringList, ",");
-        while (st.hasMoreTokens()) {
-            String token = st.nextToken().trim();
-            optionsList.add(Integer.valueOf(token.replace("P", "")));
-        }
-
-        return optionsList;
-    }
-
     private static String req(final RunSettings runSettings,
             final IOAndRestResponseExceptionFunction<Report, String> serializer) throws RestResponseException {
 
@@ -135,8 +118,7 @@ public class WebServiceOOPS {
                 throw RestResponseException.createNonHttpUri();
             }
 
-            final String auxPitfalls = runSettings.getPitfalls();
-            List<Integer> optionsList = getOptionList(auxPitfalls);
+            final List<Integer> optionsList = new ArrayList<Integer>();
             final SrcSpec srcSpec;
             if (auxContent.isEmpty()) {
                 srcSpec = new SrcSpec(SrcType.URI, auxUrl, null, null);
