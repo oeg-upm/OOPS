@@ -14,7 +14,7 @@ SPDX-License-Identifier: Apache-2.0
 <head>
 
 	<meta name="Author" content="María Poveda Villalón" />
-	<meta name="Languaje" content="English" />
+	<meta name="Language" content="English" />
 	<meta name="Keywords" content="ontology, ontology evaluation, pitfalls" />
 	<meta name="Description"
 		content="This web provide online access to OOPS! - OntOlogy Pitfall Scanner!" />
@@ -46,7 +46,7 @@ SPDX-License-Identifier: Apache-2.0
 			<%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			String uri =""; // Uri is never null
-			//comenting the next line because we don't accept URI anymore
+			// commenting the next line because we don't accept URI anymore
 			// String param=request.getParameter("uri");
 			// uri= uri+param;
 			final String param2 = request.getParameter("RDF");
@@ -126,7 +126,7 @@ SPDX-License-Identifier: Apache-2.0
 					if (!uri.startsWith("http")){
 						excNoHttp = true;
 						srcSpec = null;
-						System.out.println("The uri does not start with http or contains an attack");
+						System.out.println("The URI does not start with http or contains an attack");
 					}
 					else {
 						srcSpec = new SrcSpec(SrcType.URI, uri, null, null);
