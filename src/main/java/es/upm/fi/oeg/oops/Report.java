@@ -10,10 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
@@ -150,14 +148,5 @@ public class Report {
 
     public Model getOutputModel() {
         return outputModel;
-    }
-
-    public String getContents(String outputFormat) throws IOException {
-        if (outputFormat.equals("XML")) {
-            return xmlOutput;
-        }
-        OutputStream os = new ByteArrayOutputStream();
-        outputModel.write(os, outputFormat);
-        return os.toString();
     }
 }

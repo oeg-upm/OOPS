@@ -39,8 +39,6 @@ import threescale.v3.api.impl.ServiceApiDriver;
 @Path("")
 public class WebServiceOOPS {
 
-    public static final List<String> SUPPORTED_FORMATS = List.of("RDF/XML", "Turtle");
-
     // // This method is called if TEXT_PLAIN is request
     // @GET
     // @Produces(MediaType.TEXT_PLAIN)
@@ -116,14 +114,6 @@ public class WebServiceOOPS {
         return optionsList;
     }
 
-    private static String getOutputFormat(final String outputFormat) {
-        if (SUPPORTED_FORMATS.contains(outputFormat)) {
-            return outputFormat;
-        }
-
-        return SUPPORTED_FORMATS.getFirst();
-    }
-
     private static String req(final RunSettings runSettings,
             final IOAndRestResponseExceptionFunction<Report, String> serializer) throws RestResponseException {
 
@@ -157,10 +147,9 @@ public class WebServiceOOPS {
             final SrcModel srcModel = ModelLoader.load(srcSpec);
             final List<Checker> allCheckers = CheckersCatalogue.getAllCheckers();
             final Report report = executor.partialExecution(srcModel, optionsList, allCheckers);
-            final String outputFormat = getOutputFormat(runSettings.getOutputFormat());
             if (report.getExceptions().isEmpty()) {
                 try {
-                    return report.getContents(outputFormat);
+                    return serializer.apply(report);
                 } catch (final IOException exc) {
                     exc.printStackTrace();
                     throw RestResponseException.createFailedToSerializeOutput();
