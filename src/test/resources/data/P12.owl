@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY testP12namespace2 "http://oops.linkeddata.es/data/testP12namespace2#" >
+]>
+
+
+<rdf:RDF xmlns="http://oops.linkeddata.es/data/testP12#"
+     xml:base="http://oops.linkeddata.es/data/testP12"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:testP12namespace2="http://oops.linkeddata.es/data/testP12namespace2#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://oops.linkeddata.es/data/testP12">
+        <dc:creator rdf:datatype="&xsd;anyURI">http://purl.org/net/mpoveda</dc:creator>
+        <rdfs:comment xml:lang="en">Test for P12</rdfs:comment>
+        <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#relationshipS -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP12#relationshipS">
+        <rdfs:label xml:lang="en">relationship S</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M1-P12 pattern A.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#relationshipT -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP12#relationshipT">
+        <rdfs:label xml:lang="en">relationship T</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M1-P12 pattern B.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#relationship_T -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP12#relationship_T">
+        <rdfs:label xml:lang="en">relationship T</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M1-P12 pattern B.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12namespace2#relationshipS -->
+
+    <owl:ObjectProperty rdf:about="&testP12namespace2;relationshipS">
+        <rdfs:label xml:lang="en">relationship S</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M1-P12 pattern A.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#attributeU -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP12#attributeU">
+        <rdfs:label xml:lang="en">attribute U</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P12 pattern A.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#attributeV -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP12#attributeV">
+        <rdfs:label xml:lang="en">attribute V</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P12 pattern B.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12#attribute_V -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP12#attribute_V">
+        <rdfs:label xml:lang="en">attribute V</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P12 pattern B.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP12namespace2#attributeU -->
+
+    <owl:DatatypeProperty rdf:about="&testP12namespace2;attributeU">
+        <rdfs:label xml:lang="en">attribute U</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P12 pattern A.</rdfs:comment>
+    </owl:DatatypeProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

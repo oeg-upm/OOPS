@@ -1,0 +1,388 @@
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+SPDX-FileCopyrightText: 2025 Pieter Hijma <info@pieterhijma.net>
+SPDX-FileCopyrightText: 2025 Robin Vobruba <hoijui.quaero@gmail.com>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta name="Author" content="Míguel Ángel García Delgado">
+<meta name="Languaje" content="English">
+<meta name="Keywords" content="ontology, ontology evaluation, pitfalls, web service, restful">
+<meta name="Description" content="This web provide a description of OOPS! - OntOlogy Pitfall Scanner! RESTFul Web Service">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title> OOPS! - OntOlogy Pitfall Scanner! RESTFul Web Service </title>
+
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/accordion.js"></script>
+<script type="text/javascript" src="./js/expandCollapse.js"></script>
+
+<script type="text/javascript">
+function example1(uri){
+	document.getElementById("uriEx").value=uri;
+	}
+</script>
+
+</head>
+<body>
+
+	<div id="header">
+		<div id="nav">
+			<div id="wrap">
+				<span style="float: left;"><a href="index.jsp"><img
+						src="images/logoWhite65.png" alt="Logo OOPS!" /></a></span>
+				<ul>
+					<li><a href="aboutus.jsp">About Us</a></li>
+					<li><a href="form.jsp">Feedback</a></li>
+					<li><a href="webservice.html">Service</a></li>
+					<li><a href="catalogue.jsp">Pitfall Catalog</a></li>	
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	
+	<div id="wrap">
+		<div id=main>
+			<br><h1>OOPS! RESTFull Web Service</h1>
+			<br> <br>
+		</div>
+
+<div id="accordion-wrap">
+<p style="text-align:justify;">The web service is deployed in the following URL: <a href="https://oops.linkeddata.es/rest" target="_blank">https://oops.linkeddata.es/rest</a>. A wadl file with the definition of the RESTFul web service is available in the following URL: <a href="http://oops.linkeddata.es/rest/application.wadl" target="_blank">http://oops.linkeddata.es/rest/application.wadl</a>.</p>
+
+<br>
+
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-heading1">
+							<button class="accordion-button collapsed" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#panelsStayOpen-collapse1"
+								aria-expanded="true" aria-controls="panelsStayOpen-collapse1">
+								Web Service Request</button>
+						</h2>
+						<div id="panelsStayOpen-collapse1"
+							class="accordion-collapse collapse"
+							aria-labelledby="panelsStayOpen-heading1">
+							<div class="accordion-body">
+								For accessing the OOPS! RESTFUL Web Service, use a <b>HTTP POST request</b> using the following URL: <a href="https://oops.linkeddata.es/rest" target="_blank">https://oops.linkeddata.es/rest</a>.
+								<br>
+								The body of the request must be an <b>XML</b> with the following structure:
+								<br><br><div class=code><pre><br>	&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>	&lt;OOPSRequest&gt;<br>	&lt;OntologyURI&gt;http://www.cc.uah.es/ie/ont/learning-resources.owl&lt;/OntologyURI&gt;<br>	&lt;OntologyContent&gt;&lt;/OntologyContent&gt;<br>	&lt;Pitfalls&gt;10&lt;/Pitfalls&gt;<br>	&lt;OutputFormat&gt;&lt;/OutputFormat&gt;<br>	&lt;/OOPSRequest&gt;</pre></div>
+								<br>The fields of the XML are:
+								<ul>
+								<!-- 	<li><strong>OntologyURI:</strong> the ontology URI. Mandatory if OntologyContent field is empty.</li>  -->
+								
+									<li><strong>OntologyContent:</strong> ontology RDF source code. Highly important: the RDF code must be contained inside &lt;![CDATA[ RDF code ]]&gt;. Otherwise, the code won’t be read properly. Mandatory if OntologyUrl field is empty.</li> 
+									
+									<li><strong>Pitfalls:</strong> list of pitfalls to be scanned. If the list is empty, all the pitfalls will be analyzed. If the user just wants to analyze some pitfalls, just enter the number of the pitfall with a coma separator if more than one pitfall is entered. For instance: “4,11,21” or "P04,P11,P21". Although 35 pitfalls have been identified, not all of them have been implemented. List of implemented pitfalls: 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 19, 20, 21, 22, 24, 25, 25, 26, 27, 28 and 29. Optional field.</li> 
+									
+									<li><strong>OutputFormat:</strong> response can be an RDF file or and XML file. Possible values of this field: XML or RDF/XML. If any other value is entered, the default output will be RDF/XML. Accepted values: XML, RDF/XML. Optional field.</li> 
+								</ul>
+								You must enter either the OntologyUrl or the OntologyContent value, if none of them is sent, an RDF error message will be received as response. If both of them are entered, the service will use the OntologyContent.
+								<br>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-heading2">
+							<button class="accordion-button collapsed" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#panelsStayOpen-collapse2"
+								aria-expanded="false" aria-controls="panelsStayOpen-collapse2">
+								Web Service Response </button>
+						</h2>
+						<div id="panelsStayOpen-collapse2"
+							class="accordion-collapse collapse"
+							aria-labelledby="panelsStayOpen-heading2">
+							<div class="accordion-body">	
+							The web service response can be either a XML or a RDF file. In both cases, the structure is almost similar. Tags in XML response have been created using similar names or the same as in the RDF response. Below, both structures are described.
+							<br>
+							The <strong>RDF file response</strong> has the following structure:
+							<ul>
+								<li><strong>Response element:</strong> a resource of rdf:type http://oops.linkeddata.es/def#response. This is the main resource of the RDF file. This resource will contain as many elements as pitfalls, warning or suggestions detected during the analysis of the ontology.</li>
+								<li><strong>Pitfall element:</strong> resources of rdf:type http://www.oeg-upm.net/oops#pitfall. For every pitfall detected, a new resource of this type will be created and associated with the response element. This element contains a set of fixed properties: </li>
+									<ul>
+									<li>oops:hasCode: the code of the pitfall.</li>
+									<li>oops:hasName: the name of the pitfall.</li>
+									<li>oops:hasDescription: the description of the pitfall.</li>
+									</ul>
+									Depending on the pitfall, it could contain some of the following elements:
+									<ul>
+									<li>oops:hasAffectedElement: indicates the URI of the element (class, object property or data property) affected.</li>
+									<li>oops:mightBeEquivalentProperty: points to a resource that will contain the URIs of the elements (class, object property or data property) affected.</li>
+									<li>oops:mightBeEquivalentAttribute: points to a resource that will contain the URIs of the elements (class, object property or data property) affected.</li>
+									<li>oops:mightNotBeInverseOf: indicates the URI of the element (class, object property or data property) affected.</li>
+									</ul>
+								</li>
+								<li><strong>Warning element:</strong> resources of rdf:type http://www.oeg-upm.net/oops#warning. For possible warning detected, a new resource of this type will be created and associated with the response element. This element contains a set of fixed elements:
+									<ul>
+									<li>oops:hasName: the name of the warning value.</li>
+									<li>oops:hasAffectedElement: this element will contain as many URIs as elements detected during the analysis.</li>
+									</ul>
+								</li>
+								<li><strong>Suggestion element:</strong> resources of rdf:type http://www.oeg-upm.net/oops#suggestion. For possible suggestions detected, a new resource of this type will be created and associated with the response element. This element contains a set of fixed elements:
+									<ul>
+									<li>oops:hasName: the name of the suggestion.</li>
+									<li>oops:hasDescription: the description of the suggestion value.</li>
+									<li>oops:hasAffectedElement: this element will contain as many URIs as elements detected during the analysis.</li>
+									</ul>
+								</li>
+							</ul>
+							
+							The <strong>XML file response</strong> has the following structure:
+							
+							<ul>
+								<li><strong>Pitfall element:</strong> this element (oops:Pitfall) contains a set of fixed elements:
+									<ul>
+									<li>oops:Code: the code of the pitfall.</li>
+									<li>oops:Name: the name of the pitfall.</li>
+									<li>oops:Description: the description of the pitfall.</li>
+									<li>oops:Affects: this element will contain the elements affected. Depending on the pitfall, it could contain some of the following elements:
+										<ul>
+										<li>oops:AffectedElement: the URI of the element (class, object property or data property) affected.</li>
+										<li>oops:MightBeEquivalentProperty: to represent possible equivalent property elements. Contains oops:AffectedElement elements that will contain the URIs of the object properties affected.</li>
+										<li>oops:MightBeEquivalentAttribute: to represent possible equivalent attribute elements. Contains oops:AffectedElement elements that will contain the URIs of the data properties affected.</li>
+										<li>oops:MightNotBeInversedOf: to represent possible wrong inverse relationships between object properties. Contains oops:AffectedElement elements that will contain the URIs of the object properties affected.</li>
+										</ul>
+									</ul>
+								</li>
+								<li><strong>Warning element:</strong> this element (oops:Warning) contains a set of fixed elements:
+							        <ul>
+									<li>oops:Name: the name of the warning.</li>
+									<li>oops:Affects: this element will contain the elements affected. This element contains a set of oops:AffectedElement: the URI of the element (class, object property or data property) affected.</li>
+									</ul>
+								</li>
+								<li><strong>Suggestion element:</strong> this element (oops:Suggestion) contains a set of fixed elements:
+									<ul>
+									<li>oops:Name: the name of the suggestion.</li>
+									<li>oops:Description: the description of the suggestion.</li>
+									<li>oops:Affects: this element will contain the elements affected. This element contains a set of oops:AffectedElement: the URI of the element (class, object property or data property) affected.</li>
+									</ul>
+								</li>
+							</ul>
+							</div>
+						</div>
+					</div>
+			</div>
+<br>
+<div id=main>
+<h3>Request examples</h3>
+</div>
+<p style="text-align:justify;">In both examples, the ontology analyzed is <a href="http://www.cc.uah.es/ie/ont/learning-resources.owl" target="_blank">http://www.cc.uah.es/ie/ont/learning-resources.owl</a>. In the first example, OntologyUrl field is used and the output will be a XML file. In the second example, OntologyContent field is used and the output will be a RDF/XML file. In both cases, only pitfall number 10 will be analysed.</p>
+<br>
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-heading3">
+							<button class="accordion-button collapsed" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#panelsStayOpen-collapse3"
+								aria-expanded="false" aria-controls="panelsStayOpen-collapse3">
+								Example using OntologyUrl field and XML output</button>
+						</h2>
+						<div id="panelsStayOpen-collapse3"
+							class="accordion-collapse collapse"
+							aria-labelledby="panelsStayOpen-heading3">
+							<div class="accordion-body">
+									<strong>	Request body:</strong><br>
+									<div class=code><pre><br>	&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>	&lt;OOPSRequest&gt;<br>	&lt;OntologyUrl&gt;http://www.cc.uah.es/ie/ont/learning-resources.owl&lt;/OntologyUrl&gt;<br>	&lt;OntologyContent&gt;&lt;/OntologyContent&gt;<br>	&lt;Pitfalls&gt;10&lt;/Pitfalls&gt;<br>	&lt;OutputFormat&gt;XML&lt;/OutputFormat&gt;<br>	&lt;/OOPSRequest&gt;</pre></div>
+									<br><strong>Service Response: </strong>
+									<br>
+									<div class=code><pre><br>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>&lt;oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops"&gt;<br>	&lt;oops:Pitfall&gt;<br>&lt;oops:Code&gt;P10&lt;/oops:Code&gt;<br>&lt;oops:Name&gt;Missing disjointness [1, 2, 3]&lt;/oops:Name&gt;<br>&lt;oops:Description&gt;The ontology lacks disjoint axioms between classes or between properties<br>that should be defined as disjoint. For example, we can create the classes “Odd” and “Even”<br>(or the classes “Prime” and “Composite”) without being disjoint; such representation is not<br>correct based on the definition of these types of numbers.&lt;/oops:Description&gt;<br>&lt;/oops:Pitfall&gt;<br>&lt;/oops:OOPSResponse&gt;</pre></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-heading4">
+							<button class="accordion-button collapsed" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#panelsStayOpen-collapse4"
+								aria-expanded="false" aria-controls="panelsStayOpen-collapse4">
+								Example using OntologyContent field and RDF/XML output</button>
+						</h2>
+						<div id="panelsStayOpen-collapse4"
+							class="accordion-collapse collapse"
+							aria-labelledby="panelsStayOpen-heading4">
+							<div class="accordion-body">
+								
+	<strong>	Request body:</strong>
+<br>
+<div class=code><pre>
+
+	&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+	&lt;OOPSRequest&gt;
+	      &lt;OntologyUrl&gt;&lt;/OntologyUrl&gt;
+	      &lt;OntologyContent&gt;&lt;![CDATA[
+	&lt;?xml version="1.0"?&gt;
+	&lt;rdf:RDF
+	    xmlns="http://www.cc.uah.es/ie/ont/learning-resources#"
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	    xmlns:owl="http://www.w3.org/2002/07/owl#"
+	  xml:base="http://www.cc.uah.es/ie/ont/learning-resources"&gt;
+	  &lt;owl:Ontology rdf:about=""&gt;
+	    &lt;rdfs:comment xml:lang="en"&gt;An upper ontology for models of&lt;/rdfs:comment&gt;
+	  &lt;/owl:Ontology&gt;
+	  &lt;owl:Class rdf:ID="LearningObject"&gt;
+	    &lt;rdfs:comment xml:lang="en"&gt;"A digital learning resource"&lt;/rdfs:comment&gt;
+	  &lt;/owl:Class&gt;
+	  &lt;owl:Class rdf:ID="ExerciseLO"&gt;
+	    &lt;rdfs:comment xml:lang="en"&gt;"A task, problem, or other effort performed
+	     to develop or maintain fitness 
+	    or increase skill:"&lt;/rdfs:comment&gt;
+	    &lt;rdfs:subClassOf rdf:resource="#LearningObject"/&gt;
+	  &lt;/owl:Class&gt;
+	  &lt;owl:ObjectProperty rdf:ID="partOf"&gt;
+	    &lt;owl:inverseOf&gt;
+	      &lt;owl:TransitiveProperty rdf:ID="hasPart"/&gt;
+	    &lt;/owl:inverseOf&gt;
+	    &lt;rdfs:range rdf:resource="#LearningObject"/&gt;
+	    &lt;rdfs:domain rdf:resource="#LearningObject"/&gt;
+	  &lt;/owl:ObjectProperty&gt;
+	  &lt;owl:TransitiveProperty rdf:about="#hasPart"&gt;
+	    &lt;rdfs:range rdf:resource="#LearningObject"/&gt;
+	    &lt;rdfs:domain rdf:resource="#LearningObject"/&gt;
+	    &lt;rdfs:comment xml:lang="en"&gt;Specifies that a LO has as one of its constituent
+	     another LO.&lt;/rdfs:comment&gt;
+	    &lt;owl:inverseOf rdf:resource="#partOf"/&gt;
+	    &lt;rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/&gt;
+	  &lt;/owl:TransitiveProperty&gt;
+	  &lt;LearningObject rdf:ID="aLearningObject"&gt;
+	    &lt;hasPart&gt;
+	      &lt;ExerciseLO rdf:ID="anExerciseLearningObject"&gt;
+	        &lt;partOf rdf:resource="#aLearningObject"/&gt;
+	      &lt;/ExerciseLO&gt;
+	    &lt;/hasPart&gt;
+	    &lt;partOf&gt;
+	      &lt;LearningObject rdf:ID="yetAnotherLearningObject"&gt;
+	        &lt;hasPart rdf:resource="#aLearningObject"/&gt;
+	      &lt;/LearningObject&gt;
+	    &lt;/partOf&gt;
+	  &lt;/LearningObject&gt;
+	  &lt;LearningObject rdf:ID="anotherLearningObject"/&gt;
+	&lt;/rdf:RDF&gt;
+	]]&gt;&lt;/OntologyContent&gt;
+	      &lt;Pitfalls&gt;10&lt;/Pitfalls&gt;
+	      &lt;OutputFormat&gt;RDF/XML&lt;/OutputFormat&gt;
+	&lt;/OOPSRequest&gt;
+</pre></div>
+<br><strong>Service Response:</strong><br>
+<br><div class=code><pre>
+
+	&lt;rdf:RDF
+	    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	    xmlns:oops="http://www.oeg-upm.net/oops#" &gt; 
+	  &lt;rdf:Description rdf:about=
+	  	"http://www.oeg-upm.net/oops/64abbced-1570-4067-a079-f8f94722a57e"&gt;
+	    &lt;oops:hasPitfall rdf:resource=
+	    "http://www.oeg-upm.net/oops/8ed5e4bb-f95d-4641-bc20-ff226466d535"/&gt;
+	    &lt;rdf:type rdf:resource=
+	    "http://www.oeg-upm.net/oops#response"/&gt;
+	  &lt;/rdf:Description&gt;
+	  &lt;rdf:Description rdf:about=
+	  	"http://www.oeg-upm.net/oops/8ed5e4bb-f95d-4641-bc20-ff226466d535"&gt;
+	    &lt;oops:hasDescription rdf:datatype=
+	    "http://www.w3.org/2001/XMLSchema#string"&gt;The ontology lacks 
+	    disjoint axioms between classes or between properties that should be defined 
+	    as disjoint. For example, we can create the classes “Odd” and “Even” (or the
+	    classes “Prime” and “Composite”) without being disjoint; such representation
+	     is not correct based on the definition of these     types of numbers.
+	     &lt;/oops:hasDescription&gt;
+	    &lt;oops:hasName rdf:datatype=
+	    	"http://www.w3.org/2001/XMLSchema#string"&gt;Missing disjointness 
+	    [1, 2, 3]&lt;/oops:hasName&gt;
+	    &lt;oops:hasCode rdf:datatype=
+	    	"http://www.w3.org/2001/XMLSchema#string"&gt;P10&lt;/oops:hasCode&gt;
+	    &lt;rdf:type rdf:resource="http://www.oeg-upm.net/oops#pitfall"/&gt;
+	  &lt;/rdf:Description&gt;
+	&lt;/rdf:RDF&gt;
+</pre></div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+ 
+</div>
+<br><br>
+
+		</div>
+	</div>
+	<div id="htc">
+		<div id="wrap">
+			<h3>How to cite OOPS!</h3>
+			<br>
+			<p>Poveda-Villalón, María, Asunción Gómez-Pérez, and Mari Carmen
+				Suárez-Figueroa. "OOPS!(Ontology Pitfall Scanner!): An on-line tool
+				for ontology evaluation." International Journal on Semantic Web and
+				Information Systems (IJSWIS) 10.2 (2014): 7-34.</p>
+			<p>BibTex:</p>
+			
+			<div class= code><pre ><br>	@article{poveda2014oops, <br>	title={{OOPS! (OntOlogy Pitfall Scanner!): An On-line Tool for Ontology Evaluation}},<br>	author={Poveda-Villal{\'o}n, Mar{\'i}a and G{\'o}mez-P{\'e}rez, Asunci{\'o}n and Su{\'a}rez-Figueroa, Mari Carmen},<br>	journal={International Journal on Semantic Web and Information Systems (IJSWIS)},<br>	volume={10}, <br>	number={2}, <br>	pages={7--34}, <br>	year={2014}, <br>	publisher={IGI Global} <br>	}</pre></div>
+		</div>
+		<br>
+	</div>
+	<div id="wrap">
+		<br> <br>
+		<div class="logos">
+				 	<div><span ><a href="https://oeg.fi.upm.es/" target="_blank"><img
+							src="images/logoOEG.png" alt="OEG logo"
+							style=" width: 78%;" /></a></span></div>
+				 	<div >
+				 		
+				 		<div><span ><a href="https://www.fi.upm.es/" target="_blank"><img
+								src="images/LogoETSIINF.png" alt="ESTIINF logo"
+								style=" width: 78%;" /></a></span></div>
+						<div><p><br>Escuela Técnica<br>Superior de<br>Ingenieros Informáticos</p></div>
+						
+					</div>
+				 	<div >
+				 		<div><span ><a href="https://www.upm.es/" target="_blank"><img src="images/LogoUPM.png" alt="UPM logo" style=" width: 78%;" /></a></span></div>
+				 		<div><p><br>Universidad<br>Politécnica<br>de Madrid</p></div>
+				 		
+				 	</div>
+		</div>
+		  
+		<div id="footer">
+			<p>
+				<a href="http://purl.org/net/mpoveda" target="_blank">María Poveda</a>
+			</p>
+			<p>Contact email: oops(at)delicias.dia.fi.upm.es. Latest revision
+				April 2021</p>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/accordion.js"></script>
+	<script type="text/javascript" src="js/expandCollapse.js"></script>
+	<script type="text/javascript" src="js/expand.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/loading.js"></script>
+	<script type="text/javascript" src="js/inputs.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z598BL3YY4"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-Z598BL3YY4');
+</script>
+
+</body></html>

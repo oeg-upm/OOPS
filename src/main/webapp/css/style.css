@@ -1,0 +1,543 @@
+/*
+ * SPDX-FileCopyrightText: 2014 María Poveda Villalon <mpovedavillalon@gmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+* {
+	padding: 0;
+	margin: 0;
+}
+a{
+	color:#31599d;
+}
+body {
+	background-color: rgb(162, 194, 232);
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: normal;
+	
+}
+
+#wrap {
+	margin: 0 auto;
+	width: 900px;
+	font-weight: normal;
+}
+
+#header {
+	height: 60px;
+	color: #fff;
+	width: 100%;
+	position: fixed;
+	z-index: 1000;
+	box-shadow:0px 4px 3px rgba(0,0,0,.5);
+}
+
+
+.submitLink {	
+	text-decoration: underline;
+	color: rgb(128, 128, 128);
+	background: transparent;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+}
+.button{
+	color:#fff;
+  	background: #31599d;
+  	font: 15px Verdana, Arial, Helvetica, sans-serif;
+  	margin: 0 auto;
+  	text-align: center;
+  	border:none;
+  	height:28px;
+}
+ 
+/*Main------------------------------------------------------------*/
+#main {
+	vertical-align: center;
+}
+#main input[type="text"] {
+    border: 1px solid #CCCCCC;
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+    width: 73%;
+    height: 30px;
+    display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin: 0 auto;
+  	border-radius: 10px;
+  	box-sizing:border-box;
+  	
+  
+}
+
+#main input[type="submit"] {
+    border: none;
+    width: 20%;
+    height: 35px;
+    display: block;
+  	margin: auto;
+  	cursor: pointer;
+  	border-radius: 10px;
+  	box-sizing:border-box;
+}
+
+#main textarea{
+    border: 1px solid #ccc;
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+    width: 73%;
+    display: block;
+    margin-left: auto;
+  	margin-right: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-sizing:border-box;
+   
+}
+#main h1 {
+	color:#4c4c4c;
+	font-size: 35px;
+	font-weight: 100;
+	font-weight: bold; 
+	text-align: center;
+	padding: 25px 5px 5px 5px;
+}
+#main h3 {
+	color:#4c4c4c;
+	font-size: 20px;
+	font-weight: 100;
+	text-align: left;
+	padding: 25px 5px 5px 5px;
+}
+#main p {
+	color:rgb(104, 104, 104);
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 100;
+	padding: 1px;
+	text-align: center;
+}
+
+/*--Barra de navegaci�n---------------------------------------------*/
+
+#nav {
+	display: flex;
+	justify-content: space-between;
+	background:#f8f8f8 ;
+	/*-webkit-transition:all ease .10s;
+	-o-transition:all ease .10s;
+	transition:all ease .10s;*/
+}
+
+
+#nav ul {
+    list-style: none;
+    overflow: hidden;
+    height: 100%;
+}
+#nav ul li {
+	float: right;
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	padding: 1px 10px 0px 10px;
+	height: 100%;
+}
+
+#nav ul li a {
+	display: block;
+	/* Convertimos los elementos a en elementos bloque para manipular el padding */
+	padding: 20px 20px 0px 20px;
+	color: #333333;
+	text-decoration: none;
+	height:100%
+	
+}
+
+
+#nav ul li:hover {
+    background: #f1f1f1;
+    height: 100%;
+}
+#inline{
+	text-align: center;
+	}
+#inline input[type="submit"] {
+    display: inline;
+    width: 15%;
+    height: 28px;
+    margin: auto;
+    cursor: pointer;
+    background: #31599D; ;
+}
+#inline input[type="text"] {
+    border: 1px solid #CCCCCC;
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+    width: 53%;
+    height: 30px;
+    display: inline;
+  	margin-left: auto;
+  	margin-right: auto;
+  	margin: auto;
+  	border-radius: 10px;
+  	box-sizing:border-box;
+  	
+  
+}
+/*Barra nav pitfalls-------------------------------------------------------------------------------------------------*/
+.npitmenu{
+	position:sticky;
+ 	margin:auto;
+ 	top: 60px;
+	display:flex;
+	flex-direction: row;
+	justify-content:center;
+	align-items:center;
+	width:50%;
+	height:35px;
+	background:#eaeaea;
+	border-color:#31599D;
+	border-radius: 15px;
+	box-sizing:border-box;
+	
+}
+.npitmenu nav-item{
+	width:30%;	
+}
+.npitmenu nav-item:hover{
+	background: #31599D;
+	height:100%;
+	
+}
+
+#example p{
+	color: #666;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+    margin: 0 auto;
+    padding: 1px 1px 7px 1px;
+}
+
+/*Pitfalls--------------------------------------------------*/
+
+.accordion-body{
+	text-align:justify;
+	font-weight: normal;
+}
+
+
+/*About us----------------------------------------------------*/
+.cont{
+	height:1100px;
+}
+.abtu1{
+	display:flex;
+	text-align:left;
+	float: left;
+	width:85%;
+	padding:15px;
+	margin-bottom: 20px;
+}
+
+.abtu1 div{
+	display:flex;
+	flex-direction: column;
+	text-align:justify;
+	padding:10px;
+	max-width: 75%;
+}
+
+ div p{
+	padding: 0px 15px 0px 10px;
+	color:rgb(104, 104, 104);
+	font-size: 13px;
+}
+
+.abtu1 div h3{
+	color:#4c4c4c;
+	font-size: 15px;
+	text-align: left;
+	font-weight: bloder;
+	padding: 10px 0 0 15px;
+}
+
+.log{
+	margin:0px auto;
+	text-align:center;
+	margin:auto;
+	display:block;
+}
+.log img {
+	vertical-align:middle;
+	padding:0;
+}
+
+/*--How to cite---------------------------------------------*/
+
+#htc {
+	padding: 5px 0 0 0;
+	background: #fff;
+	color:#333;
+}
+#htc h3{
+	font-family: Arial, sans-serif;
+	font-size: 25px;
+	padding: 5px 0 0px 0;
+	color:#333;
+}
+
+
+/*--Pie de p�gina---------------------------------------------*/
+
+#footer {
+	text-align: center;
+	color: #333;
+	font-size: 11px;
+	padding: 0 0 10px 0;
+	margin-top: 10px;
+}
+/* To place the first part of a line in the left and the other in the right */
+.inLine>div {
+	display: inline-block;
+	width: 167px;
+	
+	padding: 10px;
+	border-left: 1px solid #bbb;
+	font-size: 12px
+}
+
+
+/*Logos----------------------------------------------------*/
+.logos{	
+	display:flex;
+	height:100px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 1000px;
+	padding:10px;
+}
+
+.logos div{
+	display:flex;
+	text-align:left;
+	justify-content: center;
+	height:100px;
+	
+	
+}
+.logos div p{
+	padding: 0px 0px 0px 10px;
+	border-left : 1pt  ridge #333;
+	color: #333;
+	font-size: 11px;
+}
+
+/*Error----------------------------------------------------*/
+
+.sww{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	
+	
+}
+.sww div{
+	display:flex;
+	text-align:center;
+	justify-content: text-align;
+	align-items: center;
+	padding:10px;
+	
+}
+
+.sww div p1{
+	display:flex;
+	font-size: 30px;
+	color: #31599D;
+}
+.txt{
+	display:flex;
+	background-color:#f8f8f8;
+	flex-direction: column;
+	padding:12px;
+	box-shadow: 0px 0px 15px 3px rgba(49, 89, 157, 0.77);
+}
+#main .txt p{
+	text-align:left;
+}
+.txt div{
+	font-size: 12px;
+	color: #333;
+	text-align:justify;
+}
+.txt div img{
+	display: block;
+}
+/*Advanced evaluation---------------------------------------------------------------------*/
+.evCrit{
+	margin:auto;
+	width:500px;
+	background-color:#f8f8f8;
+	padding:15px;
+	border: 1px solid #f8f8f8;
+}
+#selCat{
+	display:flex;
+	justify-content:space-between;
+	margin:auto;
+	max-width:650px;
+}
+#selCat input[type="button"] {    
+    height: 30px;
+    margin: auto;
+    cursor: pointer;
+    background: #808080; 
+    color:white;
+    padding:5px;
+    border-radius:10px;
+    box-sizing:border-box;
+    border: 1px solid #808080;
+}
+#selCat input[type="button"]:hover {  
+  background: #c0c0c0; 
+  border: 1px solid  #c0c0c0;
+} 
+#selCat input[type="button"]:active { 
+  background: #03984e; 
+  border: 1px solid #03984e;
+} 
+#selCat input[type="button"]:visited { 
+  background: #03984e; 
+  border: 1px solid #03984e;
+} 
+.centered {
+	text-align: center;
+}
+/*Code blocks*/
+.code{
+	width:75%;
+	display:flex;
+	padding: 0;
+	color: #333;
+	background:#edf2fa;
+	font-size: 11px;
+	text-align:left;
+	margin:auto;
+	
+}
+/*Code +logo*/
+.codeLogo{
+	display:flex;
+}
+.codeLogo a{
+	
+	width: 100%;
+	max-width:35%;
+	margin:0px auto;
+	text-align:center;
+}
+.codeLogo a img{
+	margin:auto;
+}
+.codeLogo code{
+	float:right;
+	padding-right:10px;
+}
+/*Pitfall and Importance*/
+
+.pitImp{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:nowrap;
+	justify-content: space-between;
+	align-content: space-between; 
+	width: 100%;
+}
+
+.pitImp title{
+	
+	width:100%;
+	max-width: 75%;
+}
+.pitImp importance{
+	float:right;
+	max-width: 25%;
+}
+
+/* Labels ----------------------------------------------------------------------------*/
+.label-danger {
+    background-color: #d9534f;
+}
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+
+
+/*Loading-----------------------------------------------------------------------------*/
+
+div.loading {
+    display: none;
+    
+}
+
+/*Load container*/
+#load{
+    float: center;
+    text-align: center;
+    color: #4d7bc8;
+    font-size: 40px;  
+    /*border-radius: 10px;*/
+	filter:alpha(opacity=65);
+	-moz-opacity: 0.65;opacity: 0.65;
+    
+    vertical-align:middle;
+    
+    background-color:  rgb(162, 194, 232, 0.9);
+    height: 100%;
+    width: 100%;
+    position:fixed;
+    -webkit-transition:all 1s ease;
+    -o-trasition:all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+#loadElement{
+	
+	border: 15px solid #ccc;
+	border-top-color:#4d7bc8;
+	border-top-style: groove;
+	height: 100px;
+	width:100px;
+	border-radius:100%;
+	
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+	-webkit-animation: girar 1.5s linear infinite;
+	-o-animation:girar 1.5s linaer infinite;
+	animation:girar 1.5s linear infinite;
+	
+}
+ @keyframes girar{
+ 	from { transform:rotate(0deg);}
+ 	to { transform:rotate(360deg);}
+ }
+
+.freebirdFormviewerViewCenteredContent {
+    width: 698px;
+}
+
+

@@ -1,0 +1,1757 @@
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+SPDX-FileCopyrightText: 2025 Pieter Hijma <info@pieterhijma.net>
+SPDX-FileCopyrightText: 2025 Robin Vobruba <hoijui.quaero@gmail.com>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+	<meta name="Author" content="María Poveda Villalón">
+	<meta name="Languaje" content="English">
+	<meta name="Keywords" content="ontology, ontology evaluation, pitfalls">
+	<meta name="Description" content="This web provide online access to OOPS! - OntOlogy Pitfall Scanner!">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link href="css/estilos.css" rel="stylesheet" type="text/css">
+	
+	<script src="js/analytics.js" async=""></script><script src="js/widgets.js" id="twitter-wjs"></script><script type="text/javascript" src="js/loading.js"></script>
+
+	<!--[if lt IE 7]>
+	<link href="estilosie.css" rel="stylesheet" type="text/css" />
+	<![endif]--> 
+	
+	<title> OOPS! - OntOlogy Pitfall Scanner! - Results </title>
+
+</head>
+<body data-twttr-rendered="true">
+
+<div id="wrap">
+
+<div id="header">
+	<!--<h1><a href="index.jsp">OOPS! </a></h1>
+	<h2>OntOlogy Pitfall Scanner!</h2>-->
+	<span style="float: left;"><a href="index.jsp"><img src="images/logoWhite65.png" alt="Logo OOPS!"></a></span>
+	<p><span>OntOlogy Pitfall Scanner!</span></p>
+</div>
+
+<div id="load" class="loading"> 
+	<p><img src="images/loading.gif" alt="scanning"> </p>
+	<br>
+	<p>OOPS! is scanning...</p>
+</div>
+
+<div id="intro"> 
+<p><strong>OOPS! (OntOlogy Pitfall Scanner!)</strong> helps you to detect some of the most common
+pitfalls appearing when developing ontologies.</p>  
+
+<p>To try it, enter a URI or paste an OWL 
+document into the text field above. A list of pitfalls and the elements of your ontology
+ where they appear will be displayed. </p>
+ 
+</div>
+
+
+
+
+<div id="intro2"> 
+	<div class="textbox-big">
+		<form method="post" action="response.jsp">
+			<p> Scanner by URI:
+			<input name="uri" id="uriEx" type="text"
+				value="http://www.aktors.org/ontology/portal">  
+			<input name="buttonURI" value="Scanner by URI" onclick="doValidation()" type="submit"> 
+			</p>
+			<div id="example">
+				<p onclick="example1('http://data.semanticweb.org/ns/swc/swc_2009-05-09.rdf')">
+				Example: http://data.semanticweb.org/ns/swc/swc_2009-05-09.rdf
+				</p>
+			</div>
+					
+		<br>
+		
+			<p> Scanner by direct input:
+			   <textarea class="medio" cols="78" rows="10" name="RDF" placeholder="If you just include the RDF code here, the following Pitfalls will not be checked:
+P36. URI contains file extension, P37.
+Ontology not available, P40.
+Namespace hijacking">
+</textarea>
+		       <input name="buttonRDF" value="Scanner by RDF" onclick="doValidation()" type="submit"> </p>
+  
+  			<div class="twoSentences">
+  				<div class="twoSentences sentenceLeft">
+  					<input name="saveOntology" value="saveOntology" checked="" type="checkbox">
+					Uncheck this checkbox if you don't want us to keep a copy of your ontology.
+  				</div>
+  	
+				<div class="twoSentences sentenceRight">
+					<input class="submitLink" name="buttonLINK" onclick='this.form.action="advanced.jsp";' value="Go to advanced evaluation" type="submit">
+  				</div>
+			</div>
+			<br>
+			
+
+		</form>				
+	</div>	
+</div>
+
+		
+<div id="content">
+<div class="left"> 
+
+<div class="articles">
+<h2>Evaluation results</h2>
+
+			<!-- Los parámetros que le pasa el cliente en la petición se
+			obtienen del objeto implícito request -->
+			<p>
+				This results have been generated from AKT Reference Ontology
+				(Portal Ontology) on 19th March of 2014.
+				These results might be outdated if the original ontology changes.
+			</p>
+					
+					<br>
+					
+					<p>It is obvious that not all the pitfalls are equally important; their impact in the ontology 
+					will depend on multiple factors. For this reason, each pitfall has an importance level 
+					attached indicating how important it is. We have identified three levels:
+					
+					</p><ul>
+						<li><strong>Critical <img src="images/critical.png" alt="Critical" height="11" width="11"> :</strong> It is crucial to correct the pitfall. Otherwise, it could affect the 
+						ontology consistency, reasoning, applicability, etc.
+						</li>
+						<li><strong>Important  <img src="images/important.png" alt="Important" height="11" width="11"> :</strong> Though not critical for ontology function, it is important to correct 
+						this type of pitfall.
+						</li>
+						<li><strong>Minor  <img src="images/minor.png" alt="Minor" height="11" width="11"> :</strong> It is not really a problem, but by correcting it we will 
+						make the ontology nicer.
+						</li>
+					</ul>
+					
+					<p></p>
+					
+					
+					
+					<div class="accordion">
+					
+		
+						<p class="switch"><a href="#" class="">[Expand All]</a>&nbsp;|&nbsp;<a href="#" class="open">[Collapse All]</a></p><h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>
+							Results for P07: Merging different concepts in the same class.
+</span> <span style="float: right; ">
+						
+						4 cases
+ | Minor <img src="images/minor.png" alt="Minor" height="11" width="11"></span> </a></h3>
+							<p style="display: none;" class="collapse shown">
+							A class is created whose identifier is referring to two or more 
+different concepts. An example of this type of pitfall is to create the 
+class "StyleAndPeriod", or "ProductOrService".
+<br>
+
+									<br>
+									 
+									• This pitfall appears in the following elements:
+									
+									<br>
+
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Specification-Or-Computing-Language" target="_blank">http://www.aktors.org/ontology/portal#Specification-Or-Computing-Language</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#R-And-D-Institute" target="_blank">http://www.aktors.org/ontology/portal#R-And-D-Institute</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#R-And-D-Institute-Within-Larger-Institute" target="_blank">http://www.aktors.org/ontology/portal#R-And-D-Institute-Within-Larger-Institute</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Small-Or-Medium-Sized-Organization" target="_blank">http://www.aktors.org/ontology/portal#Small-Or-Medium-Sized-Organization</a>
+										<br>
+									</p>
+		
+						<h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>      Results for P08: Missing annotations.
+</span> <span style="float: right; ">
+						
+						285 cases
+ | Minor <img src="images/minor.png" alt="Minor" height="11" width="11"></span> </a></h3>
+							<p style="display: none;" class="collapse">
+							Ontology terms lack annotations properties. This kind of 
+properties improves the ontology understanding and usability from a user
+ point of view.
+<br>
+
+									<br>
+									 
+									• The following elements have neither rdfs:label or rdfs:comment defined:
+									
+									<br>
+ › <a href="http://www.aktors.org/ontology/portal#Charitable-Organization" target="_blank">http://www.aktors.org/ontology/portal#Charitable-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Higher-Educational-Organization" target="_blank">http://www.aktors.org/ontology/portal#Higher-Educational-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Web-Based-Editor" target="_blank">http://www.aktors.org/ontology/portal#Web-Based-Editor</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#University" target="_blank">http://www.aktors.org/ontology/portal#University</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Self-Employed-Person" target="_blank">http://www.aktors.org/ontology/portal#Self-Employed-Person</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Senior-Research-Fellow-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Senior-Research-Fellow-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Operating-System" target="_blank">http://www.aktors.org/ontology/portal#Operating-System</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Conference" target="_blank">http://www.aktors.org/ontology/portal#Conference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Industrial-Organization" target="_blank">http://www.aktors.org/ontology/portal#Industrial-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Research-Assistant-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Research-Assistant-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Thesis-Reference" target="_blank">http://www.aktors.org/ontology/portal#Thesis-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Activity" target="_blank">http://www.aktors.org/ontology/portal#Activity</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Government-Organization" target="_blank">http://www.aktors.org/ontology/portal#Government-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Secretary" target="_blank">http://www.aktors.org/ontology/portal#Secretary</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Academic-Unit" target="_blank">http://www.aktors.org/ontology/portal#Academic-Unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Magazine" target="_blank">http://www.aktors.org/ontology/portal#Magazine</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Web-Site" target="_blank">http://www.aktors.org/ontology/portal#Web-Site</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Employee" target="_blank">http://www.aktors.org/ontology/portal#Employee</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Book-Section-Reference" target="_blank">http://www.aktors.org/ontology/portal#Book-Section-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Academic-Support-Staff" target="_blank">http://www.aktors.org/ontology/portal#Academic-Support-Staff</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Person" target="_blank">http://www.aktors.org/ontology/portal#Person</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Local-District" target="_blank">http://www.aktors.org/ontology/portal#Local-District</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Letter" target="_blank">http://www.aktors.org/ontology/portal#Letter</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Project-Officer-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Project-Officer-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Government" target="_blank">http://www.aktors.org/ontology/portal#Government</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Municipal-Unit" target="_blank">http://www.aktors.org/ontology/portal#Municipal-Unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Private-Company" target="_blank">http://www.aktors.org/ontology/portal#Private-Company</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Senior-Lecturer-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Senior-Lecturer-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Daily-Newspaper" target="_blank">http://www.aktors.org/ontology/portal#Daily-Newspaper</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Attending-An-Event" target="_blank">http://www.aktors.org/ontology/portal#Attending-An-Event</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Workshop-Proceedings-Reference" target="_blank">http://www.aktors.org/ontology/portal#Workshop-Proceedings-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Newspaper" target="_blank">http://www.aktors.org/ontology/portal#Newspaper</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Research-Area" target="_blank">http://www.aktors.org/ontology/portal#Research-Area</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Scripting-Language" target="_blank">http://www.aktors.org/ontology/portal#Scripting-Language</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Book" target="_blank">http://www.aktors.org/ontology/portal#Book</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Proceedings-Paper-Reference" target="_blank">http://www.aktors.org/ontology/portal#Proceedings-Paper-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#System-Administrator" target="_blank">http://www.aktors.org/ontology/portal#System-Administrator</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Publication-Type-Event" target="_blank">http://www.aktors.org/ontology/portal#Publication-Type-Event</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#PhD-Student" target="_blank">http://www.aktors.org/ontology/portal#PhD-Student</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Multimedia-Designer" target="_blank">http://www.aktors.org/ontology/portal#Multimedia-Designer</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#University-Faculty" target="_blank">http://www.aktors.org/ontology/portal#University-Faculty</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Educational-Organization" target="_blank">http://www.aktors.org/ontology/portal#Educational-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Graphic-Designer" target="_blank">http://www.aktors.org/ontology/portal#Graphic-Designer</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Distance-Teaching-University" target="_blank">http://www.aktors.org/ontology/portal#Distance-Teaching-University</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#R-And-D-Institute-Within-Larger-Institute" target="_blank">http://www.aktors.org/ontology/portal#R-And-D-Institute-Within-Larger-Institute</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Giving-A-Talk" target="_blank">http://www.aktors.org/ontology/portal#Giving-A-Talk</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Visiting-Researcher" target="_blank">http://www.aktors.org/ontology/portal#Visiting-Researcher</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Technical-Report-Reference" target="_blank">http://www.aktors.org/ontology/portal#Technical-Report-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Financial-Award" target="_blank">http://www.aktors.org/ontology/portal#Financial-Award</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Information-Transfer-Medium" target="_blank">http://www.aktors.org/ontology/portal#Information-Transfer-Medium</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Business-Area" target="_blank">http://www.aktors.org/ontology/portal#Business-Area</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#News-Item" target="_blank">http://www.aktors.org/ontology/portal#News-Item</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Employment-Contract-Type" target="_blank">http://www.aktors.org/ontology/portal#Employment-Contract-Type</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Workshop" target="_blank">http://www.aktors.org/ontology/portal#Workshop</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Student" target="_blank">http://www.aktors.org/ontology/portal#Student</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Educational-Organization-Unit" target="_blank">http://www.aktors.org/ontology/portal#Educational-Organization-Unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Non-Profit-Organization" target="_blank">http://www.aktors.org/ontology/portal#Non-Profit-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Implemented-System" target="_blank">http://www.aktors.org/ontology/portal#Implemented-System</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Lecturer-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Lecturer-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Conference-Proceedings-Reference" target="_blank">http://www.aktors.org/ontology/portal#Conference-Proceedings-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Village" target="_blank">http://www.aktors.org/ontology/portal#Village</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Programming-Language" target="_blank">http://www.aktors.org/ontology/portal#Programming-Language</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Company" target="_blank">http://www.aktors.org/ontology/portal#Company</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Software-Status" target="_blank">http://www.aktors.org/ontology/portal#Software-Status</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Attending-A-Conference" target="_blank">http://www.aktors.org/ontology/portal#Attending-A-Conference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Book-Publishing" target="_blank">http://www.aktors.org/ontology/portal#Book-Publishing</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Book-Reference" target="_blank">http://www.aktors.org/ontology/portal#Book-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#City" target="_blank">http://www.aktors.org/ontology/portal#City</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Country" target="_blank">http://www.aktors.org/ontology/portal#Country</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Researcher" target="_blank">http://www.aktors.org/ontology/portal#Researcher</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Email-Message" target="_blank">http://www.aktors.org/ontology/portal#Email-Message</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Work-Status" target="_blank">http://www.aktors.org/ontology/portal#Work-Status</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Learning-Centred-Organization" target="_blank">http://www.aktors.org/ontology/portal#Learning-Centred-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Currency" target="_blank">http://www.aktors.org/ontology/portal#Currency</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Article-In-A-Composite-Publication" target="_blank">http://www.aktors.org/ontology/portal#Article-In-A-Composite-Publication</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Civil-Service" target="_blank">http://www.aktors.org/ontology/portal#Civil-Service</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Academic-Support-Unit" target="_blank">http://www.aktors.org/ontology/portal#Academic-Support-Unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Specification-Language" target="_blank">http://www.aktors.org/ontology/portal#Specification-Language</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Academic" target="_blank">http://www.aktors.org/ontology/portal#Academic</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Profit-Organization" target="_blank">http://www.aktors.org/ontology/portal#Profit-Organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#R-And-D-Institute" target="_blank">http://www.aktors.org/ontology/portal#R-And-D-Institute</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Social-Gathering" target="_blank">http://www.aktors.org/ontology/portal#Social-Gathering</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Working-Person" target="_blank">http://www.aktors.org/ontology/portal#Working-Person</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Programming-Environment" target="_blank">http://www.aktors.org/ontology/portal#Programming-Environment</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Capital-City" target="_blank">http://www.aktors.org/ontology/portal#Capital-City</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#School" target="_blank">http://www.aktors.org/ontology/portal#School</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Professor-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Professor-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Appellation" target="_blank">http://www.aktors.org/ontology/portal#Appellation</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Publishing-House" target="_blank">http://www.aktors.org/ontology/portal#Publishing-House</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Public-Company" target="_blank">http://www.aktors.org/ontology/portal#Public-Company</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Message" target="_blank">http://www.aktors.org/ontology/portal#Message</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Article-Reference" target="_blank">http://www.aktors.org/ontology/portal#Article-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Hardware-Technology" target="_blank">http://www.aktors.org/ontology/portal#Hardware-Technology</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Edited-Book-Reference" target="_blank">http://www.aktors.org/ontology/portal#Edited-Book-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Researcher-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Researcher-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Project" target="_blank">http://www.aktors.org/ontology/portal#Project</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Educational-Employee" target="_blank">http://www.aktors.org/ontology/portal#Educational-Employee</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Reader-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Reader-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Town" target="_blank">http://www.aktors.org/ontology/portal#Town</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Specification-Or-Computing-Language" target="_blank">http://www.aktors.org/ontology/portal#Specification-Or-Computing-Language</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Conferring-An-Award" target="_blank">http://www.aktors.org/ontology/portal#Conferring-An-Award</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Web-Reference" target="_blank">http://www.aktors.org/ontology/portal#Web-Reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Computing-Technology" target="_blank">http://www.aktors.org/ontology/portal#Computing-Technology</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Edited-Book" target="_blank">http://www.aktors.org/ontology/portal#Edited-Book</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Editor" target="_blank">http://www.aktors.org/ontology/portal#Editor</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Amount-Of-Money" target="_blank">http://www.aktors.org/ontology/portal#Amount-Of-Money</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Journal" target="_blank">http://www.aktors.org/ontology/portal#Journal</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Academic-Degree" target="_blank">http://www.aktors.org/ontology/portal#Academic-Degree</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Hardware-Platform" target="_blank">http://www.aktors.org/ontology/portal#Hardware-Platform</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Software-Technology" target="_blank">http://www.aktors.org/ontology/portal#Software-Technology</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#Research-Fellow-In-Academia" target="_blank">http://www.aktors.org/ontology/portal#Research-Fellow-In-Academia</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#addresses-generic-area-of-interest" target="_blank">http://www.aktors.org/ontology/portal#addresses-generic-area-of-interest</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#uses-resource" target="_blank">http://www.aktors.org/ontology/portal#uses-resource</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#published-proceedings" target="_blank">http://www.aktors.org/ontology/portal#published-proceedings</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#is-capital-of" target="_blank">http://www.aktors.org/ontology/portal#is-capital-of</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#has-publication-reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#published-book" target="_blank">http://www.aktors.org/ontology/portal#published-book</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-supervisor" target="_blank">http://www.aktors.org/ontology/portal#has-supervisor</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-date" target="_blank">http://www.aktors.org/ontology/portal#has-date</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#produces-output" target="_blank">http://www.aktors.org/ontology/portal#produces-output</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-periodicity" target="_blank">http://www.aktors.org/ontology/portal#has-periodicity</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-size" target="_blank">http://www.aktors.org/ontology/portal#has-size</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#recipient-of-message" target="_blank">http://www.aktors.org/ontology/portal#recipient-of-message</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#confers-award" target="_blank">http://www.aktors.org/ontology/portal#confers-award</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology-on-server-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-ISBN-number" target="_blank">http://www.aktors.org/ontology/portal#has-ISBN-number</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#contains-article" target="_blank">http://www.aktors.org/ontology/portal#contains-article</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-speaker" target="_blank">http://www.aktors.org/ontology/portal#has-speaker</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-postal-address" target="_blank">http://www.aktors.org/ontology/portal#has-postal-address</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#works-in-unit" target="_blank">http://www.aktors.org/ontology/portal#works-in-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#cites-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#cites-publication-reference</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#involves-organization" target="_blank">http://www.aktors.org/ontology/portal#involves-organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#contains-news-item" target="_blank">http://www.aktors.org/ontology/portal#contains-news-item</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-sub-activity" target="_blank">http://www.aktors.org/ontology/portal#has-sub-activity</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#information-transfer-medium-used" target="_blank">http://www.aktors.org/ontology/portal#information-transfer-medium-used</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#information-object-being-transferred" target="_blank">http://www.aktors.org/ontology/portal#information-object-being-transferred</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#technology-builds-on" target="_blank">http://www.aktors.org/ontology/portal#technology-builds-on</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-author" target="_blank">http://www.aktors.org/ontology/portal#has-author</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-project-member" target="_blank">http://www.aktors.org/ontology/portal#has-project-member</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-sub-unit" target="_blank">http://www.aktors.org/ontology/portal#has-sub-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#information-being-transferred" target="_blank">http://www.aktors.org/ontology/portal#information-being-transferred</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-city-or-village" target="_blank">http://www.aktors.org/ontology/portal#address-city-or-village</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system-on-client-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#sender-of-information" target="_blank">http://www.aktors.org/ontology/portal#sender-of-information</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-academic-degree" target="_blank">http://www.aktors.org/ontology/portal#has-academic-degree</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform-on-client-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-region" target="_blank">http://www.aktors.org/ontology/portal#address-region</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology-on-client-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#supports-method" target="_blank">http://www.aktors.org/ontology/portal#supports-method</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#meeting-organizer" target="_blank">http://www.aktors.org/ontology/portal#meeting-organizer</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#contains-property" target="_blank">http://www.aktors.org/ontology/portal#contains-property</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-faculty" target="_blank">http://www.aktors.org/ontology/portal#has-faculty</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-affiliation" target="_blank">http://www.aktors.org/ontology/portal#has-affiliation</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#means-of-transport-used" target="_blank">http://www.aktors.org/ontology/portal#means-of-transport-used</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-project-leader" target="_blank">http://www.aktors.org/ontology/portal#has-project-leader</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#included-in-publication" target="_blank">http://www.aktors.org/ontology/portal#included-in-publication</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#organization-part-of" target="_blank">http://www.aktors.org/ontology/portal#organization-part-of</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#unit-of-organization" target="_blank">http://www.aktors.org/ontology/portal#unit-of-organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#studies-in-unit" target="_blank">http://www.aktors.org/ontology/portal#studies-in-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#works-for" target="_blank">http://www.aktors.org/ontology/portal#works-for</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-affiliation-to-unit" target="_blank">http://www.aktors.org/ontology/portal#has-affiliation-to-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#sub-area-of" target="_blank">http://www.aktors.org/ontology/portal#sub-area-of</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#location-at-start" target="_blank">http://www.aktors.org/ontology/portal#location-at-start</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform-on-server-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#studies-at" target="_blank">http://www.aktors.org/ontology/portal#studies-at</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#contains-publication" target="_blank">http://www.aktors.org/ontology/portal#contains-publication</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-currency" target="_blank">http://www.aktors.org/ontology/portal#has-currency</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#funding-source" target="_blank">http://www.aktors.org/ontology/portal#funding-source</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#time-of-message" target="_blank">http://www.aktors.org/ontology/portal#time-of-message</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-academic-unit" target="_blank">http://www.aktors.org/ontology/portal#has-academic-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-capital" target="_blank">http://www.aktors.org/ontology/portal#has-capital</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#issued-by" target="_blank">http://www.aktors.org/ontology/portal#issued-by</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#event-attended" target="_blank">http://www.aktors.org/ontology/portal#event-attended</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#affiliated-person" target="_blank">http://www.aktors.org/ontology/portal#affiliated-person</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-awarding-body" target="_blank">http://www.aktors.org/ontology/portal#has-awarding-body</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-gender" target="_blank">http://www.aktors.org/ontology/portal#has-gender</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-place-of-publication" target="_blank">http://www.aktors.org/ontology/portal#has-place-of-publication</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#organization-being-visited" target="_blank">http://www.aktors.org/ontology/portal#organization-being-visited</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#headed-by" target="_blank">http://www.aktors.org/ontology/portal#headed-by</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#government-of-country" target="_blank">http://www.aktors.org/ontology/portal#government-of-country</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system-on-server-side</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-area" target="_blank">http://www.aktors.org/ontology/portal#address-area</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#supports-language" target="_blank">http://www.aktors.org/ontology/portal#supports-language</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#method-builds-on" target="_blank">http://www.aktors.org/ontology/portal#method-builds-on</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#event-product" target="_blank">http://www.aktors.org/ontology/portal#event-product</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#subsidiary-of" target="_blank">http://www.aktors.org/ontology/portal#subsidiary-of</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-vice-chancellor" target="_blank">http://www.aktors.org/ontology/portal#has-vice-chancellor</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-government" target="_blank">http://www.aktors.org/ontology/portal#has-government</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#organization-unit-being-visited" target="_blank">http://www.aktors.org/ontology/portal#organization-unit-being-visited</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#affiliated-people" target="_blank">http://www.aktors.org/ontology/portal#affiliated-people</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-country" target="_blank">http://www.aktors.org/ontology/portal#address-country</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#meeting-attendee" target="_blank">http://www.aktors.org/ontology/portal#meeting-attendee</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#owned-by" target="_blank">http://www.aktors.org/ontology/portal#owned-by</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#sender-of-message" target="_blank">http://www.aktors.org/ontology/portal#sender-of-message</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#location-at-end" target="_blank">http://www.aktors.org/ontology/portal#location-at-end</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#edited-by" target="_blank">http://www.aktors.org/ontology/portal#edited-by</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#published-by" target="_blank">http://www.aktors.org/ontology/portal#published-by</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-support-unit" target="_blank">http://www.aktors.org/ontology/portal#has-support-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-leading-organization" target="_blank">http://www.aktors.org/ontology/portal#has-leading-organization</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit" target="_blank">http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-appellation" target="_blank">http://www.aktors.org/ontology/portal#has-appellation</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#person-being-visited" target="_blank">http://www.aktors.org/ontology/portal#person-being-visited</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-contract-type" target="_blank">http://www.aktors.org/ontology/portal#has-contract-type</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-amount" target="_blank">http://www.aktors.org/ontology/portal#has-amount</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-URL" target="_blank">http://www.aktors.org/ontology/portal#has-URL</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-street" target="_blank">http://www.aktors.org/ontology/portal#address-street</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-pretty-label" target="_blank">http://www.aktors.org/ontology/portal#address-pretty-label</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-building" target="_blank">http://www.aktors.org/ontology/portal#address-building</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-fax-number" target="_blank">http://www.aktors.org/ontology/portal#has-fax-number</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-telephone-number" target="_blank">http://www.aktors.org/ontology/portal#has-telephone-number</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-job-title" target="_blank">http://www.aktors.org/ontology/portal#has-job-title</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#family-name" target="_blank">http://www.aktors.org/ontology/portal#family-name</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-postcode" target="_blank">http://www.aktors.org/ontology/portal#address-postcode</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-page-numbers" target="_blank">http://www.aktors.org/ontology/portal#has-page-numbers</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-title" target="_blank">http://www.aktors.org/ontology/portal#has-title</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#full-name" target="_blank">http://www.aktors.org/ontology/portal#full-name</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-goals" target="_blank">http://www.aktors.org/ontology/portal#has-goals</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#has-award-rationale" target="_blank">http://www.aktors.org/ontology/portal#has-award-rationale</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#given-name" target="_blank">http://www.aktors.org/ontology/portal#given-name</a>
+										<br>
+									 › <a href="http://www.aktors.org/ontology/portal#address-number" target="_blank">http://www.aktors.org/ontology/portal#address-number</a>
+										<br>
+									
+									<br>
+									 
+									• The following elements have no rdfs:label defined:
+									
+									<br>
+
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Serial-Publication" target="_blank">http://www.aktors.org/ontology/portal#Serial-Publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Gender" target="_blank">http://www.aktors.org/ontology/portal#Gender</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Event-Involving-Production" target="_blank">http://www.aktors.org/ontology/portal#Event-Involving-Production</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Degree" target="_blank">http://www.aktors.org/ontology/portal#Degree</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Postal-Address" target="_blank">http://www.aktors.org/ontology/portal#Postal-Address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Meeting-Taking-Place" target="_blank">http://www.aktors.org/ontology/portal#Meeting-Taking-Place</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Event-Involving-Movement" target="_blank">http://www.aktors.org/ontology/portal#Event-Involving-Movement</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Generalised-Means-Of-Transport" target="_blank">http://www.aktors.org/ontology/portal#Generalised-Means-Of-Transport</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Web-Based-System" target="_blank">http://www.aktors.org/ontology/portal#Web-Based-System</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Transportation-Device" target="_blank">http://www.aktors.org/ontology/portal#Transportation-Device</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Information-Bearing-Object" target="_blank">http://www.aktors.org/ontology/portal#Information-Bearing-Object</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Recorded-Video" target="_blank">http://www.aktors.org/ontology/portal#Recorded-Video</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Partnership" target="_blank">http://www.aktors.org/ontology/portal#Partnership</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Publication" target="_blank">http://www.aktors.org/ontology/portal#Publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Web-Browser" target="_blank">http://www.aktors.org/ontology/portal#Web-Browser</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Address" target="_blank">http://www.aktors.org/ontology/portal#Address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Location" target="_blank">http://www.aktors.org/ontology/portal#Location</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Geopolitical-Entity" target="_blank">http://www.aktors.org/ontology/portal#Geopolitical-Entity</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Generic-Area-Of-Interest" target="_blank">http://www.aktors.org/ontology/portal#Generic-Area-Of-Interest</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Geographical-Region" target="_blank">http://www.aktors.org/ontology/portal#Geographical-Region</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Periodical-Publication" target="_blank">http://www.aktors.org/ontology/portal#Periodical-Publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Event" target="_blank">http://www.aktors.org/ontology/portal#Event</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Awarding-Body" target="_blank">http://www.aktors.org/ontology/portal#Awarding-Body</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Affiliated-Person" target="_blank">http://www.aktors.org/ontology/portal#Affiliated-Person</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Technology" target="_blank">http://www.aktors.org/ontology/portal#Technology</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Generalized-Transfer" target="_blank">http://www.aktors.org/ontology/portal#Generalized-Transfer</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Abstract-Information" target="_blank">http://www.aktors.org/ontology/portal#Abstract-Information</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Information-Transfer-Event" target="_blank">http://www.aktors.org/ontology/portal#Information-Transfer-Event</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Sending-An-Email" target="_blank">http://www.aktors.org/ontology/portal#Sending-An-Email</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Organization-Unit" target="_blank">http://www.aktors.org/ontology/portal#Organization-Unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Award" target="_blank">http://www.aktors.org/ontology/portal#Award</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Publication-Reference" target="_blank">http://www.aktors.org/ontology/portal#Publication-Reference</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Recorded-Audio" target="_blank">http://www.aktors.org/ontology/portal#Recorded-Audio</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Composite-Publication" target="_blank">http://www.aktors.org/ontology/portal#Composite-Publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Method" target="_blank">http://www.aktors.org/ontology/portal#Method</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-other-agents-involved" target="_blank">http://www.aktors.org/ontology/portal#has-other-agents-involved</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-research-interest" target="_blank">http://www.aktors.org/ontology/portal#has-research-interest</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#thing-acted-on" target="_blank">http://www.aktors.org/ontology/portal#thing-acted-on</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-location" target="_blank">http://www.aktors.org/ontology/portal#has-location</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-status" target="_blank">http://www.aktors.org/ontology/portal#has-status</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#recipient-agents" target="_blank">http://www.aktors.org/ontology/portal#recipient-agents</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#project-involves-organization-unit" target="_blank">http://www.aktors.org/ontology/portal#project-involves-organization-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-main-agent" target="_blank">http://www.aktors.org/ontology/portal#has-main-agent</a>
+										<br>
+									
+									<br>
+									 
+									• The following elements have no rdfs:comment defined:
+									
+									<br>
+
+									
+										 › <a href="http://www.aktors.org/ontology/support#Year" target="_blank">http://www.aktors.org/ontology/support#Year</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#Month" target="_blank">http://www.aktors.org/ontology/support#Month</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#Week" target="_blank">http://www.aktors.org/ontology/support#Week</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#Day" target="_blank">http://www.aktors.org/ontology/support#Day</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#has-duration" target="_blank">http://www.aktors.org/ontology/support#has-duration</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#ends-at-time-point" target="_blank">http://www.aktors.org/ontology/support#ends-at-time-point</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#begins-at-time-point" target="_blank">http://www.aktors.org/ontology/support#begins-at-time-point</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#has-unit-of-measure" target="_blank">http://www.aktors.org/ontology/support#has-unit-of-measure</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#has-time-interval" target="_blank">http://www.aktors.org/ontology/support#has-time-interval</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-email-address" target="_blank">http://www.aktors.org/ontology/portal#has-email-address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-web-address" target="_blank">http://www.aktors.org/ontology/portal#has-web-address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#minute-of" target="_blank">http://www.aktors.org/ontology/support#minute-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#day-of" target="_blank">http://www.aktors.org/ontology/support#day-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#in-timezone" target="_blank">http://www.aktors.org/ontology/support#in-timezone</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#has-magnitude" target="_blank">http://www.aktors.org/ontology/support#has-magnitude</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#month-of" target="_blank">http://www.aktors.org/ontology/support#month-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#second-of" target="_blank">http://www.aktors.org/ontology/support#second-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#year-of" target="_blank">http://www.aktors.org/ontology/support#year-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/support#hour-of" target="_blank">http://www.aktors.org/ontology/support#hour-of</a>
+										<br>
+									</p>
+		
+						<h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>      Results for P11: Missing domain or range in properties.
+</span> <span style="float: right; ">
+						
+						50 cases
+ | Important <img src="images/important.png" alt="Important" height="11" width="11"></span> </a></h3>
+							<p style="display: none;" class="collapse">
+							Relationships and/or attributes without domain or range (or none 
+of them) are included in the ontology. There are situations in which the
+ relation is very general and the range should be the most general 
+concept "Thing". However, in other cases, the relations are more 
+specific and it could be a good practice to specify its domain and/or 
+range. An example of this type of pitfall is to create the relationship 
+"hasWritten" in an ontology about art in which the relationship domain 
+should be "Writer" and the relationship range should be "LiteraryWork". 
+This pitfall is related to the common error when defining ranges and 
+domains described in [3].
+<br>
+
+									<br>
+									 
+									• This pitfall appears in the following elements:
+									
+									<br>
+
+									
+										 › <a href="http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit" target="_blank">http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-leading-organization" target="_blank">http://www.aktors.org/ontology/portal#has-leading-organization</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-support-unit" target="_blank">http://www.aktors.org/ontology/portal#has-support-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#published-by" target="_blank">http://www.aktors.org/ontology/portal#published-by</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#edited-by" target="_blank">http://www.aktors.org/ontology/portal#edited-by</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#affiliated-people" target="_blank">http://www.aktors.org/ontology/portal#affiliated-people</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#subsidiary-of" target="_blank">http://www.aktors.org/ontology/portal#subsidiary-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#event-product" target="_blank">http://www.aktors.org/ontology/portal#event-product</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#headed-by" target="_blank">http://www.aktors.org/ontology/portal#headed-by</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-place-of-publication" target="_blank">http://www.aktors.org/ontology/portal#has-place-of-publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#affiliated-person" target="_blank">http://www.aktors.org/ontology/portal#affiliated-person</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-academic-unit" target="_blank">http://www.aktors.org/ontology/portal#has-academic-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#contains-publication" target="_blank">http://www.aktors.org/ontology/portal#contains-publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#studies-at" target="_blank">http://www.aktors.org/ontology/portal#studies-at</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#studies-in-unit" target="_blank">http://www.aktors.org/ontology/portal#studies-in-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#unit-of-organization" target="_blank">http://www.aktors.org/ontology/portal#unit-of-organization</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#organization-part-of" target="_blank">http://www.aktors.org/ontology/portal#organization-part-of</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#included-in-publication" target="_blank">http://www.aktors.org/ontology/portal#included-in-publication</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-project-leader" target="_blank">http://www.aktors.org/ontology/portal#has-project-leader</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#contains-property" target="_blank">http://www.aktors.org/ontology/portal#contains-property</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-sub-unit" target="_blank">http://www.aktors.org/ontology/portal#has-sub-unit</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#thing-acted-on" target="_blank">http://www.aktors.org/ontology/portal#thing-acted-on</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#contains-news-item" target="_blank">http://www.aktors.org/ontology/portal#contains-news-item</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#cites-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#cites-publication-reference</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-postal-address" target="_blank">http://www.aktors.org/ontology/portal#has-postal-address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#contains-article" target="_blank">http://www.aktors.org/ontology/portal#contains-article</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-ISBN-number" target="_blank">http://www.aktors.org/ontology/portal#has-ISBN-number</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-size" target="_blank">http://www.aktors.org/ontology/portal#has-size</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-periodicity" target="_blank">http://www.aktors.org/ontology/portal#has-periodicity</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-date" target="_blank">http://www.aktors.org/ontology/portal#has-date</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#has-publication-reference</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#published-proceedings" target="_blank">http://www.aktors.org/ontology/portal#published-proceedings</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#given-name" target="_blank">http://www.aktors.org/ontology/portal#given-name</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-award-rationale" target="_blank">http://www.aktors.org/ontology/portal#has-award-rationale</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-goals" target="_blank">http://www.aktors.org/ontology/portal#has-goals</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#full-name" target="_blank">http://www.aktors.org/ontology/portal#full-name</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-title" target="_blank">http://www.aktors.org/ontology/portal#has-title</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-web-address" target="_blank">http://www.aktors.org/ontology/portal#has-web-address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-page-numbers" target="_blank">http://www.aktors.org/ontology/portal#has-page-numbers</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#address-postcode" target="_blank">http://www.aktors.org/ontology/portal#address-postcode</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#family-name" target="_blank">http://www.aktors.org/ontology/portal#family-name</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-job-title" target="_blank">http://www.aktors.org/ontology/portal#has-job-title</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-email-address" target="_blank">http://www.aktors.org/ontology/portal#has-email-address</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-telephone-number" target="_blank">http://www.aktors.org/ontology/portal#has-telephone-number</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-fax-number" target="_blank">http://www.aktors.org/ontology/portal#has-fax-number</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#address-building" target="_blank">http://www.aktors.org/ontology/portal#address-building</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#address-pretty-label" target="_blank">http://www.aktors.org/ontology/portal#address-pretty-label</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#address-street" target="_blank">http://www.aktors.org/ontology/portal#address-street</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-URL" target="_blank">http://www.aktors.org/ontology/portal#has-URL</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#has-amount" target="_blank">http://www.aktors.org/ontology/portal#has-amount</a>
+										<br>
+									
+									<br>
+									• <b>Tip:</b> Solving this pitfall may lead to new results for other pitfalls and suggestions. 
+									We encourage you to solve all cases when needed and see what else you can get from OOPS!
+									<br>
+									</p>
+		
+						<h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>      Results for P13: Missing inverse relationships.
+</span> <span style="float: right; ">
+						
+						106 cases
+ | Minor <img src="images/minor.png" alt="Minor" height="11" width="11"></span> </a></h3>
+							<p style="display: none;" class="collapse">
+							This pitfall appears when a relationship (except for the 
+symmetric ones) has not an inverse relationship defined within the 
+ontology. For example, the case in which the ontology developer omits 
+the inverse definition between the relations "hasLanguageCode" and 
+"isCodeOf", or between "hasReferee" and "isRefereeOf".
+<br>
+
+									<br>
+									• OOPS! has the following suggestions for the relationships without inverse:
+								    <br>
+ › <a href="http://www.aktors.org/ontology/portal#government-of-country" target="_blank">http://www.aktors.org/ontology/portal#government-of-country</a> could be
+									 inverse of <a href="http://www.aktors.org/ontology/portal#has-government" target="_blank">http://www.aktors.org/ontology/portal#has-government</a>
+									 <br>
+									
+										<br>
+										 
+										• Sorry, OOPS! has no suggestions for the following relationships without inverse:
+										
+										<br>
+
+										
+											 › <a href="http://www.aktors.org/ontology/portal#addresses-generic-area-of-interest" target="_blank">http://www.aktors.org/ontology/portal#addresses-generic-area-of-interest</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#uses-resource" target="_blank">http://www.aktors.org/ontology/portal#uses-resource</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#published-proceedings" target="_blank">http://www.aktors.org/ontology/portal#published-proceedings</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#has-publication-reference</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#published-book" target="_blank">http://www.aktors.org/ontology/portal#published-book</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-supervisor" target="_blank">http://www.aktors.org/ontology/portal#has-supervisor</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-date" target="_blank">http://www.aktors.org/ontology/portal#has-date</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#produces-output" target="_blank">http://www.aktors.org/ontology/portal#produces-output</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-periodicity" target="_blank">http://www.aktors.org/ontology/portal#has-periodicity</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-size" target="_blank">http://www.aktors.org/ontology/portal#has-size</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-other-agents-involved" target="_blank">http://www.aktors.org/ontology/portal#has-other-agents-involved</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#recipient-of-message" target="_blank">http://www.aktors.org/ontology/portal#recipient-of-message</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#confers-award" target="_blank">http://www.aktors.org/ontology/portal#confers-award</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology-on-server-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-ISBN-number" target="_blank">http://www.aktors.org/ontology/portal#has-ISBN-number</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#contains-article" target="_blank">http://www.aktors.org/ontology/portal#contains-article</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-research-interest" target="_blank">http://www.aktors.org/ontology/portal#has-research-interest</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-speaker" target="_blank">http://www.aktors.org/ontology/portal#has-speaker</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-postal-address" target="_blank">http://www.aktors.org/ontology/portal#has-postal-address</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#works-in-unit" target="_blank">http://www.aktors.org/ontology/portal#works-in-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#cites-publication-reference" target="_blank">http://www.aktors.org/ontology/portal#cites-publication-reference</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#involves-organization" target="_blank">http://www.aktors.org/ontology/portal#involves-organization</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#contains-news-item" target="_blank">http://www.aktors.org/ontology/portal#contains-news-item</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-sub-activity" target="_blank">http://www.aktors.org/ontology/portal#has-sub-activity</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#information-transfer-medium-used" target="_blank">http://www.aktors.org/ontology/portal#information-transfer-medium-used</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#information-object-being-transferred" target="_blank">http://www.aktors.org/ontology/portal#information-object-being-transferred</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#technology-builds-on" target="_blank">http://www.aktors.org/ontology/portal#technology-builds-on</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#thing-acted-on" target="_blank">http://www.aktors.org/ontology/portal#thing-acted-on</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-author" target="_blank">http://www.aktors.org/ontology/portal#has-author</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-location" target="_blank">http://www.aktors.org/ontology/portal#has-location</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-project-member" target="_blank">http://www.aktors.org/ontology/portal#has-project-member</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-sub-unit" target="_blank">http://www.aktors.org/ontology/portal#has-sub-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#information-being-transferred" target="_blank">http://www.aktors.org/ontology/portal#information-being-transferred</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#address-city-or-village" target="_blank">http://www.aktors.org/ontology/portal#address-city-or-village</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-status" target="_blank">http://www.aktors.org/ontology/portal#has-status</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system-on-client-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#sender-of-information" target="_blank">http://www.aktors.org/ontology/portal#sender-of-information</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-academic-degree" target="_blank">http://www.aktors.org/ontology/portal#has-academic-degree</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#recipient-agents" target="_blank">http://www.aktors.org/ontology/portal#recipient-agents</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform-on-client-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#address-region" target="_blank">http://www.aktors.org/ontology/portal#address-region</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology-on-client-side" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology-on-client-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#supports-method" target="_blank">http://www.aktors.org/ontology/portal#supports-method</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#meeting-organizer" target="_blank">http://www.aktors.org/ontology/portal#meeting-organizer</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#contains-property" target="_blank">http://www.aktors.org/ontology/portal#contains-property</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-faculty" target="_blank">http://www.aktors.org/ontology/portal#has-faculty</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-affiliation" target="_blank">http://www.aktors.org/ontology/portal#has-affiliation</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#means-of-transport-used" target="_blank">http://www.aktors.org/ontology/portal#means-of-transport-used</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-project-leader" target="_blank">http://www.aktors.org/ontology/portal#has-project-leader</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#included-in-publication" target="_blank">http://www.aktors.org/ontology/portal#included-in-publication</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#organization-part-of" target="_blank">http://www.aktors.org/ontology/portal#organization-part-of</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#unit-of-organization" target="_blank">http://www.aktors.org/ontology/portal#unit-of-organization</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#studies-in-unit" target="_blank">http://www.aktors.org/ontology/portal#studies-in-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#works-for" target="_blank">http://www.aktors.org/ontology/portal#works-for</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-affiliation-to-unit" target="_blank">http://www.aktors.org/ontology/portal#has-affiliation-to-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#sub-area-of" target="_blank">http://www.aktors.org/ontology/portal#sub-area-of</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#location-at-start" target="_blank">http://www.aktors.org/ontology/portal#location-at-start</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform-on-server-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#studies-at" target="_blank">http://www.aktors.org/ontology/portal#studies-at</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#contains-publication" target="_blank">http://www.aktors.org/ontology/portal#contains-publication</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#project-involves-organization-unit" target="_blank">http://www.aktors.org/ontology/portal#project-involves-organization-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-currency" target="_blank">http://www.aktors.org/ontology/portal#has-currency</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#funding-source" target="_blank">http://www.aktors.org/ontology/portal#funding-source</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#time-of-message" target="_blank">http://www.aktors.org/ontology/portal#time-of-message</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-academic-unit" target="_blank">http://www.aktors.org/ontology/portal#has-academic-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#issued-by" target="_blank">http://www.aktors.org/ontology/portal#issued-by</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-software-technology" target="_blank">http://www.aktors.org/ontology/portal#requires-software-technology</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#event-attended" target="_blank">http://www.aktors.org/ontology/portal#event-attended</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#affiliated-person" target="_blank">http://www.aktors.org/ontology/portal#affiliated-person</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-awarding-body" target="_blank">http://www.aktors.org/ontology/portal#has-awarding-body</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-gender" target="_blank">http://www.aktors.org/ontology/portal#has-gender</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-place-of-publication" target="_blank">http://www.aktors.org/ontology/portal#has-place-of-publication</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#organization-being-visited" target="_blank">http://www.aktors.org/ontology/portal#organization-being-visited</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#headed-by" target="_blank">http://www.aktors.org/ontology/portal#headed-by</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#runs-on-operating-system-on-server-side" target="_blank">http://www.aktors.org/ontology/portal#runs-on-operating-system-on-server-side</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#address-area" target="_blank">http://www.aktors.org/ontology/portal#address-area</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#supports-language" target="_blank">http://www.aktors.org/ontology/portal#supports-language</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#method-builds-on" target="_blank">http://www.aktors.org/ontology/portal#method-builds-on</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#event-product" target="_blank">http://www.aktors.org/ontology/portal#event-product</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#subsidiary-of" target="_blank">http://www.aktors.org/ontology/portal#subsidiary-of</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-vice-chancellor" target="_blank">http://www.aktors.org/ontology/portal#has-vice-chancellor</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#organization-unit-being-visited" target="_blank">http://www.aktors.org/ontology/portal#organization-unit-being-visited</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#affiliated-people" target="_blank">http://www.aktors.org/ontology/portal#affiliated-people</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#requires-hardware-platform" target="_blank">http://www.aktors.org/ontology/portal#requires-hardware-platform</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#address-country" target="_blank">http://www.aktors.org/ontology/portal#address-country</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#meeting-attendee" target="_blank">http://www.aktors.org/ontology/portal#meeting-attendee</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-main-agent" target="_blank">http://www.aktors.org/ontology/portal#has-main-agent</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#owned-by" target="_blank">http://www.aktors.org/ontology/portal#owned-by</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#sender-of-message" target="_blank">http://www.aktors.org/ontology/portal#sender-of-message</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#location-at-end" target="_blank">http://www.aktors.org/ontology/portal#location-at-end</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#edited-by" target="_blank">http://www.aktors.org/ontology/portal#edited-by</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#published-by" target="_blank">http://www.aktors.org/ontology/portal#published-by</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-support-unit" target="_blank">http://www.aktors.org/ontology/portal#has-support-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-leading-organization" target="_blank">http://www.aktors.org/ontology/portal#has-leading-organization</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit" target="_blank">http://www.aktors.org/ontology/portal#sub-unit-of-organization-unit</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-appellation" target="_blank">http://www.aktors.org/ontology/portal#has-appellation</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#person-being-visited" target="_blank">http://www.aktors.org/ontology/portal#person-being-visited</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/portal#has-contract-type" target="_blank">http://www.aktors.org/ontology/portal#has-contract-type</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/support#has-duration" target="_blank">http://www.aktors.org/ontology/support#has-duration</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/support#ends-at-time-point" target="_blank">http://www.aktors.org/ontology/support#ends-at-time-point</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/support#begins-at-time-point" target="_blank">http://www.aktors.org/ontology/support#begins-at-time-point</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/support#has-unit-of-measure" target="_blank">http://www.aktors.org/ontology/support#has-unit-of-measure</a>
+											<br>
+										
+										
+											 › <a href="http://www.aktors.org/ontology/support#has-time-interval" target="_blank">http://www.aktors.org/ontology/support#has-time-interval</a>
+											<br>
+										</p>
+		
+						<h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>      Results for P24: Using recursive definition.
+</span> <span style="float: right; ">
+						
+						4 cases
+ | Important <img src="images/important.png" alt="Important" height="11" width="11"></span> </a></h3>
+							<p style="display: none;" class="collapse">
+							An ontology element is used in its own definition. For example, 
+it is used to create the relationship "hasFork" and to establish as its 
+range the following íthe set of restaurants that have at least one value
+ for the relationship "hasFork".
+<br>
+
+									<br>
+									 
+									• This pitfall appears in the following elements:
+									
+									<br>
+
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Journal" target="_blank">http://www.aktors.org/ontology/portal#Journal</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Organization" target="_blank">http://www.aktors.org/ontology/portal#Organization</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Research-Area" target="_blank">http://www.aktors.org/ontology/portal#Research-Area</a>
+										<br>
+									
+									
+										 › <a href="http://www.aktors.org/ontology/portal#Magazine" target="_blank">http://www.aktors.org/ontology/portal#Magazine</a>
+										<br>
+									</p>
+						<h3 class="active"><a style="display:block" href="#" title="Expand/Collapse"><span>      SUGGESTION: symmetric or transitive object properties.
+</span> <span style="float: right; ">4
+ cases
+</span> </a></h3>
+							<p style="display: none;" class="collapse">
+							
+								The domain and range axioms are equal for each of the following 
+object properties. Could they be symmetric or transitive?
+								
+							<br>
+
+							
+							 › <a href="http://www.aktors.org/ontology/portal#has-sub-activity" target="_blank">http://www.aktors.org/ontology/portal#has-sub-activity</a>
+							<br>
+							
+							
+							 › <a href="http://www.aktors.org/ontology/portal#technology-builds-on" target="_blank">http://www.aktors.org/ontology/portal#technology-builds-on</a>
+							<br>
+							
+							
+							 › <a href="http://www.aktors.org/ontology/portal#sub-area-of" target="_blank">http://www.aktors.org/ontology/portal#sub-area-of</a>
+							<br>
+							
+							
+							 › <a href="http://www.aktors.org/ontology/portal#method-builds-on" target="_blank">http://www.aktors.org/ontology/portal#method-builds-on</a>
+							<br>
+							</p></div>
+					
+					<br>
+					<p><a name="references"></a>References:</p>
+
+					<ul>
+						<li>
+						[1] Gómez-Pérez, A. ''Ontology Evaluation''. Handbook on 
+Ontologies. S. Staab and R. Studer Editors. Springer. International 
+Handbooks on Information Systems. Pp: 251-274. 2004.
+						</li> 
+						<li>
+						[2] Noy, N.F., McGuinness. D. L. ''Ontology development 101: A 
+guide to creating your first ontology.'' Technical Report SMI-2001-0880,
+ Standford Medical Informatics. 2001.
+						</li> 
+						<li>
+						[3] Rector, A., Drummond, N., Horridge, M., Rogers, J., Knublauch,
+ H., Stevens, R.,; Wang, H., Wroe, C. ''Owl pizzas: Practical experience
+ of teaching owl-dl: Common errors and common patterns''. In Proc. of 
+EKAW 2004, pp: 63–81. Springer. 2004.
+						</li>
+						<li>
+						[4] Hogan, A., Harth, A., Passant, A., Decker, S., Polleres, A. 
+Weaving the Pedantic Web. Linked Data on the Web Workshop LDOW2010 at 
+WWW2010 (2010).
+						</li>
+					 	<li>
+						[5] Archer, P., Goedertier, S., and Loutas, N. D7.1.3 – Study on 
+persistent URIs, with identification of best practices and 
+recommendations on the topic for the MSs and the EC. Deliverable. 
+December 17, 2012.
+						</li>
+						<li>
+						[6] Heath, T., Bizer, C.: Linked data: Evolving the Web into a 
+global data space (1st edition). Morgan &amp; Claypool (2011).
+						</li>
+					</ul>
+	<br>
+	
+<p>
+Please, help us making OOPS! better.
+<a href="form.jsp"><strong>Feedback</strong></a>
+is more than welcome!
+</p>
+
+<br>
+In addition, you can also <a href="submissions.jsp"><strong>suggest new pitfalls</strong></a>
+so that they can be detected in future evaluations.</p> 
+ 
+</div>
+
+</div>
+
+<div class="right">  
+
+<h2>Want to help?</h2>
+<ul>
+	<li><a href="submissions.jsp">Suggest new pitfalls</a></li> 
+	<li><a href="form.jsp">Provide feedback</a></li> 
+</ul>
+
+<h2>Documentation:</h2>
+<ul>
+	<li><a href="catalogue.jsp">Pitfall catalogue</a></li> 
+	<li><a href="OOPSUserGuidev1.pdf" target="_blank">User guide</a></li> 
+	<li><a href="http://oa.upm.es/10195/1/OOPS_technical_report_v0.2.pdf" target="_blank">Technical report</a></li> 
+</ul>
+
+<h2>Related papers:</h2>
+<ul>	
+	<li><a href="http://www.igi-global.com/article/oops-ontology-pitfall-scanner/116450" target="_blank">IJSWIS 2014</a></li> 
+	<li><a href="http://www.springerlink.com/content/nn684334014507n4/" target="_blank">EKAW 2012</a></li> 
+	<li><a href="http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_322.pdf" target="_blank">ESWC 2012 Demo</a></li> 
+	<li><a href="http://oa.upm.es/5413/1/A_DOUBLE_CLASSIFICATION_OF_COMMON_PITFALLS_IN_ONTOLOGIES.pdf" target="_blank">Ontoqual 2010</a></li> 
+	<li><a href="http://oa.upm.es/6115/1/CAEPIA09_-_Common_Pitfalls_in_Ontology_Development_-_final_version_fixed.pdf" target="_blank">CAEPIA 2009</a></li> 
+</ul>
+
+<h2>Web services:</h2>
+<ul>	
+<li><a href="http://oops.linkeddata.es/webservice.html">RESTFul Web Service</a></li> 
+</ul>
+
+<h2>Developed by:</h2>
+<a href="https://oeg.fi.upm.es/" target="_blank"><img src="images/logoOEG.png" alt="OEG logo" style="margin-left:3%;margin-right:5%;width:68%;" /></a>
+
+<br>
+<br>
+
+<a href="https://twitter.com/OOPSoeg" class="twitter-follow-button" data-show-count="false">Follow @OOPSoeg</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div>
+<div style="clear: both;"> </div>
+
+</div>
+
+
+<div id="footer">
+<p><a href = "http://purl.org/net/mpoveda" target="_blank">María Poveda</a></p>
+<p>Contact email: oops(at)delicias.dia.fi.upm.es. Latest revision April 2021</p>
+<a href="http://www.templatesold.com/" target="_blank">Website Templates</a> by <a href="http://www.free-css-templates.com/" target="_blank">Free CSS Templates</a>
+</div>
+</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/accordion.js"></script>
+	<script type="text/javascript" src="js/expandCollapse.js"></script>
+	<script type="text/javascript" src="js/expand.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/loading.js"></script>
+	<script type="text/javascript" src="js/inputs.js"></script>	
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z598BL3YY4"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-Z598BL3YY4');
+</script>
+
+	</body>
+
+</html>

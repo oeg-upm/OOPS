@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://oops.linkeddata.es/data/testP20#"
+     xml:base="http://oops.linkeddata.es/data/testP20"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://oops.linkeddata.es/data/testP20">
+        <dc:creator rdf:datatype="&xsd;anyURI">http://purl.org/net/mpoveda</dc:creator>
+        <rdfs:comment xml:lang="en">Test for P20</rdfs:comment>
+        <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#relationshipEmptyComment -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP20#relationshipEmptyComment">
+        <rdfs:label xml:lang="en">Element involved in M2-P20 pattern C.</rdfs:label>
+        <rdfs:comment xml:lang="en"></rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#relationshipEmptyLabel -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP20#relationshipEmptyLabel">
+        <rdfs:label xml:lang="en"></rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P20 pattern B.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#relationshipExchangedContent -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP20#relationshipExchangedContent">
+        <rdfs:label xml:lang="en">Element involved in M2-P20 pattern A.</rdfs:label>
+        <rdfs:comment xml:lang="en">relationship exchanged content</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#relationshipSameContent -->
+
+    <owl:ObjectProperty rdf:about="http://oops.linkeddata.es/data/testP20#relationshipSameContent">
+        <rdfs:label xml:lang="en">Element involved in M2-P20 pattern D.</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M2-P20 pattern D.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#attributeEmptyComment -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP20#attributeEmptyComment">
+        <rdfs:label xml:lang="en">Element involved in M3-P20 pattern C.</rdfs:label>
+        <rdfs:comment xml:lang="en"></rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#attributeEmptyLabel -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP20#attributeEmptyLabel">
+        <rdfs:label xml:lang="en"></rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M3-P20 pattern B.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#attributeExchangedContent -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP20#attributeExchangedContent">
+        <rdfs:label xml:lang="en">Element involved in M3-P20 pattern A.</rdfs:label>
+        <rdfs:comment xml:lang="en">attribute exchanged content</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#attributeSameContent -->
+
+    <owl:DatatypeProperty rdf:about="http://oops.linkeddata.es/data/testP20#attributeSameContent">
+        <rdfs:label xml:lang="en">Element involved in M3-P20 pattern D.</rdfs:label>
+        <rdfs:comment xml:lang="en">Element involved in M3-P20 pattern D.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#ClassEmptyComment -->
+
+    <owl:Class rdf:about="http://oops.linkeddata.es/data/testP20#ClassEmptyComment">
+        <rdfs:label xml:lang="en">Element involved in M1-P20 pattern C.</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en"></rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#ClassEmptyLabel -->
+
+    <owl:Class rdf:about="http://oops.linkeddata.es/data/testP20#ClassEmptyLabel">
+        <rdfs:label xml:lang="en"></rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">Element involved in M1-P20 pattern B.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#ClassExchangedContent -->
+
+    <owl:Class rdf:about="http://oops.linkeddata.es/data/testP20#ClassExchangedContent">
+        <rdfs:label xml:lang="en">Element involved in M1-P20 pattern A.</rdfs:label>
+        <rdfs:comment xml:lang="en">Class exchanged content</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://oops.linkeddata.es/data/testP20#ClassSameContent -->
+
+    <owl:Class rdf:about="http://oops.linkeddata.es/data/testP20#ClassSameContent">
+        <rdfs:label xml:lang="en">Element involved in M1-P20 pattern D.</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">Element involved in M1-P20 pattern D.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

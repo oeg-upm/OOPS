@@ -1,0 +1,5 @@
+License-Identifier: LicenseRef-AllRightsReserved
+License-Name: All rights reserved
+License-Text:
+ This file is not licensed for redistribution or modification
+ except with explicit permission from the copyright holder.

@@ -1,0 +1,747 @@
+<?xml version="1.0"?>
+
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY qmo "http://purl.org/net/QualityModel#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY qmo2 "http://oops.linkeddata.es/ontology/qmo#" >
+    <!ENTITY om-1 "http://www.wurvoc.org/vocabularies/om-1.8/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://oops.linkeddata.es/ontology/qm#"
+     xml:base="http://oops.linkeddata.es/ontology/qm"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:om-1="http://www.wurvoc.org/vocabularies/om-1.8/"
+     xmlns:qmo2="http://oops.linkeddata.es/ontology/qmo#"
+     xmlns:qmo="http://purl.org/net/QualityModel#">
+    <owl:Ontology rdf:about="http://oops.linkeddata.es/ontology/qm">
+        <terms:license>http://creativecommons.org/licenses/by/4.0/</terms:license>
+        <rdfs:comment xml:lang="en">Quality model for ontology diagnosis based on the pitfall catalogue http://oops.linkeddata.es/catalogue</rdfs:comment>
+        <dc:creator>http://purl.org/net/mpoveda</dc:creator>
+        <dc:title xml:lang="en">Quality model for ontology diagnosis</dc:title>
+        <owl:imports rdf:resource="http://purl.org/net/QualityModel#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&qmo;hasScale"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#ApplicationContext -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#ApplicationContext">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">ApplicationContext</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP36"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP37"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP38"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP39"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP40"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#FunctionalDimension -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#FunctionalDimension">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">FunctionalDimension</rdfs:label>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#ApplicationContext"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#RealWorldModelling"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#RequirementCompleteness"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#ModellingDecisions -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#ModellingDecisions">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">ModellingDecisions</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP01"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP02"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP03"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP07"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP14"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP17"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP21"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP23"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP24"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP25"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP26"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP33"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#NoInference -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#NoInference">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">NoInference</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP09"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP11"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP12"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP13"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP16"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP30"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#OntologyClarity -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#OntologyClarity">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">OntologyClarity</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP08"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#OntologyLanguage -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#OntologyLanguage">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">OntologyLanguage</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP34"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP35"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP38"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#OntologyMetadata -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#OntologyMetadata">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">OntologyMetadata</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP38"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP41"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#OntologyQuality -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#OntologyQuality">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">Ontology quality</rdfs:label>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#FunctionalDimension"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#StructuralDimension"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#UsabilityProfilingDimension"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#OntologyUnderstanding -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#OntologyUnderstanding">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">OntologyUnderstanding</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP01"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP02"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP07"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP08"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP11"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP12"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP13"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP20"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP32"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP37"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#RealWorldModelling -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#RealWorldModelling">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">RealWorldModelling</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP04"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP09"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP10"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#RequirementCompleteness -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#RequirementCompleteness">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">RequirementCompleteness</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP04"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP10"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#StructuralDimension -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#StructuralDimension">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">StructuralDimension</rdfs:label>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#ModellingDecisions"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#NoInference"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#OntologyLanguage"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#WrongInference"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#UsabilityProfilingDimension -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#UsabilityProfilingDimension">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">UsabilityProfilingDimension</rdfs:label>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#OntologyClarity"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#OntologyMetadata"/>
+        <qmo:hasSubCharacteristic rdf:resource="http://oops.linkeddata.es/ontology/qm#OntologyUnderstanding"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#WrongInference -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#WrongInference">
+        <rdf:type rdf:resource="&qmo;QualityCharacteristic"/>
+        <rdfs:label xml:lang="en">WrongInference</rdfs:label>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP01"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP05"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP06"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP15"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP18"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP19"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP27"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP28"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP29"/>
+        <qmo:isMeasuredWith rdf:resource="http://oops.linkeddata.es/ontology/qm#pitfallP31"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#boolean -->
+
+    <om-1:Nominal_scale rdf:about="http://oops.linkeddata.es/ontology/qm#boolean">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:label xml:lang="en">boolean</rdfs:label>
+        <qmo:hasLabel rdf:datatype="&xsd;string">False</qmo:hasLabel>
+        <qmo:hasLabel rdf:datatype="&xsd;string">True</qmo:hasLabel>
+    </om-1:Nominal_scale>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP01 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP01">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">An ontology element (class, object property or datatype property) whose identifier has different senses is included in the ontology to represent more than one conceptual idea or property.</dc:description>
+        <dc:title xml:lang="en">P01. Creating polysemous elements</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP02 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP02">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P02. Creating synonyms as classes</dc:title>
+        <dc:description xml:lang="en">Several classes whose identifiers are synonyms are created and defined as equivalent (owl:equivalentClass) in the same namespace. This pitfall is related to the guidelines presented in [2], which explain that synonyms for the same concept do not represent different classes.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP03 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP03">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P03. Creating the relationship &quot;is&quot; instead of using &quot;rdfs:subClassOf&quot;, &quot;rdf:type&quot; or &quot;owl:sameAs&quot;</dc:title>
+        <dc:description xml:lang="en">The relationship “is” is created in the ontology instead of using OWL primitives for representing the subclass relationship (rdfs:subClassOf), class membership (rdf:type), or the equality between instances (owl:sameAs). When concerning a class hierarchy, this pitfall is related to the guidelines for understanding the “is-a” relation provided in [2]</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP04 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP04">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.</dc:description>
+        <dc:title xml:lang="en">P04. Creating unconnected ontology elements</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP05 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP05">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P05. Defining wrong inverse relationships</dc:title>
+        <dc:description xml:lang="en">Two relationships are defined as inverse relations when they are not necessarily inverse.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP06 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP06">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A cycle between two classes in a hierarchy is included in the ontology. A cycle appears when some class A has a subclass (directly or indirectly) B, and at the same time B is a superclass (directly or indirectly) of A. This pitfall was first identified in [3]. Guidelines presented in [2] also provide recommendations to avoid this pitfall.</dc:description>
+        <dc:title xml:lang="en">P06. Including cycles in a class hierarchy</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP07 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP07">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A class whose name refers to two or more different concepts is created.</dc:description>
+        <dc:title xml:lang="en">P07. Merging different concepts in the same class</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP08 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP08">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P08. Missing annotations</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP09 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP09">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P09. Missing domain information</dc:title>
+        <dc:description xml:lang="en">Part of the information needed for modeling the intended domain is not included in the ontology. This pitfall may be related to (a) the requirements included in the Ontology Requirement Specification Document (ORSD) that are not covered by the ontology, or (b) to the lack of knowledge that can be added to the ontology to make it more complete.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP10 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP10">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P10. Missing disjointness</dc:title>
+        <dc:description xml:lang="en">The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP11 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP11">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">Object and/or datatype properties without domain or range (or none of them) are included in the ontology. </dc:description>
+        <dc:title xml:lang="en">P11. Missing domain or range in properties</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP12 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP12">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P12. Equivalent properties not explicitly declared</dc:title>
+        <dc:description xml:lang="en">The ontology lacks information about equivalent properties (owl:equivalentProperty) in the cases of duplicated relationships and/or attributes.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP13 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP13">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P13. Inverse relationships not explicitly declared</dc:title>
+        <dc:description xml:lang="en">This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP14 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP14">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P14. Misusing &quot;owl:allValuesFrom&quot;</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in using the universal restriction (owl:allValuesFrom) as the default qualifier instead of the existential restriction (owl:someValuesFrom). Additional information about this pitfall is provided in [7].</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP15 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP15">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P15. Using &quot;some not&quot; in place of &quot;not some&quot;</dc:title>
+        <dc:description xml:lang="en">The pitfall consists in using a “some not” structure when a “not some” is required. This is due to the misplacement of the existential quantifier (owl:someValuesFrom) and the negative operator (owl:complementOf). (a) When to use a “some not” structure (DrelationshipS: ClassA): to state that there is at least one individual acting as object of the relationship “relationshipS” and such individual do not belong to class “ClassA”. This implies that there must be at least one instantiation of the relationshipsS whose target does not belong to “ClassA”. This does not prevent instances from ClassA acting as objects of the relationships. (b) When to use a “not some” structure ( DrelationshipS:ClassA): to state that no individuals in class “ClassA” act as objects of the relationship “relationshipS”. This does not imply the existence of individuals from other classes acting as objects of the relationship. This pitfall is explained in more detail in [7].</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP16 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP16">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P16. Using a primitive class in place of a defined one</dc:title>
+        <dc:description xml:lang="en">“Primitive” classes are those for which there are only necessary conditions [7]. They are described using rdfs:subClassOf. “Defined” classes are those for which there are necessary and sufficient conditions [7]. They are described using owl:equivalentClass. This pitfall implies creating a primitive class rather than a defined one in case automatic classification of individuals is intended. It should be clarified that, in general, nothing will be inferred to be subsumed under a primitive class by the classifier [7]. This pitfall is related to the open world assumption.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP17 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP17">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P17. Overspecializing a hierarchy</dc:title>
+        <dc:description xml:lang="en">The hierarchy in the ontology is specialized in such a way that the final leaves are defined as classes and these classes will not have instances. Authors in [e] provide guidelines for distinguishing between a class and an instance when modeling hierarchies.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP18 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP18">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P18. Overspecializing the domain or range</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in defining a domain or range not general enough for a property, i.e, no considering all the individuals or datatypes that might be involved in such a domain or range. This pitfall is related to the guidelines provided in [2] and [7].</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP19 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP19">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P19. Defining multiple domains or ranges in properties</dc:title>
+        <dc:description xml:lang="en">The domain or range (or both) of a property (relationships and attributes) is defined by stating more than one rdfs:domain or rdfs:range statements. In OWL multiple rdfs:domain or rdfs:range axioms are allowed, but they are interpreted as conjunction, being, therefore, equivalent to the construct owl:intersectionOf. This pitfall is related to the common error that appears when defining domains and ranges described in [7].</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP20 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP20">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P20. Misusing ontology annotations</dc:title>
+        <dc:description xml:lang="en">The contents of some annotation properties are swapped or misused. This pitfall might affect annotation properties related to natural language information (for example, annotations for naming such as rdfs:label or for providing descriptions such as rdfs:comment). Other types of annotation could also be affected as temporal, versioning information, among others.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP21 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP21">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P21. Using a miscellaneous class</dc:title>
+        <dc:description xml:lang="en">This pitfall refers to the creation of a class with the only goal of classifying the instances that do not belong to any of its sibling classes (classes with which the miscellaneous problematic class shares a common direct ancestor).</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP22 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP22">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P22.  Using different naming conventions in the ontology</dc:title>
+        <dc:description xml:lang="en">The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as “-” or “_”) . Some notions about naming conventions are provided in [2].</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP23 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP23">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A class and its corresponding individuals are created to represent existing datatypes in the implementation language.</dc:description>
+        <dc:title xml:lang="en">P23. Duplicating a datatype already provided by the implementation language</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP24 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP24">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">An ontology element (a class, an object property or a datatype property) is used in its own definition. Some examples of this would be: (a) the definition of a class as the enumeration of several classes including itself;  (b) the appearance of a class within its owl:equivalentClass or rdfs:subClassOf axioms; (c) the appearance of an object property in its rdfs:domain or range rdfs:range definitions; or (d) the appearance of a datatype property in its rdfs:domain definition.</dc:description>
+        <dc:title xml:lang="en">P24. Using recursive definitions</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP25 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP25">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A relationship is defined as inverse of itself. In this case, this relationship could have been defined as owl:SymmetricProperty instead.</dc:description>
+        <dc:title xml:lang="en">P25. Defining a relationship as inverse to itself</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP26 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP26">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A symmetric object property (owl:SymmetricProperty) is defined as inverse of another object property (using owl:inverseOf).</dc:description>
+        <dc:title xml:lang="en">P26. Defining inverse relationships for a symmetric one</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP27 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP27">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P27. Defining wrong equivalent properties</dc:title>
+        <dc:description xml:lang="en">Two object properties or two datatype properties are defined as equivalent, using owl:equivalentProperty, even though they do not have the same semantics.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP28 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP28">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A relationship is defined as symmetric, using owl:SymmetricProperty, when the relationship is not necessarily symmetric.</dc:description>
+        <dc:title xml:lang="en">P28. Defining wrong symmetric relationships</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP29 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP29">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">A relationship is defined as transitive, using owl:TransitiveProperty, when the relationship is not necessarily transitive.</dc:description>
+        <dc:title xml:lang="en">P29. Defining wrong transitive relationships</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP30 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP30">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P30. Equivalent classes not explicitly declared</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in missing the definition of equivalent classes (owl:equivalentClass) in case of duplicated concepts. When an ontology reuses terms from other ontologies, classes that have the same meaning should be defined as equivalent in order to benefit the interoperability between both ontologies.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP31 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP31">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P31. Defining wrong equivalent classes</dc:title>
+        <dc:description xml:lang="en">Two classes are defined as equivalent, using owl:equivalentClass, when they are not necessarily equivalent.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP32 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP32">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P32. Several classes with the same label</dc:title>
+        <dc:description xml:lang="en">Two or more classes have the same content for natural language annotations for naming, for example the rdfs:label annotation. This pitfall might involve lack of accuracy when defining terms.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP33 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP33">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P33. Creating a property chain with just one property</dc:title>
+        <dc:description xml:lang="en">The OWL 2 construct owl:propertyChainAxiom allows a property to be defined as the composition of several properties (see http://www.w3.org/TR/owl2-new-features/F8:_Property_Chain_Inclusion for additional details). In this sense, when an individual “a” is connected with an individual “b” by a chain of two or more object properties (specified in the antecedent of the chain), it is necessary to connect “a” with “b” by using the object property in the consequent of the chain. This pitfall consists in creating a property chain (owl:propertyChainAxiom) that includes only one
+property in the antecedent part.</dc:description>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP34 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP34">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class. This pitfall is related with the common problems listed in [8].</dc:description>
+        <dc:title xml:lang="en">P34. Untyped class</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP35 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP35">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">An ontology element is used as a property without having been explicitly declared as such using the primitives rdf:Property, owl:ObjectProperty or owl:DatatypeProperty. This pitfall is related with the common problems listed in [8].</dc:description>
+        <dc:title xml:lang="en">P35. Untyped property</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP36 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP36">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P36. URI contains file extension</dc:title>
+        <dc:description xml:lang="en">This pitfall occurs if file extensions such as “.owl”, “.rdf”, “.ttl”, “.n3” and “.rdfxml” are included in an ontology URI. This pitfall is related with the recommendations provided in [9].</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP37 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP37">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P37. Ontology not available on the Web</dc:title>
+        <dc:description xml:lang="en">This pitfall occurs when the ontology code (OWL encoding) or its documentation (HTML document) is missing when looking up its URI. This pitfall deals with the first point from the Linked Data star system that states “On the web” ([10] and [11]). Guidelines in [12] also recommends to “Publish your vocabulary on the Web at a stable URI”. This pitfall is also related to the problems listed in [8] and [5].</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP38 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP38">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P38. No OWL ontology declaration</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in not declaring the owl:Ontology tag, which provides the ontology metadata. The owl:Ontology tag aims at gathering metadata about a given ontology such as version information, license, provenance, creation date, and so on. It is also used to declare the inclusion of other ontologies.</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP39 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP39">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P39. Ambiguous namespace</dc:title>
+        <dc:description xml:lang="en">This pitfall consists in declaring neither the ontology URI nor the xml:base namespace. If this is the case, the ontology namespace is matched to the file location. This situation is not desirable, as the location of a file might change while the ontology should remain stable, as proposed in [12].</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP40 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP40">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:description xml:lang="en">It refers to reusing or referring to terms from another namespace that are not defined in such namespace. This is an undesirable situation as no information can be retrieved when looking up those undefined terms. This pitfall is related to the Linked Data publishing guidelines provided in [11]: “Only define new terms in a namespace that you control” and to the guidelines provided in [5].</dc:description>
+        <dc:title xml:lang="en">P40. Namespace hijacking</dc:title>
+        <qmo:hasScale rdf:resource="&qmo2;natural"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qm#pitfallP41 -->
+
+    <owl:NamedIndividual rdf:about="http://oops.linkeddata.es/ontology/qm#pitfallP41">
+        <rdf:type rdf:resource="&qmo;QualityIndicator"/>
+        <dc:title xml:lang="en">P41. No license declared</dc:title>
+        <dc:description xml:lang="en">The ontology metadata omits information about the license that applies to the ontology.</dc:description>
+        <qmo:hasScale rdf:resource="http://oops.linkeddata.es/ontology/qm#boolean"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://oops.linkeddata.es/ontology/qmo#natural -->
+
+    <om-1:Cardinal_scale rdf:about="&qmo2;natural">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <qmo:hasLowerBoundary rdf:datatype="&xsd;decimal">0</qmo:hasLowerBoundary>
+    </om-1:Cardinal_scale>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

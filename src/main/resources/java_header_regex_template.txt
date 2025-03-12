@@ -1,0 +1,5 @@
+^// SPDX-FileCopyrightText: \d\d\d\d(-\d\d\d\d)? .+$
+^// SPDX-FileCopyrightText: \d\d\d\d(-\d\d\d\d)? .+$
+^//$
+^// SPDX-License-Identifier: Apache-2\.0$
+^$

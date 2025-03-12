@@ -1,0 +1,60 @@
+# SPDX-FileCopyrightText: 2025 Pieter Hijma <info@pieterhijma.net>
+#
+# SPDX-License-Identifier: Apache-2.0
+
+version = 1
+
+[[annotations]]
+path = "src/main/resources/stop-words.csv"
+SPDX-FileCopyrightText = [
+     "2025 Robin Vobruba <hoijui.quaero@gmail.com>",
+     "2014 María Poveda Villalón <mpovedavillalon@gmail.com>"
+]
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+     "src/main/webapp/images/conformance/*.png",
+     "src/main/webapp/images/favicon.png",
+     "src/main/webapp/images/header.jpg",
+     "src/main/webapp/images/headerLogo.jpg",
+     "src/main/webapp/images/loading.gif",
+     "src/main/webapp/images/logoWhite65.png",
+     "src/main/webapp/META-INF/MANIFEST.MF"
+]
+SPDX-FileCopyrightText = "María Poveda Villalón <mpovedavillalon@gmail.com>"
+SPDX-License-Identifier = "Apache-2.0"
+
+
+# Logos
+[[annotations]]
+path = [
+     "src/main/webapp/images/LogoETSIINF.png",
+     "src/main/webapp/images/logoOEG.png",
+     "src/main/webapp/images/LogoUPM.png",
+     "src/main/webapp/images/ODI_Madrid.png"
+
+]
+SPDX-FileCopyrightText = "2020 Universidad Politécnica de Madrid"
+SPDX-License-Identifier = "LicenseRef-AllRightsReserved"
+
+# Icons
+[[annotations]]
+path = [
+     "src/main/webapp/images/critical.png",
+     "src/main/webapp/images/important.png",
+     "src/main/webapp/images/minor.png"
+]
+SPDX-FileCopyrightText = "Jean Victor Balin <https://openclipart.org/artist/jean_victor_balin>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = [
+     "src/main/webapp/images/glyphicons-*.png"
+]
+SPDX-FileCopyrightText = [
+     "2012 Twitter, Inc.",
+     "Glyphicons.com (used under license with Bootstrap)"
+]
+SPDX-License-Identifier = "Apache-2.0"
+

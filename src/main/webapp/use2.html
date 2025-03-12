@@ -1,0 +1,284 @@
+<!--
+SPDX-FileCopyrightText: 2014 María Poveda Villalón <mpovedavillalon@gmail.com>
+SPDX-FileCopyrightText: 2025 Pieter Hijma <info@pieterhijma.net>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta name="Author" content="María Poveda Villalón"/>
+<meta name="Languaje" content="English"/>
+<meta name="Keywords" content="ontology, ontology evaluation, pitfalls"/>
+<meta name="Description" content="This web provide online access to OOPS! - OntOlogy Pitfall Scanner!"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+
+<!--[if lt IE 7]>
+<link href="estilosie.css" rel="stylesheet" type="text/css" />
+<![endif]--> 
+<title> OOPS! - OntOlogy Pitfall Scanner! - Uses</title>
+
+  <script type="text/javascript" src="//www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load('visualization', '1', {packages: ['geomap']});
+
+    function drawVisualization() {
+      
+      var options = {
+          height: 640,
+          width: 990,
+        colors: [0xFFDCD8, 0xDD5A64],
+        };
+      
+      var data1 = google.visualization.arrayToDataTable([
+                ['Country', 'Number of accesses'],
+                ['AM', 3],
+                ['AR', 31],
+                ['AT', 5],
+                ['AU', 45],
+                ['BE', 44],
+                ['BG', 16],
+                ['BR', 21],
+                ['CA', 37],
+                ['CH', 1],
+                ['CL', 1],
+                ['CN', 93],
+                ['CO', 2],
+                ['CU', 1],
+                ['CZ', 15],
+                ['DE', 290],
+                ['DK', 9],
+                ['DZ', 5],
+                ['EG', 2],
+                ['ES', 1040],
+                ['FI', 18],
+                ['FR', 313],
+                ['GB', 106],
+                ['GR', 38],
+                ['HK', 4],
+                ['HR', 3],
+                ['HU', 4],
+                ['ID', 2],
+                ['IE', 30],
+                ['IL', 2],
+                ['IN', 14],
+                ['IR', 17],
+                ['IT', 84],
+                ['JO', 1],
+                ['JP', 17],
+                ['KE', 2],
+                ['KR', 11],
+                ['KZ', 11],
+                ['LK', 1],
+                ['LY', 1],
+                ['MX', 27],
+                ['MY', 15],
+                ['NG', 2],
+                ['NL', 18],
+                ['NO', 2],
+                ['OM', 1],
+                ['PE', 1],
+                ['PK', 6],
+                ['PL', 14],
+                ['PS', 1],
+                ['PT', 2],
+                ['qa', 1],
+                ['RO', 4],
+                ['RS', 4],
+                ['RU', 49],
+                ['SA', 3],
+                ['SE', 5],
+                ['SG', 1],
+                ['SI', 5],
+                ['SK', 1],
+                ['SY', 1],
+                ['TH', 3],
+                ['TN', 6],
+                ['TR', 44],
+                ['TT', 1],
+                ['TW', 2],
+                ['UA', 3],
+                ['US', 772],
+                ['VN', 3],
+                ['ZA', 29]
+
+        ]);
+    
+      var geomap1 = new google.visualization.GeoMap(
+          document.getElementById('visualizationVisit'));
+      geomap1.draw(data1, options);
+      
+      var data2 = google.visualization.arrayToDataTable([
+                 ['Country', 'Number of executions'],
+                 ['AR', '27'],
+                 ['AT', '7'],
+                 ['AU', '75'],
+                 ['BE', '23'],
+                 ['BG', '3'],
+                 ['BR', '120'],
+                 ['CA', '165'],
+                 ['CH', '12'],
+                 ['CL', '1'],
+                 ['CN', '19'],
+                 ['CO', '142'],
+                 ['CU', '58'],
+                 ['CZ', '18'],
+                 ['DE', '742'],
+                 ['DK', '1'],
+                 ['DZ', '5'],
+                 ['EC', '186'],
+                 ['EG', '3'],
+                 ['ES', '978'],
+                 ['FI', '40'],
+                 ['FR', '399'],
+                 ['GB', '227'],
+                 ['GR', '55'],
+                 ['HK', '1'],
+                 ['HN', '2'],
+                 ['HR', '2'],
+                 ['HU', '15'],
+                 ['ID', '2'],
+                 ['IE', '50'],
+                 ['IL', '1'],
+                 ['IN', '43'],
+                 ['IR', '220'],
+                 ['IT', '92'],
+                 ['JP', '27'],
+                 ['KR', '2'],
+                 ['KZ', '1'],
+                 ['LB', '1'],
+                 ['LK', '18'],
+                 ['MA', '6'],
+                 ['MK', '4'],
+                 ['MR', '1'],
+                 ['MX', '92'],
+                 ['MY', '2'],
+                 ['NL', '8'],
+                 ['NO', '4'],
+                 ['OM', '1'],
+                 ['PH', '17'],
+                 ['PK', '5'],
+                 ['PL', '11'],
+                 ['PT', '7'],
+                 ['RO', '56'],
+                 ['RS', '46'],
+                 ['RU', '16'],
+                 ['SA', '5'],
+                 ['SE', '60'],
+                 ['SG', '4'],
+                 ['TN', '6'],
+                 ['TW', '6'],
+                 ['US', '366'],
+                 ['VE', '32'],
+                 ['ZA', '77']
+                 ]);
+                                            
+     var geomap2 = new google.visualization.GeoMap(
+         document.getElementById('visualizationExe'));
+     geomap2.draw(data2, options);
+    }
+    
+
+    google.setOnLoadCallback(drawVisualization);
+  </script>
+  
+</head>
+<body>
+
+<div id="wrap">
+
+<div id="header">
+	<!--<h1><a href="index.jsp">OOPS! </a></h1>
+	<h2>OntOlogy Pitfall Scanner!</h2>-->
+	<span style="float: left;"><a href="index.jsp"><img src="images/logoWhite65.png" alt="Logo OOPS!" /></a></span>
+	<p><span>OntOlogy Pitfall Scanner!</span></p>
+</div>
+
+
+
+<div id="intro"> 
+<p><strong>OOPS! (OntOlogy Pitfall Scanner!)</strong> helps you to detect some of the most common
+pitfalls appearing when developing ontologies.</p>  
+
+<p>To try it, go to <a href="http://www.oeg-upm.net/oops">OOPS! homepage</a>. and enter a URI or paste an OWL 
+document. A list of pitfalls and the elements of your ontology
+ where they appear will be displayed. </p>
+
+</div>
+
+<div id="intro2"> 
+	
+</div>
+
+<div id="content">
+
+<div class="articles">
+
+<h2>How many times it has been executed</h2>
+
+<div id="visualizationExe" ></div>
+
+<br>
+
+<h2>How many times it has been visited</h2>
+
+<div id="visualizationVisit" ></div>
+
+<br>
+ 
+</div>
+
+<div style="clear: both;"> </div>
+
+</div>
+
+<div id="footer">
+<p><a href = "http://purl.org/net/mpoveda" target="_blank">María Poveda</a></p>
+<p>Contact email: oops(at)delicias.dia.fi.upm.es. Latest revision January 2016</p>
+<a href="http://www.templatesold.com/" target="_blank">Website Templates</a> by <a href="http://www.free-css-templates.com/" target="_blank">Free CSS Templates</a>
+</div>
+</div>
+
+   
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/accordion.js"></script>
+	<script type="text/javascript" src="js/expandCollapse.js"></script>
+	<script type="text/javascript" src="js/expand.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<script type="text/javascript" src="js/loading.js"></script>
+
+
+<!-- 		<script>
+			(function(i, s, o, g, r, a, m) {
+				i['GoogleAnalyticsObject'] = r;
+				i[r] = i[r] || function() {
+					(i[r].q = i[r].q || []).push(arguments)
+				}, i[r].l = 1 * new Date();
+				a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+				a.async = 1;
+				a.src = g;
+				m.parentNode.insertBefore(a, m)
+			})(window, document, 'script',
+					'//www.google-analytics.com/analytics.js', 'ga');
+
+			ga('create', 'UA-56720864-1', 'auto');
+			ga('send', 'pageview');
+		</script>-->
+		
+		
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z598BL3YY4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z598BL3YY4');
+</script>
+
+</body>
+
+</html>

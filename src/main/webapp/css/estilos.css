@@ -1,0 +1,377 @@
+/*
+ * SPDX-FileCopyrightText: 2014 María Poveda Villalon <mpovedavillalon@gmail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+* {
+    padding: 0;
+    margin: 0;
+    /*color : #000;*/
+}
+.medio{
+	vertical-align: middle; 
+}
+
+.textbox-big{
+	vertical-align: middle;    
+}
+
+.textbox-big input[type="text"] {
+    border: 1px solid #CCCCCC;
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+    width: 71%;
+    height: 18px;
+    /*vertical-align: middle;*/
+}
+
+#example p{
+color: #666;
+}
+
+pre { 
+	background: #ECECEC; 
+	font-family: monospace; 
+	line-height: 1.5em; 
+	padding: 1em 1em; 
+}
+
+body {
+background: #fff url(../images/bg.jpg) repeat-x;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size: 11px;
+line-height: 18px;
+color: #333333;;
+}
+
+img { border: none; }
+a { color: #26478A; text-decoration: none; }
+a:hover { color : #000; }
+
+#wrap {
+margin: 0 auto;
+width: 1000px;
+}
+
+#header { 
+height: 60px;
+/*background: #26478A url(../images/header.jpg) no-repeat;
+background: #25468B;*/
+background: #3150A1;
+}
+#header h1 {
+font-size: 26px;
+font-weight: 100;
+padding: 12px 0 5px 10px;
+}
+#header h1 a {
+color: #fff;
+text-decoration: none;
+}
+#header h1 a:hover {
+color: #eee;
+text-decoration: none;
+}
+#header h2 {
+color: #ccc;
+font-size: 15px;
+font-weight: 100;
+padding: 0 0 0 11px;
+line-height: 12px;
+}
+
+#header p {
+color: #C2C2C2;
+text-decoration: none;
+font-size: 26px;
+font-weight: 100;
+padding: 18px 0px 0px 108px
+}
+
+#intro {
+/*background: #FFFFFF url(images/intro.jpg) no-repeat;*/
+background: #FFFFFF;
+/*border: 1px solid #000000;*/
+-moz-box-shadow: 5px 5px 5px #5D76A8;
+-webkit-box-shadow: 5px 5px 5px #ccc;
+box-shadow: 5px 5px 5px #ccc;
+/*height: 90px;*/
+padding: 15px;
+position:relative;
+}
+
+#intro2 {
+/*background: #fff url(../images/intro.jpg) no-repeat;*/
+background: #FFFFFF;
+/*border: 1px solid #000000;*/
+-moz-box-shadow: 5px 5px 5px #CDCDCD;
+-webkit-box-shadow: 5px 5px 5px #ccc;
+box-shadow: 5px 5px 5px #ccc;
+/*height: 90px;*/
+padding: 15px;
+position: relative;
+}
+
+#content {
+padding: 10px 10px;
+}
+
+
+.left {
+width: 778px;
+float: left;
+text-align: justify;
+}
+.left h2 {
+/*color: #FF4800;*/
+color: #26478A;
+font-size: 24px;
+font-weight: 100;
+padding : 10px 0 15px 0;
+}
+.left ul {
+list-style-type: square;
+padding: 5px 10px 10px 20px;
+}
+
+.left li .ld {
+color: #26478A;
+font-style: italic; 
+}
+
+.right {
+width: 167px;
+float: right;
+padding: 10px;
+border-left: 1px solid #bbb;
+font-size: 12px;
+}
+.right ul {
+list-style-type: square;
+padding: 5px 10px 10px 18px;
+}
+.right h2 {
+height: 30px;
+font-size: 15px;
+color: #666;
+line-height: 30px;
+font-weight: 100;
+}
+.right a { text-decoration: none }
+
+#footer {
+border-top: 1px solid #aaa;
+text-align: center;
+color: #333;
+font-size: 11px;
+padding: 0 0 10px 0;
+margin-top: 20px;
+}
+
+.accordion {
+ width: 784px;
+ margin: 0;
+ padding: 0;
+ border-bottom: solid 1px #c4c4c4;
+}
+.accordion h3 {
+
+ background: #e9e7e7;
+ padding: 7px 15px;
+ margin: 0;
+ font: bold 120%/100% Arial, Helvetica, sans-serif;
+ border: solid 1px #c4c4c4;
+ border-bottom: none;
+ cursor: pointer;
+}
+
+.accordion h3 a {
+color: #333333;
+text-decoration: none;
+}
+
+.accordion  a {
+color: #26478A;
+text-decoration: none;
+}
+
+.accordion h3:hover {
+	 color: #333333;
+ background-color: #e3e2e2;
+}
+.accordion h3.active {
+ color: #333333;
+ background-position: right 5px;
+}
+.accordion p.collapse {
+ background: #F9F9F9;
+ margin: 0;
+ padding: 10px 15px 15px;
+ border-left: solid 1px #c4c4c4;
+ border-right: solid 1px #c4c4c4;
+}
+
+.articles  a {
+color: #26478A;
+text-decoration: none;
+}
+
+.articles  a:HOVER {
+ color : #000; 
+ }
+
+
+div.loading {
+    display: none;
+}
+
+
+#load{
+	position:absolute;
+    z-index: 1;
+    background-color: #ECECEC;
+    text-align: center;
+    color: #0E0E0E;
+    font-size: 1.7em;  
+    /*border-radius: 10px;*/
+    height: 81px;
+    width: 771px;
+	filter:alpha(opacity=65);-moz-opacity: 0.65;opacity: 0.65;
+    float: center;
+    vertical-align: middle; 
+    padding: 115px;
+}
+
+
+/*advanced*/
+ 
+ .submitLink {
+	background-color: transparent;
+	text-decoration: underline;
+	border: none;
+	color: blue;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.centered {
+	text-align: center;
+}
+
+span.tab{
+	padding: 0 55px; /* Or desired space*/
+}
+
+span.tabclass{
+	padding: 0 -20px; /* Or desired space*/
+	/*font-weight: bold;*/
+}
+
+span.pittab{
+	padding: 0 15px; /* Or desired space*/
+}
+
+p.pits { 
+	padding : 0px 75px;
+}
+
+h2 {
+	color: #26478A;
+	font-size: 14px;
+	font-weight: bold;
+	padding : 10px 0 15px 0;
+}
+
+div.checktab{
+	padding: 7px 15px;
+	margin: 0;
+ 	font: bold 120%/100% Arial, Helvetica, sans-serif;
+}
+
+span.description{
+	font-size: 9px;
+}
+
+
+/* classification */
+
+.classifications {
+ width: 100%;
+ margin: 0;
+ padding: 0;
+ overflow: auto;
+}
+
+.classifications > div {
+	display: inline-block;
+}
+
+.classificationC1 {
+ float: left;
+}
+
+.classificationC2 {
+ float: right;
+}
+
+.classification {
+ width: 49%;
+ margin: 0;
+ padding: 0;
+ border-bottom: solid 1px #c4c4c4;
+}
+
+.classification h2 {
+ text-align: center;
+ padding: 0;
+ margin: 0;
+ font: bold 120%/100% Arial, Helvetica, sans-serif;
+
+}
+
+.classification h3 {
+
+ background: #e9e7e7;
+ padding: 7px 15px;
+ margin: 0;
+ font: bold 120%/100% Arial, Helvetica, sans-serif;
+ border: solid 1px #c4c4c4;
+ border-bottom: none;
+}
+
+.classification h3 a {
+color: #333333;
+text-decoration: none;
+}
+
+.classification  a {
+color: #26478A;
+text-decoration: none;
+}
+
+
+.classification h3.active {
+ color: #333333;
+ background-position: right 5px;
+}
+.classification p.collapse {
+ background: #F9F9F9;
+ margin: 0;
+ padding: 10px 10px 10px 25px;
+ border-left: solid 1px #c4c4c4;
+ border-right: solid 1px #c4c4c4;
+}
+
+/* To place the first part of a line in the left and the other in the right */
+
+.twoSentences > div {
+	display: inline-block;
+}
+
+.sentenceLeft {
+ float: left;
+}
+
+.sentenceRight {
+ float: right;
+}
