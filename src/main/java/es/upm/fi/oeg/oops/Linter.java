@@ -127,8 +127,7 @@ public class Linter {
         System.out.println("------------------------------------------------------------------------------");
     }
 
-    public Report partialExecution(final SrcModel srcModel, final List<Integer> checkersToExecute,
-            final List<Checker> checkers) {
+    public Report partialExecution(final SrcModel srcModel, final List<Integer> options, final List<Checker> checkers) {
 
         final Map<PitfallId, List<Pitfall>> pitfalls = new HashMap<>();
         final Map<PitfallId, Integer> numCases = new HashMap<>();
@@ -149,6 +148,7 @@ public class Linter {
         // final long timeStart = System.nanoTime();
         final Instant timeStart = Instant.now();
 
+        // this.options = options;
         // final StringBuffer xmlOutput = new StringBuffer();
         Model outputModel = createModel();
         outputModel.getNsPrefixMap().putAll(srcModel.getModel().getNsPrefixMap());
@@ -215,9 +215,7 @@ public class Linter {
             // }
 
             for (final Checker checker : checkers) {
-                if (!shouldExecute(checker, checkersToExecute)) {
-                    continue;
-                }
+                // final CheckerInfo info = checker.getInfo();
                 final CheckingContext context;
                 try {
                     context = new CheckingContext(srcModel);
@@ -515,11 +513,6 @@ public class Linter {
         final String xmlOutputStr = null;
         return new Report(numClasses, numProperties, pitfalls, exceptions, executionTime, warnings,
                 /* symmetricOrTransitiveSuggestion, importsFailing, */ xmlOutputStr, outputModel);
-    }
-
-    private boolean shouldExecute(Checker checker, List<Integer> checkersToExecute) {
-        // an empty checkersToExecute list implies that all checkers are executed
-        return checkersToExecute.isEmpty() || checkersToExecute.contains(checker.getInfo().getId().getNumeral());
     }
 
     private Model createModel() {
