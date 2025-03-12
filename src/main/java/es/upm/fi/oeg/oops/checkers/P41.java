@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Set;
@@ -64,7 +65,7 @@ public class P41 implements Checker {
             case RDF_CODE :
                 try {
                     final String uri = Constants.licensiusServiceLicenseRaw;
-                    final URL url = new URL(uri);
+                    final URL url = URI.create(uri).toURL();
                     final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);
                     conn.setDoInput(true);
@@ -109,7 +110,7 @@ public class P41 implements Checker {
                 try {
                     final String encodedData = Utils.urlEncode(srcSpec.getIri());
                     final String uri = Constants.licensiusURIServiceLicense + encodedData;
-                    final URL url = new URL(uri);
+                    final URL url = URI.create(uri).toURL();
 
                     final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);

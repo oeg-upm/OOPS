@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
@@ -175,7 +176,7 @@ public class P39 implements Checker {
     public static String download(final String urlStr, final String acceptHeaderValue) {
 
         try {
-            final URL url = new URL(urlStr);
+            final URL url = URI.create(urlStr).toURL();
 
             return download(url, acceptHeaderValue);
         } catch (java.net.MalformedURLException exc) {

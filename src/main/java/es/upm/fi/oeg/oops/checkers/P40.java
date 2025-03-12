@@ -19,6 +19,7 @@ import es.upm.fi.oeg.oops.RuleScope;
 import es.upm.fi.oeg.oops.SrcSpec;
 import es.upm.fi.oeg.oops.Utils;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Set;
 import org.apache.jena.ontology.OntResource;
@@ -72,19 +73,19 @@ public class P40 implements Checker {
 
             // System.err.println("Trying Triple Checker with: " + urlTripleChecker+toAppend);
 
-            URL url = new URL(urlTripleChecker + toAppend);
+            final URL url = URI.create(urlTripleChecker + toAppend).toURL();
             final String content = P39.download(url, null);
             if (content != null && content.contains("<h2>Terms</h2>")) {
-                String contentNew = content.split("<h2>Terms</h2>")[1];
+                final String contentNew = content.split("<h2>Terms</h2>")[1];
 
                 if (contentNew.contains("<tr class='bad'>") || contentNew.contains("<td class='legit'>ERROR</td>")) {
-                    String[] splitContent = contentNew.split("<td class='legit'>ERROR</td>");
+                    final String[] splitContent = contentNew.split("<td class='legit'>ERROR</td>");
 
                     for (int i = 0; i < splitContent.length - 1; i++) {
-                        int lastHref = splitContent[i].lastIndexOf("a href='");
-                        String href = splitContent[i].substring(lastHref + 8);
-                        int ends = href.indexOf("'");
-                        String element = href.substring(0, ends);
+                        final int lastHref = splitContent[i].lastIndexOf("a href='");
+                        final String href = splitContent[i].substring(lastHref + 8);
+                        final int ends = href.indexOf("'");
+                        final String element = href.substring(0, ends);
                         final OntResource pAux = context.getModel().getOntResource(element);
                         context.addResult(PITFALL_INFO, pAux);
                     }

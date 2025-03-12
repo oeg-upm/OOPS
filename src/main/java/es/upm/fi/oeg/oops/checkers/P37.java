@@ -24,6 +24,7 @@ import es.upm.fi.oeg.oops.SerializationFormats;
 import es.upm.fi.oeg.oops.SrcSpec;
 import es.upm.fi.oeg.oops.SrcType;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
@@ -118,7 +119,7 @@ public class P37 implements Checker {
     public boolean askForHTML(final String urlToFetch) {
 
         try {
-            final URL url = new URL(urlToFetch);
+            final URL url = URI.create(urlToFetch).toURL();
             final String content = P39.download(url, null);
             // look for the HTML tag
             if (content != null && content.contains("<!DOCTYPE html") || content.contains("<html>")

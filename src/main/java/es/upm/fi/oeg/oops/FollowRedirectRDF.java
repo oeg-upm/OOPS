@@ -8,6 +8,7 @@
 package es.upm.fi.oeg.oops;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import org.apache.jena.atlas.lib.StrUtils;
@@ -44,7 +45,7 @@ public class FollowRedirectRDF {
         String contentType = null;
 
         try {
-            final URL obj = new URL(url);
+            final URL obj = URI.create(url).toURL();
             final HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
             HttpURLConnection.setFollowRedirects(true);
             conn.setRequestProperty("Accept", ACCEPT_HEADER_VALUE);
