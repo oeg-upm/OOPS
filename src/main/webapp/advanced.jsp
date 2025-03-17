@@ -38,7 +38,6 @@ SPDX-License-Identifier: Apache-2.0
 		</div>
 		<br>
 	</div>
-	
 	<div id="wrap">
 		<div id=main>
 			<h1>Advanced Evaluation</h1>
@@ -131,75 +130,6 @@ SPDX-License-Identifier: Apache-2.0
 
 					<div id="accordion-wrap" style="display: flex;justify-content: center;">
 					<div class="accordion" id="accordionExample">
-
-						<div class="accordion-item">
-<!-- 						    <h2 class="accordion-header" id="headingOne"> -->
-<!-- 						      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> -->
-<!-- 						        <input type="checkbox" id="S1" value="S1"  name="classificationS1"> <label for="S1">	Structural Dimension</label> -->
-						    		
-<!-- 						      </button> -->
-<!-- 						    </h2> -->
-<!-- 						    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"> -->
-<!-- 						    	<div class="accordion-body"> -->
-						    		
-<%-- 						    		<input type="checkbox" id="N1" value="N1"  name="classificationN1"> <label for="N1"><strong>	Modelling Decisions </strong> <%out.print(	descriptions[3]);%></label> --%>
-<!-- 						    		<br><br> -->
-<%-- 									<input type="checkbox" id="N2" value="N2" name="classificationN2"> <label for="N2">    <strong> Wrong Inference </strong> <%out.print(	descriptions[4]);%></label> --%>
-<!-- 						    		<br><br> -->
-<%-- 									<input type="checkbox" id="N3" value="N3"  name="classificationN3"> <label for="N3"><strong>  No Inference </strong> <%out.print(	descriptions[5]);%></label> --%>
-<!-- 									<br><br> -->
-<%-- 									<input type="checkbox" id="N41" value="N41"  name="classificationN41"> <label for="N41">    <strong>  Ontology lenguaje </strong>  <%out.print(	descriptions[6]);%></label> --%>
-<!-- 						    	</div> -->
-<!-- 						    </div> -->
-<!-- 						  </div> -->
-<!-- 						  <div class="accordion-item"> -->
-<!-- 						    <h2 class="accordion-header" id="headingTwo"> -->
-<!-- 						      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> -->
-<!-- 						       <input type="checkbox"  id="S2" value="S2"  name="classificationS2"> <label for="S2"> Functional Dimension</label> -->
-									
-<!-- 						      </button> -->
-<!-- 						    </h2> -->
-<!-- 						    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample"> -->
-<!-- 						    	<div class="accordion-body"> -->
-<%-- 						    		<input type="checkbox" id="N4" value="N4"  name="classificationN4"> <label for="N4">    <strong>	Real World Modelling or Common Sense </strong> <%out.print(	descriptions[8]);%></label> --%>
-<!-- 						    		<br> -->
-<%-- 									<input type="checkbox" id="N5" value="N5"  name="classificationN5"> <label for="N5">    <strong>   Requirements Completeness </strong> <%out.print(	descriptions[9]);%></label> --%>
-<!-- 						    		<br> -->
-<%-- 						    		<input type="checkbox" id="N51" value="N51"  name="classificationN51"> <label for="N51">    <strong>  Application context </strong><%out.print(	descriptions[10]);%></label>    --%>
-<!-- 						    	</div> -->
-<!-- 						    </div> -->
-<!-- 						  </div> -->
-<!-- 						  <div class="accordion-item"> -->
-<!-- 						    <h2 class="accordion-header" id="headingThree"> -->
-<!-- 						      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> -->
-<!-- 						        <input type="checkbox" id="S3" value="S3"  name="classificationS3"> <label for="S3">    Usability-Profiling Dimension</label>    -->
-<!-- 						      </button> -->
-<!-- 						    </h2> -->
-<!-- 						    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample"> -->
-<!-- 						      <div class="accordion-body"> -->
-<%-- 						    		<input type="checkbox" id="N6" value="N6"  name="classificationN6"> <label for="N6">  <strong> Ontology Clarity </strong> <%out.print(	descriptions[12]);%></label> --%>
-<!-- 						    		<br> -->
-<%-- 						    		<input type="checkbox" id="N7" value="N7"  name="classificationN7"> <label for="N7">  <strong> Ontology Understanding </strong> <%out.print(	descriptions[13]);%></label>  --%>
-<!-- 									<br> -->
-<%-- 									<input type="checkbox" id="N8" value="N8"  name="classificationN8"> <label for="N8">  <strong>   Ontology Metadata </strong> <%out.print(	descriptions[14]);%></label> --%>
-<!-- 						   	 </div> -->
-<!-- 						    </div> -->
-<!-- 						  </div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 					<br> -->
-<!-- 				</div> -->
-<!-- 				<div id="div3" style="display: none"> -->
-				
-<!-- 					<div class= "evCrit">	 -->
-<%-- 		    		<input type="checkbox" id="S4" value="S4"  name="classificationS4"> <label for="S4"> 	<strong>	Consistency </strong> <%out.print(	descriptions[16]);%></label> 		 --%>
-<!-- 		    		<br>	<br> -->
-<%-- 					<input type="checkbox" id="S5" value="S5"  name="classificationS5"> <label for="S5"> 	<strong>   Completeness </strong> <%out.print(	descriptions[17]);%></label> 		 --%>
-<!-- 					<br>	<br> -->
-<%-- 					<input type="checkbox" id="S6" value="S6"  name="classificationS6"> <label for="S6"> 	<strong>  Consciseness </strong><%out.print(	descriptions[18]);%></label> 		 --%>
-<!-- 		    		</div>	 -->
-<!-- 					<br> -->
-<!-- 				</div> -->
 				
 				<input type="submit" class="button" name="button" value="Scan" onclick="doValidation()">
 

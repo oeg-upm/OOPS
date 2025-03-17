@@ -35,15 +35,13 @@ SPDX-License-Identifier: Apache-2.0
 <%@ include file="part-menu.html" %>
 
 	<div id="load" class="loading">
-		<div id="loadElement"></div>
+		<div id="loadElement">
+		</div>
 		<br>
-		
 	</div>
 	<div id="wrap">
 		<div id=main>
-			
 			<h1>OntOlogy Pitfall Scanner!</h1>
-			
 			
 			<br><div class="txt">
 					<p>If you want to use OOPS! to scan an ontology from it URI you can use our  <a href="https://hub.docker.com/r/mpovedavillalon/oops" target="_blank">OOPS! Docker Image</a> just running:</p>
@@ -54,7 +52,6 @@ SPDX-License-Identifier: Apache-2.0
 					</ul>
 					
 					<p>You can also download the image using: <b>docker pull mpovedavillalon/oops:v1</b></p>
-					
 				</div>
 				
 			
@@ -63,26 +60,26 @@ SPDX-License-Identifier: Apache-2.0
 
 			<%
 			//String uri = request.getParameter("uri");
-			String rdf = request.getParameter("RDF");
-			String button = request.getParameter("button");
-			String buttonLINK = request.getParameter("buttonLINK");
+			final String rdf = request.getParameter("RDF");
+			final String button = request.getParameter("button");
+			final String buttonLINK = request.getParameter("buttonLINK");
 
-			Boolean byURI = false;
-			Boolean byRDF = false;
-			Boolean byLINK = false;
+			boolean byURI = false;
+			boolean byRDF = false;
+			boolean byLINK = false;
 
-			//removing the option to include an URI as paremeter
+			// removing the option to include an URI as paremeter
 			//if (uri != null) {
-		//		byURI = true;
+			//	byURI = true;
 			//} else 
-				if (rdf != null) {
+			if (rdf != null) {
 				byRDF = true;
 			} else if (buttonLINK != null) {
 				byLINK = true;
 			}
 			%>
 
-				<form method="post" action="report-advanced.jsp">
+			<form method="post" action="report-advanced.jsp">
 				<!--	<input type="text" name="uri" id="uriEx"
 						placeholder="	Enter a URI:"<%//out.println(uri);%>>
 					<div id=example>
@@ -91,24 +88,22 @@ SPDX-License-Identifier: Apache-2.0
 							Example: http://oops.linkeddata.es/example/swc_2009-05-09.rdf</p>
 					</div> -->
 
-					
 					<textarea class="medio" cols="85" rows="12" name="RDF" 
 						placeholder="&#10;
 	Enter a direct input:&#10;&#10;	If you include just RDF code, the following Pitfalls will not be checked:&#10;&#10;		P36. URI contains file extension&#10;&#10;		P37.Ontology not available&#10;&#10;		P40. Namespace hijacking"><%if ((byLINK || byRDF)){out.println(rdf);}%></textarea>
-					
+
 					<p style="font-size: 10px;"><input  type="checkbox" name="saveOntology" value="saveOntology" > Uncheck this checkbox if you don't want us to keep a copy of your ontology.</p>
 				
-					<br> <input type="submit" class="button" name="button" value="Scan"
+					<br>
+					<input type="submit" class="button" name="button" value="Scan"
 						onclick="doValidation()">
-					
 					
 					 <input type="submit" class="submitLink" name="buttonLINK"
 						onclick='this.form.action="advanced.jsp";'
 						value="Advanced evaluation"> <br>
 
 				</form>
-			
-		</div>
+			</div>
 		</div>
 
 <jsp:include page="part-how-to-cite.jsp" />
