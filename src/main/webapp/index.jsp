@@ -97,10 +97,6 @@ SPDX-License-Identifier: Apache-2.0
 					<br>
 					<input type="submit" class="button" name="button" value="Scan"
 						onclick="doValidation()">
-					
-					 <input type="submit" class="submitLink" name="buttonLINK"
-						onclick='this.form.action="advanced.jsp";'
-						value="Advanced evaluation"> <br>
 
 				</form>
 			</div>
