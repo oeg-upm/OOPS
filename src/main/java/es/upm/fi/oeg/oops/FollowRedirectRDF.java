@@ -59,6 +59,7 @@ public class FollowRedirectRDF {
 
             // normally, 3xx is redirect
             final int status = conn.getResponseCode();
+            contentType = conn.getContentType();
             final boolean redirect = status != HttpURLConnection.HTTP_OK && (status == HttpURLConnection.HTTP_MOVED_TEMP
                     || status == HttpURLConnection.HTTP_MOVED_PERM || status == HttpURLConnection.HTTP_SEE_OTHER);
 
@@ -80,7 +81,7 @@ public class FollowRedirectRDF {
 
                 // System.out.println("Redirect to URL : " + newUrl);
 
-                contentType = conn.getContentType();
+                // contentType = conn.getContentType();
             }
 
             // BufferedReader in = new BufferedReader(
