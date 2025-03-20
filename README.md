@@ -24,7 +24,7 @@ SPDX-License-Identifier: Apache-2.0
     https://raw.githubusercontent.com/osegermany/tiny-files/master/res/media/img/badge-oseg.svg)](
     https://opensourceecology.de)
 
-_OOPS!_ is a [linter] for [RDF]/[OWL] [Ontologies][Ontology].  The software is accessible at <https:/oops.linkeddata.es>.
+_OOPS!_ is a [linter] for [RDF]/[OWL] [Ontologies][Ontology].  The software is accessible at <https://oops.linkeddata.es>.
 
 ## Building
 
