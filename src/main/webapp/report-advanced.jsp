@@ -58,8 +58,8 @@ SPDX-License-Identifier: Apache-2.0
 			int pos = 0;
 
 			final Classifications classifications = new Classifications();
-			final List<String> classKeys = new ArrayList<String>();
-			final List<String> classificationParam = new ArrayList<String>();
+			final List<String> classKeys = new ArrayList<>();
+			final List<String> classificationParam = new ArrayList<>();
 
 			int tam = classKeys.size();
 
