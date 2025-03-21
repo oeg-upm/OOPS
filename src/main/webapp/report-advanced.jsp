@@ -95,15 +95,16 @@ SPDX-License-Identifier: Apache-2.0
 
 			//	System.out.println("URI en response.jsp: "+ uri);
 			//	System.out.println("RDF en response.jsp: "+ rdf);
-
-			if (uri.isEmpty() && (rdf.isEmpty() || rdf.equals("null"))) {
-				//System.out.println("ni uri ni rdf");
-				%>
-				<p> Please, paste your RDF/XML source code in the box.
-				</p>
-				<%
-			} else if (uri.isEmpty() && !rdf.isEmpty()) {
-				byRDF = true; // If there is rdf and not uri
+			if (uri.isEmpty()) {
+				if (rdf == null || rdf.isEmpty() || rdf.equals("null")) {
+					//System.out.println("ni uri ni rdf");
+					%>
+					<p> Please, paste your RDF/XML source code in the box.
+					</p>
+					<%
+				} else {
+					byRDF = true; // If there is rdf and not uri
+				}
 			}
 
 			final Map<PitfallCategoryId, Set<PitfallCategory.TreeChild>> pfCatTree = PitfallCategory.getTree();
