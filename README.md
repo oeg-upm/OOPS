@@ -42,7 +42,7 @@ To run unit-, doc- and integration-tests:
 mvn test
 ```
 
-## Deploying
+## Deploying the webapp
 
 Build the WAR as explained in Building.
 
