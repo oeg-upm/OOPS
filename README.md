@@ -66,6 +66,23 @@ and choose Deploy.  In "Applications" you can click on
 [/oops-2.0.0-SNAPSHOT](http://localhost:8080/oops-2.0.0-SNAPSHOT/) to see the
 application running.
 
+## Testing the CLI
+
+How to setup OOPS on your local machine:
+
+```shell
+git clone https://github.com/oeg-upm/OOPS.git
+cd OOPS
+mvn package
+```
+
+How to run OOPS on the ValueFlows and OKH ontologies:
+
+```shell
+mvn exec:java -Dexec.args="--ontology-url=https://w3id.org/valueflows/ont/vf.ttl"
+mvn exec:java -Dexec.args="--ontology-url=https://w3id.org/oseg/ont/okh.ttl"
+```
+
 ## Testing the REST web service
 
 Use the XML file below as `example-request.xml`:
