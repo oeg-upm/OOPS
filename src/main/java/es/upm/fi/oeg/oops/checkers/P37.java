@@ -138,11 +138,11 @@ public class P37 implements Checker {
 
     private static class BadNamespaceUrlContentPitfall implements Pitfall {
 
-        private static String OUT_FMT = "Ontology not available on the web from: '%s'";
+        private static final String OUT_FMT = "Ontology not available on the web from: '%s'";
 
         private final String url;
 
-        public BadNamespaceUrlContentPitfall(final String url) {
+        BadNamespaceUrlContentPitfall(final String url) {
             this.url = url;
         }
 

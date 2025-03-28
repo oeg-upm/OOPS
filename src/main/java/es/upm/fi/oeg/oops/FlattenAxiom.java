@@ -31,11 +31,10 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 
 public class FlattenAxiom {
 
-    Set<OntClass> classesInAxiomsOnto = new HashSet<OntClass>();
-    Set<OntClass> classesInAxiomsClass = new HashSet<OntClass>();
-
-    Set<ObjectProperty> propertiesInAxiomsProperty = new HashSet<ObjectProperty>();
-    Set<DatatypeProperty> attributesInAxiomsProperty = new HashSet<DatatypeProperty>();
+    private final Set<OntClass> classesInAxiomsOnto = new HashSet<>();
+    private final Set<OntClass> classesInAxiomsClass = new HashSet<>();
+    private final Set<ObjectProperty> propertiesInAxiomsProperty = new HashSet<>();
+    private final Set<DatatypeProperty> attributesInAxiomsProperty = new HashSet<>();
 
     public FlattenAxiom() {
     }
@@ -219,7 +218,7 @@ public class FlattenAxiom {
         }
     }
 
-    public void calculateClassesInAxiomsClass(OntClass class1, final CheckingContext context,
+    public void calculateClassesInAxiomsClass(final OntClass class1, final CheckingContext context,
             final CheckerInfo ruleInfo) {
 
         final List<OntClass> axiomsAll = new ArrayList<OntClass>();
@@ -370,7 +369,7 @@ public class FlattenAxiom {
         }
     }
 
-    public void calculatePropInAxiomsProp(OntProperty property1, final CheckingContext context,
+    public void calculatePropInAxiomsProp(final OntProperty property1, final CheckingContext context,
             final CheckerInfo ruleInfo) {
 
         final OntModel model = context.getModel();

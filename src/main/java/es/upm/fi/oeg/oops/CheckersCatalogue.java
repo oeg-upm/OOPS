@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class CheckersCatalogue {
+public final class CheckersCatalogue {
 
     private static ServiceLoader<Checker> LOADER_CHECKERS = ServiceLoader.load(Checker.class);
 

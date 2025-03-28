@@ -13,9 +13,9 @@ import org.apache.jena.ontology.OntModel;
 
 public class ImportsChecker {
 
-    public List<String> listImportsFailing = new ArrayList<>();
+    public final List<String> listImportsFailing = new ArrayList<>();
 
-    public ImportsChecker(OntModel model) {
+    public ImportsChecker(final OntModel model) {
 
         model.listImportedOntologyURIs().toArray().toString();
 

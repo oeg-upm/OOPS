@@ -14,7 +14,7 @@ import org.apache.jena.ontology.OntResource;
  */
 public interface Pitfall {
 
-    public static String HTML_LINK_FMT = "<a href=\"%s\" target=\"_blank\">%s</a>";
+    public String HTML_LINK_FMT = "<a href=\"%s\" target=\"_blank\">%s</a>";
 
     PitfallInfo getInfo();
 
@@ -28,15 +28,15 @@ public interface Pitfall {
         throw new UnsupportedOperationException();
     }
 
-    public static String toHtmlLink(final String url, final String text) {
+    static String toHtmlLink(final String url, final String text) {
         return String.format(HTML_LINK_FMT, url, text);
     }
 
-    public static String toHtmlLink(final String url) {
+    static String toHtmlLink(final String url) {
         return toHtmlLink(url, url);
     }
 
-    public static String toHtmlLink(final OntResource res) {
+    static String toHtmlLink(final OntResource res) {
         return toHtmlLink(res.getURI(), res.getLocalName());
     }
 }

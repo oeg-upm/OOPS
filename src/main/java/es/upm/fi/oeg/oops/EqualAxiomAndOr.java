@@ -33,15 +33,13 @@ public class EqualAxiomAndOr {
 
     boolean isEqual = false;
 
-    public EqualAxiomAndOr(OntResource resource1, OntResource resource2, final CheckingContext context,
+    public EqualAxiomAndOr(final OntResource resource1, final OntResource resource2, final CheckingContext context,
             final CheckerInfo ruleInfo) {
 
         // pueden ser clases?
         if (resource1.isClass() && resource2.isClass()) {
-
-            OntClass class1 = resource1.asClass();
-            OntClass class2 = resource2.asClass();
-
+            final OntClass class1 = resource1.asClass();
+            final OntClass class2 = resource2.asClass();
             if (class1.isURIResource() && class2.isURIResource()) {
                 if (class1.getURI().equals(class2.getURI())) {
                     isEqual = true;
@@ -54,31 +52,25 @@ public class EqualAxiomAndOr {
         }
     }
 
-    private boolean equalAxiom(OntClass class1, OntClass class2, final CheckingContext context,
+    private boolean equalAxiom(final OntClass class1, final OntClass class2, final CheckingContext context,
             final CheckerInfo ruleInfo) {
 
         if (class1.isURIResource() && class2.isURIResource()) {
-            if (class1.getURI().equals(class2.getURI())) {
-                // han llegado solo dos clases y es la misma
-                // System.err.println("SON la misma clase enumerada");
-                return true;
-            } else {
-                // System.err.println("son dos clases sencillas distintas");
-                return false;
-            }
+            return class1.getURI().equals(class2.getURI());
         } else if (class1.isUnionClass() && class2.isUnionClass()) {
             // tengo que comparar todos los operandos con todos los operandos
+            final OntClass union1 = class1.asUnionClass();
+            final OntClass union2 = class2.asUnionClass();
 
-            OntClass union1 = class1.asUnionClass();
-            OntClass union2 = class2.asUnionClass();
-
-            ExtendedIterator<OntClass> classesUnion1 = (ExtendedIterator<OntClass>) ((BooleanClassDescription) union1)
+            final ExtendedIterator<OntClass> classesUnion1 = (ExtendedIterator<OntClass>) ((BooleanClassDescription) union1)
                     .listOperands();
-            List<OntClass> classesUnion2 = new ArrayList<OntClass>();
-            classesUnion2 = (List<OntClass>) ((BooleanClassDescription) union2).listOperands().toList();
+            final List<OntClass> classesUnion2 = (List<OntClass>) ((BooleanClassDescription) union2).listOperands()
+                    .toList();
 
-            Set<OntClass> listOperands1 = (Set<OntClass>) ((BooleanClassDescription) union1).listOperands().toSet();
-            Set<OntClass> listOperands2 = (Set<OntClass>) ((BooleanClassDescription) union2).listOperands().toSet();
+            final Set<OntClass> listOperands1 = (Set<OntClass>) ((BooleanClassDescription) union1).listOperands()
+                    .toSet();
+            final Set<OntClass> listOperands2 = (Set<OntClass>) ((BooleanClassDescription) union2).listOperands()
+                    .toSet();
 
             if (listOperands1.size() != listOperands2.size()) {
                 // no tienen el mismo numero de operandos, no pueden ser iguales
@@ -88,12 +80,12 @@ public class EqualAxiomAndOr {
                 boolean allMatch = true;
 
                 while (classesUnion1.hasNext() && allMatch) {
-                    OntClass class1Aux = classesUnion1.next();
+                    final OntClass class1Aux = classesUnion1.next();
                     boolean oneToOne = false;
                     int i = 0;
 
                     while (i < classesUnion2.size() && !oneToOne) {
-                        OntClass class2Aux = classesUnion2.get(i++);
+                        final OntClass class2Aux = classesUnion2.get(i++);
 
                         oneToOne = new EqualAxiomAndOr(class1Aux, class2Aux, context, ruleInfo).getEquals();
                         if (oneToOne) {
@@ -111,10 +103,10 @@ public class EqualAxiomAndOr {
                 return allMatch;
             }
         } else if (class1.isIntersectionClass() && class2.isIntersectionClass()) {
-            OntClass intersection1 = class1.asIntersectionClass();
+            final OntClass intersection1 = class1.asIntersectionClass();
             OntClass intersection2 = class2.asIntersectionClass();
 
-            ExtendedIterator<OntClass> classesIntersection1 = (ExtendedIterator<OntClass>) ((BooleanClassDescription) intersection1)
+            final ExtendedIterator<OntClass> classesIntersection1 = (ExtendedIterator<OntClass>) ((BooleanClassDescription) intersection1)
                     .listOperands();
             List<OntClass> classesIntersection2 = new ArrayList<>();
 
@@ -139,9 +131,9 @@ public class EqualAxiomAndOr {
                 classesIntersection2 = new ArrayList<OntClass>();
             }
 
-            Set<OntClass> listOperands1 = (Set<OntClass>) ((BooleanClassDescription) intersection1).listOperands()
+            final Set<OntClass> listOperands1 = (Set<OntClass>) ((BooleanClassDescription) intersection1).listOperands()
                     .toSet();
-            Set<OntClass> listOperands2 = (Set<OntClass>) ((BooleanClassDescription) intersection1).listOperands()
+            final Set<OntClass> listOperands2 = (Set<OntClass>) ((BooleanClassDescription) intersection1).listOperands()
                     .toSet();
 
             if (listOperands1.size() != listOperands2.size()) {
@@ -152,11 +144,11 @@ public class EqualAxiomAndOr {
                 boolean allMatch = true;
 
                 while (classesIntersection1.hasNext() && allMatch) {
-                    OntClass class1Aux = classesIntersection1.next();
+                    final OntClass class1Aux = classesIntersection1.next();
                     boolean oneToOne = false;
                     int i = 0;
                     while (i < classesIntersection2.size() && !oneToOne) {
-                        OntClass class2Aux = classesIntersection2.get(i++);
+                        final OntClass class2Aux = classesIntersection2.get(i++);
 
                         oneToOne = new EqualAxiomAndOr(class1Aux, class2Aux, context, ruleInfo).getEquals();
                         if (oneToOne) {
@@ -174,39 +166,39 @@ public class EqualAxiomAndOr {
                 return allMatch;
             }
         } else if (class1.isRestriction() && class2.isRestriction()) {
-            Restriction restr1 = class1.asRestriction();
-            Restriction restr2 = class2.asRestriction();
+            final Restriction restr1 = class1.asRestriction();
+            final Restriction restr2 = class2.asRestriction();
 
             boolean equal = false;
 
             if (restr1.isSomeValuesFromRestriction() && restr2.isSomeValuesFromRestriction()) {
-                SomeValuesFromRestriction some1 = restr1.asSomeValuesFromRestriction();
-                SomeValuesFromRestriction some2 = restr2.asSomeValuesFromRestriction();
+                final SomeValuesFromRestriction some1 = restr1.asSomeValuesFromRestriction();
+                final SomeValuesFromRestriction some2 = restr2.asSomeValuesFromRestriction();
 
-                OntProperty onProp1 = some1.getOnProperty();
-                OntProperty onProp2 = some2.getOnProperty();
+                final OntProperty onProp1 = some1.getOnProperty();
+                final OntProperty onProp2 = some2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
                     equal = new EqualAxiomAndOr((OntResource) some1.getSomeValuesFrom(),
                             (OntResource) some2.getSomeValuesFrom(), context, ruleInfo).getEquals();
                 }
             } else if (restr1.isAllValuesFromRestriction() && restr2.isAllValuesFromRestriction()) {
-                AllValuesFromRestriction all1 = restr1.asAllValuesFromRestriction();
-                AllValuesFromRestriction all2 = restr2.asAllValuesFromRestriction();
+                final AllValuesFromRestriction all1 = restr1.asAllValuesFromRestriction();
+                final AllValuesFromRestriction all2 = restr2.asAllValuesFromRestriction();
 
-                OntProperty onProp1 = all1.getOnProperty();
-                OntProperty onProp2 = all2.getOnProperty();
+                final OntProperty onProp1 = all1.getOnProperty();
+                final OntProperty onProp2 = all2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
                     equal = new EqualAxiomAndOr((OntResource) all1.getAllValuesFrom(),
                             (OntResource) all2.getAllValuesFrom(), context, ruleInfo).getEquals();
                 }
             } else if (restr1.isMinCardinalityRestriction() && restr2.isMinCardinalityRestriction()) {
-                MinCardinalityRestriction min1 = restr1.asMinCardinalityRestriction();
-                MinCardinalityRestriction min2 = restr2.asMinCardinalityRestriction();
+                final MinCardinalityRestriction min1 = restr1.asMinCardinalityRestriction();
+                final MinCardinalityRestriction min2 = restr2.asMinCardinalityRestriction();
 
-                OntProperty onProp1 = min1.getOnProperty();
-                OntProperty onProp2 = min2.getOnProperty();
+                final OntProperty onProp1 = min1.getOnProperty();
+                final OntProperty onProp2 = min2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
                     int minCard1 = min1.getMinCardinality();
@@ -217,11 +209,11 @@ public class EqualAxiomAndOr {
                     }
                 }
             } else if (restr1.isMaxCardinalityRestriction() && restr2.isMaxCardinalityRestriction()) {
-                MaxCardinalityRestriction max1 = restr1.asMaxCardinalityRestriction();
-                MaxCardinalityRestriction max2 = restr2.asMaxCardinalityRestriction();
+                final MaxCardinalityRestriction max1 = restr1.asMaxCardinalityRestriction();
+                final MaxCardinalityRestriction max2 = restr2.asMaxCardinalityRestriction();
 
-                OntProperty onProp1 = max1.getOnProperty();
-                OntProperty onProp2 = max2.getOnProperty();
+                final OntProperty onProp1 = max1.getOnProperty();
+                final OntProperty onProp2 = max2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
                     int maxCard1 = max1.getMaxCardinality();
@@ -232,11 +224,11 @@ public class EqualAxiomAndOr {
                     }
                 }
             } else if (restr1.isCardinalityRestriction() && restr2.isCardinalityRestriction()) {
-                CardinalityRestriction card1 = restr1.asCardinalityRestriction();
-                CardinalityRestriction card2 = restr2.asCardinalityRestriction();
+                final CardinalityRestriction card1 = restr1.asCardinalityRestriction();
+                final CardinalityRestriction card2 = restr2.asCardinalityRestriction();
 
-                OntProperty onProp1 = card1.getOnProperty();
-                OntProperty onProp2 = card2.getOnProperty();
+                final OntProperty onProp1 = card1.getOnProperty();
+                final OntProperty onProp2 = card2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
                     int exactCard1 = card1.getCardinality();
@@ -247,23 +239,23 @@ public class EqualAxiomAndOr {
                     }
                 }
             } else if (restr1.isHasValueRestriction() && restr2.isHasValueRestriction()) {
-                HasValueRestriction hasValue1 = restr1.asHasValueRestriction();
-                HasValueRestriction hasValue2 = restr2.asHasValueRestriction();
+                final HasValueRestriction hasValue1 = restr1.asHasValueRestriction();
+                final HasValueRestriction hasValue2 = restr2.asHasValueRestriction();
 
-                OntProperty onProp1 = hasValue1.getOnProperty();
-                OntProperty onProp2 = hasValue2.getOnProperty();
+                final OntProperty onProp1 = hasValue1.getOnProperty();
+                final OntProperty onProp2 = hasValue2.getOnProperty();
 
                 if (onProp1.getURI().equals(onProp2.getURI())) {
-                    RDFNode value1 = hasValue1.getHasValue();
-                    RDFNode value2 = hasValue2.getHasValue();
+                    final RDFNode value1 = hasValue1.getHasValue();
+                    final RDFNode value2 = hasValue2.getHasValue();
 
                     if (value1.isURIResource() && value2.isURIResource()) {
                         if (value1.asResource().getURI().equals(value2.asResource().getURI())) {
                             equal = true;
                         }
                     } else if (value1.isLiteral() && value2.isLiteral()) {
-                        Literal literal1 = value1.asLiteral();
-                        Literal literal2 = value2.asLiteral();
+                        final Literal literal1 = value1.asLiteral();
+                        final Literal literal2 = value2.asLiteral();
 
                         if (literal1.asLiteral().getDatatype() == literal2.getDatatype()
                                 && literal1.getValue().equals(literal2.getValue())) {

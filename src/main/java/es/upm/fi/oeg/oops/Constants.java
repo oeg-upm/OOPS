@@ -6,8 +6,7 @@
 
 package es.upm.fi.oeg.oops;
 
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -80,22 +79,24 @@ public class Constants {
     public static final String[] POSSIBLE_VOCAB_SERIALIZATIONS = { "application/rdf+xml", "text/turtle", "text/n3",
             "application/ld+json" };
 
-    public static String getChangeLogSection(Properties lang) {
+    public static String getChangeLogSection(final Properties lang) {
         return lang.getProperty("changeLog");
     }
 
     public static final String ending = "</body></html>";
 
-    public static String getNameSpaceDeclaration(HashMap<String, String> namesp, Properties lang) {
-        String ns = "<div id=\"namespacedeclarations\">\n" + "<h3 id=\"ns\" class=\"list\">" + lang.getProperty("ns")
-                + lang.getProperty("nsText");
-        Iterator<String> keys = namesp.keySet().iterator();
-        while (keys.hasNext()) {
-            String current = keys.next();
-            ns += "<tr><td><b>" + current + "</b></td><td>&lt;" + namesp.get(current) + "&gt;</td></tr>\n";
+    public static String getNameSpaceDeclaration(final Map<String, String> prefixNamespaces, final Properties lang) {
+        final StringBuffer ns = new StringBuffer();
+        ns.append("<div id=\"namespacedeclarations\">\n").append("<h3 id=\"ns\" class=\"list\">")
+                .append(lang.getProperty("ns")).append(lang.getProperty("nsText"));
+        for (final Map.Entry<String, String> entry : prefixNamespaces.entrySet()) {
+            final String prefix = entry.getKey();
+            final String namespace = entry.getValue();
+            ns.append("<tr><td><b>").append(prefix).append("</b></td><td>&lt;").append(namespace)
+                    .append("&gt;</td></tr>\n");
         }
-        ns += "</tbody>\n" + "</table>\n" + "</div>\n" + "</div>\n";
-        return ns;
+        ns.append("</tbody>\n</table>\n</div>\n</div>\n");
+        return ns.toString();
     }
 
     /**

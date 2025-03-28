@@ -105,12 +105,12 @@ public class P30 implements Checker {
                     // Map<String,String> synonymous_part = dictionary.containSynonymWord(class_tag,
                     // class_face_tag);
 
-                    final boolean synonymous_part = dictionary.areSynonymousNouns(classTag, classFaceTag);
+                    final boolean synonymousPart = dictionary.areSynonymousNouns(classTag, classFaceTag);
 
                     // System.out.println("Size mapa:" + synonymous_part.size() + " Clase:"+class_tag+" Clase
                     // contra:"+class_face_tag);
                     // if(synonymous_part.size()!=0){
-                    if (synonymous_part) {
+                    if (synonymousPart) {
                         final boolean equivalentOneSide = ConstrainsClasses.areEquivalentClasses(cls, classFace);
                         final boolean equivalentOtherSide = ConstrainsClasses.areEquivalentClasses(classFace, cls);
 

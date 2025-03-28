@@ -66,11 +66,11 @@ public class P36 implements Checker {
 
     private static class UriContainsFileExtPitfall implements Pitfall {
 
-        private static String OUT_FMT = "URI with file extension: '%s'";
+        private static final String OUT_FMT = "URI with file extension: '%s'";
 
         private final String uri;
 
-        public UriContainsFileExtPitfall(final String uri) {
+        UriContainsFileExtPitfall(final String uri) {
             this.uri = uri;
         }
 

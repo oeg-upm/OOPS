@@ -9,7 +9,6 @@ package es.upm.fi.oeg.oops.checkers;
 
 import es.upm.fi.oeg.oops.Arity;
 import es.upm.fi.oeg.oops.Checker;
-import es.upm.fi.oeg.oops.CheckerId;
 import es.upm.fi.oeg.oops.CheckerInfo;
 import es.upm.fi.oeg.oops.CheckingContext;
 import es.upm.fi.oeg.oops.ExtIterIterable;

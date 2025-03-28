@@ -7,16 +7,13 @@
 package es.upm.fi.oeg.oops.service.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import es.upm.fi.oeg.oops.Report;
-import es.upm.fi.oeg.oops.RunSettings;
 import es.upm.fi.oeg.oops.Utils;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class RestResponseException extends Exception {
+public final class RestResponseException extends Exception {
 
-    public static enum Type {
+    public enum Type {
         INVALID_PARAMETERS, BAD_INPUT, BAD_EXECUTION,
     }
 

@@ -11,6 +11,7 @@ import es.upm.fi.oeg.oops.Arity;
 import es.upm.fi.oeg.oops.Checker;
 import es.upm.fi.oeg.oops.CheckerInfo;
 import es.upm.fi.oeg.oops.CheckingContext;
+import es.upm.fi.oeg.oops.FollowRedirectRDF;
 import es.upm.fi.oeg.oops.Importance;
 import es.upm.fi.oeg.oops.Pitfall;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
@@ -25,13 +26,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.jena.atlas.lib.StrUtils;
 import org.apache.jena.ontology.OntResource;
 import org.kohsuke.MetaInfServices;
 
@@ -99,13 +98,7 @@ public class P39 implements Checker {
     }
 
     private static String fetchUrl(final String onto) {
-
-        String acceptHeaderValue = StrUtils.strjoin(Arrays.asList(new String[] { "application/rdf+xml",
-                "application/turtle;q=0.9", "application/x-turtle;q=0.9", "text/n3;q=0.8", "text/turtle;q=0.8",
-                "text/rdf+n3;q=0.7", "application/xml;q=0.5", "text/xml;q=0.5", "text/plain;q=0.4", // N-triples
-                "*/*;q=0.2" }), ",");
-
-        return download(onto, acceptHeaderValue);
+        return download(onto, FollowRedirectRDF.ACCEPT_HEADER_VALUE);
     }
 
     public static String download(final URL url, final String acceptHeaderValue) {
@@ -177,7 +170,6 @@ public class P39 implements Checker {
 
         try {
             final URL url = URI.create(urlStr).toURL();
-
             return download(url, acceptHeaderValue);
         } catch (java.net.MalformedURLException exc) {
             System.err.println("1) " + exc.getMessage());
@@ -306,13 +298,13 @@ public class P39 implements Checker {
 
     private static class AmbiguousNamespacePitfall implements Pitfall {
 
-        private static String OUT_FMT = "The ontology has ambiguous namespace type %d) base & about: '%s' & '%s'";
+        private static final String OUT_FMT = "The ontology has ambiguous namespace type %d) base & about: '%s' & '%s'";
 
         private final int type;
         private final String about;
         private final String base;
 
-        public AmbiguousNamespacePitfall(final int type, final String about, final String base) {
+        AmbiguousNamespacePitfall(final int type, final String about, final String base) {
             this.type = type;
             this.about = about;
             this.base = base;

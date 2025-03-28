@@ -123,8 +123,7 @@ public class PitfallCategory {
     private final String title;
     // private final String description;
 
-    private PitfallCategory(final PitfallCategoryId id, PitfallCategory parent,
-            final String title/* , final String description */) {
+    private PitfallCategory(final PitfallCategoryId id, final PitfallCategory parent, final String title) {
         this.id = id;
         this.parent = parent;
         this.title = title;
@@ -132,7 +131,7 @@ public class PitfallCategory {
     }
 
     private static PitfallCategory create(final Map<PitfallCategoryId, PitfallCategory> id2category,
-            final PitfallCategoryId id, PitfallCategoryId parentId, final String title) {
+            final PitfallCategoryId id, final PitfallCategoryId parentId, final String title) {
 
         final PitfallCategory parent;
         if (parentId == null) {

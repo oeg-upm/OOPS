@@ -27,10 +27,7 @@ public class CheckerInfo {
         this.detectedPitfalls = Set.of(detectedPitfall);
     }
 
-    public CheckerInfo(final CheckerId id, /* final Importance importance, */ final String title,
-            /*
-             * final String explanation, final RuleScope scope,
-             */ final Set<PitfallInfo> detectedPitfalls) {
+    public CheckerInfo(final CheckerId id, final String title, final Set<PitfallInfo> detectedPitfalls) {
         this.id = id;
         // this.importance = importance;
         this.title = title;
@@ -52,19 +49,15 @@ public class CheckerInfo {
         this(new CheckerId(detectedPitfalls.iterator().next().getId().getNumeral()), title, detectedPitfalls);
     }
 
-    public CheckerInfo(final CheckerId id, /* final Importance importance, */ final String title,
-            /*
-             * final String explanation, final RuleScope scope,
-             */ final PitfallInfo detectedPitfall) {
-        this(id, /* importance, */ title, /* explanation, scope, */ Set.of(detectedPitfall));
+    public CheckerInfo(final CheckerId id, final String title, final PitfallInfo detectedPitfall) {
+        this(id, title, Set.of(detectedPitfall));
     }
 
     public CheckerInfo(final CheckerId id, final Set<PitfallCategoryId> categoryIds, final Importance importance,
             final String title, final String explanation, final RuleScope scope, final Arity resourceArity,
             final String accomp, final Character flavor) {
-        this(id, /* importance, */ title, /* explanation, scope, */
-                new PitfallInfo(new PitfallId(id.getNumeral(), flavor), categoryIds, importance, title, explanation,
-                        scope, resourceArity, accomp, AccompPer.INSTANCE));
+        this(id, title, new PitfallInfo(new PitfallId(id.getNumeral(), flavor), categoryIds, importance, title,
+                explanation, scope, resourceArity, accomp, AccompPer.INSTANCE));
     }
 
     public CheckerInfo(final CheckerId id, final Set<PitfallCategoryId> categoryIds, final Importance importance,

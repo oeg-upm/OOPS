@@ -406,36 +406,36 @@ public class WebServiceOOPS {
         return reqToText(body, RunSettings::fromXml);
     }
 
-    /**
-     * @param args
-     */
-    public static void registerCall(String metodo) {
+    public static void registerCall(final String requestedFormat) {
 
-        ServiceApi serviceApi = new ServiceApiDriver("c6041650eca6b1a4303bf5758abd633f");
+        final ServiceApi serviceApi = new ServiceApiDriver("c6041650eca6b1a4303bf5758abd633f");
 
-        ParameterMap params = new ParameterMap(); // the parameters of your call
-        String user_key = "2cde1723b1b2f9ff5ddebdccc8de7960";
-        params.add("user_key", user_key); // Add the
-        params.add("service_id", "2555417713092"); // Add the service id of your
-                                                   // application
+        // the parameters of your call
+        final ParameterMap params = new ParameterMap();
+        final String userKey = "2cde1723b1b2f9ff5ddebdccc8de7960";
+        params.add("userKey", userKey);
+        // Add the service id of your application
+        params.add("service_id", "2555417713092");
 
-        ParameterMap usage = new ParameterMap(); // Add a metric to the call
+        // Add a metric to the call
+        final ParameterMap usage = new ParameterMap();
 
-        if (metodo.equals("XML")) {
+        if (requestedFormat.equals("XML")) {
             usage.add("req_xml", "1");
         } else {
             usage.add("req_rdf", "1");
         }
-        usage.add("hits", "0"); // Se le pasa al padre hits un cero porque si no cuenta dos veces
+        // Se le pasa al padre hits un cero porque si no cuenta dos veces
+        usage.add("hits", "0");
 
-        params.add("usage", usage); // metrics belong inside the usage parameter
+        // metrics belong inside the usage parameter
+        params.add("usage", usage);
 
-        AuthorizeResponse response = null;
         // the 'preferred way' of calling the backend: authrep
         try {
-            response = serviceApi.authrep(params);
+            final AuthorizeResponse response = serviceApi.authrep(params);
             System.out.println("AuthRep on User Key Success: " + response.success());
-            if (response.success() == true) {
+            if (response.success()) {
                 // your api access got authorized and the traffic added to
                 // 3scale backend
                 System.out.println("Plan: " + response.getPlan());
@@ -444,9 +444,8 @@ public class WebServiceOOPS {
                 System.out.println("Error: " + response.getErrorCode());
                 System.out.println("Reason: " + response.getReason());
             }
-        } catch (ServerError serverError) {
+        } catch (final ServerError serverError) {
             serverError.printStackTrace();
         }
-
     }
 }

@@ -15,9 +15,9 @@ import org.apache.jena.ontology.OntResource;
 
 public interface Checker {
 
-    static List<String> MODEL_BASES = List.of("http://www.w3.org/2002/07/owl",
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns", "http://www.w3.org/2000/01/rdf-schema",
-            "http://www.w3.org/2006/12/owl2-xml", "http://www.w3.org/2001/XMLSchema");
+    List<String> MODEL_BASES = List.of("http://www.w3.org/2002/07/owl", "http://www.w3.org/1999/02/22-rdf-syntax-ns",
+            "http://www.w3.org/2000/01/rdf-schema", "http://www.w3.org/2006/12/owl2-xml",
+            "http://www.w3.org/2001/XMLSchema");
 
     /**
      * Searches an ontology model for this pitfall.
@@ -27,7 +27,7 @@ public interface Checker {
      *
      * @throws IOException
      */
-    void check(final CheckingContext context) throws Exception;
+    void check(CheckingContext context) throws Exception;
 
     CheckerInfo getInfo();
 

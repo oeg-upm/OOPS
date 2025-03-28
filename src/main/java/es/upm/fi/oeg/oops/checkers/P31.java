@@ -53,7 +53,7 @@ public class P31 implements Checker {
         final OntModel model = context.getModel();
         final SynsetHelp dictionary = context.getDictionary();
 
-        int recursive_level = 3;
+        int recursiveLevel = 3;
 
         final HashMap<String, Set<OntClass>> preResults = new HashMap<>();
         for (final OntClass cls : new ExtIterIterable<>(model.listClasses())) {
@@ -136,48 +136,47 @@ public class P31 implements Checker {
                                     && dictionary.containSynonymsForAllNoStopWords(clsFaceTag, classTag)) {
                                 // no hay pitfall
                             } else {
-                                Map<String, String> meronyms_part = dictionary.containHypernymWord(classTag, clsFaceTag,
-                                        recursive_level);
+                                Map<String, String> meronymsPart = dictionary.containHypernymWord(classTag, clsFaceTag,
+                                        recursiveLevel);
 
                                 // System.out.println("Size mapa:" + meronyms_part.size() + " Clase:"+class_tag+"
                                 // Clase contra:"+class_face_tag);
                                 boolean doBuildListResults = false;
-                                if (meronyms_part.size() != 0) {
+                                if (meronymsPart.size() != 0) {
                                     doBuildListResults = true;
                                 } else {
-                                    meronyms_part = dictionary.containHypernymWord(clsFaceTag, classTag,
-                                            recursive_level);
-                                    if (meronyms_part.size() != 0) {
+                                    meronymsPart = dictionary.containHypernymWord(clsFaceTag, classTag, recursiveLevel);
+                                    if (meronymsPart.size() != 0) {
                                         doBuildListResults = true;
                                     } else {
-                                        meronyms_part = dictionary.containMeronymWord(classTag, clsFaceTag, "PART",
-                                                recursive_level);
-                                        if (meronyms_part.size() != 0) {
+                                        meronymsPart = dictionary.containMeronymWord(classTag, clsFaceTag, "PART",
+                                                recursiveLevel);
+                                        if (meronymsPart.size() != 0) {
                                             doBuildListResults = true;
                                         } else {
-                                            meronyms_part = dictionary.containMeronymWord(classTag, clsFaceTag,
-                                                    "SUBSTANCE", recursive_level);
-                                            if (meronyms_part.size() != 0) {
+                                            meronymsPart = dictionary.containMeronymWord(classTag, clsFaceTag,
+                                                    "SUBSTANCE", recursiveLevel);
+                                            if (meronymsPart.size() != 0) {
                                                 doBuildListResults = true;
                                             } else {
-                                                meronyms_part = dictionary.containMeronymWord(classTag, clsFaceTag,
-                                                        "MEMBER", recursive_level);
-                                                if (meronyms_part.size() != 0) {
+                                                meronymsPart = dictionary.containMeronymWord(classTag, clsFaceTag,
+                                                        "MEMBER", recursiveLevel);
+                                                if (meronymsPart.size() != 0) {
                                                     doBuildListResults = true;
                                                 } else {
-                                                    meronyms_part = dictionary.containMeronymWord(clsFaceTag, classTag,
-                                                            "PART", recursive_level);
-                                                    if (meronyms_part.size() != 0) {
+                                                    meronymsPart = dictionary.containMeronymWord(clsFaceTag, classTag,
+                                                            "PART", recursiveLevel);
+                                                    if (meronymsPart.size() != 0) {
                                                         doBuildListResults = true;
                                                     } else {
-                                                        meronyms_part = dictionary.containMeronymWord(clsFaceTag,
-                                                                classTag, "SUBSTANCE", recursive_level);
-                                                        if (meronyms_part.size() != 0) {
+                                                        meronymsPart = dictionary.containMeronymWord(clsFaceTag,
+                                                                classTag, "SUBSTANCE", recursiveLevel);
+                                                        if (meronymsPart.size() != 0) {
                                                             doBuildListResults = true;
                                                         } else {
-                                                            meronyms_part = dictionary.containMeronymWord(clsFaceTag,
-                                                                    classTag, "MEMBER", recursive_level);
-                                                            if (meronyms_part.size() != 0) {
+                                                            meronymsPart = dictionary.containMeronymWord(clsFaceTag,
+                                                                    classTag, "MEMBER", recursiveLevel);
+                                                            if (meronymsPart.size() != 0) {
                                                                 doBuildListResults = true;
                                                             }
                                                         }
@@ -203,30 +202,30 @@ public class P31 implements Checker {
     /**
      * Puts an entry into the listResults.
      *
-     * @param class_tag
+     * @param classTag
      *     the name of the first ontology class.
-     * @param class_face_tag
+     * @param classFaceTag
      *     the name of the second ontology class.
-     * @param uric
+     * @param class2
      *     the first ontology class' uri.
-     * @param uricf
+     * @param classFace2
      *     the second ontology class' uri.
      */
-    public static void buildListResults(final HashMap<String, Set<OntClass>> preListResults, String class_tag,
-            String class_face_tag, OntClass class_, OntClass class_face) {
+    public static void buildListResults(final Map<String, Set<OntClass>> preListResults, final String classTag,
+            final String classFaceTag, final OntClass class2, final OntClass classFace2) {
 
         // If the tag class has not been considered yet,
         // because the class_face_tag was seen before
-        if (!preListResults.containsKey(class_face_tag)) {
-            Set<OntClass> pair_uris;
-            if (!preListResults.containsKey(class_tag)) {
-                pair_uris = new HashSet<>();
+        if (!preListResults.containsKey(classFaceTag)) {
+            final Set<OntClass> pairUris;
+            if (!preListResults.containsKey(classTag)) {
+                pairUris = new HashSet<>();
             } else {
-                pair_uris = preListResults.get(class_tag);
+                pairUris = preListResults.get(classTag);
             }
-            pair_uris.add(class_);
-            pair_uris.add(class_face);
-            preListResults.put(class_tag, pair_uris);
+            pairUris.add(class2);
+            pairUris.add(classFace2);
+            preListResults.put(classTag, pairUris);
         }
     }
 }

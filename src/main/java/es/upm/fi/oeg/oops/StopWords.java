@@ -39,7 +39,7 @@ public class StopWords {
         return load(defLoc);
     }
 
-    public boolean isStopWord(String word) {
+    public boolean isStopWord(final String word) {
         return this.stopWords.contains(word.toLowerCase());
     }
 }

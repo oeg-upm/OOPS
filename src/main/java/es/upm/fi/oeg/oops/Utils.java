@@ -11,7 +11,10 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import org.apache.commons.text.StringEscapeUtils;
 
-public class Utils {
+public final class Utils {
+
+    private Utils() {
+    }
 
     public static String urlEncode(final String input) {
         try {

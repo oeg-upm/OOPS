@@ -29,11 +29,11 @@ import org.kohsuke.MetaInfServices;
 @MetaInfServices(Checker.class)
 public class P13 implements Checker {
 
-    private static final String title = "Inverse relationships not explicitly declared";
+    private static final String TITLE = "Inverse relationships not explicitly declared";
 
     private static final PitfallInfo PITFALL_INFO_Y = new PitfallInfo(new PitfallId(13, 'Y'),
             Set.of(new PitfallCategoryId('N', 3), new PitfallCategoryId('N', 7), new PitfallCategoryId('S', 5)),
-            Importance.MINOR, title + " - With Suggestion",
+            Importance.MINOR, TITLE + " - With Suggestion",
             "This pitfall appears when any relationship "
                     + "(except for those that are defined as symmetric properties using owl:SymmetricProperty) "
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
@@ -41,7 +41,7 @@ public class P13 implements Checker {
 
     private static final PitfallInfo PITFALL_INFO_N = new PitfallInfo(new PitfallId(13, 'N'),
             Set.of(new PitfallCategoryId('N', 3), new PitfallCategoryId('N', 7), new PitfallCategoryId('S', 5)),
-            Importance.MINOR, title + " - No Suggestion",
+            Importance.MINOR, TITLE + " - No Suggestion",
             "This pitfall appears when any relationship "
                     + "(except for those that are defined as symmetric properties using owl:SymmetricProperty) "
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
@@ -50,7 +50,7 @@ public class P13 implements Checker {
 
     private static final PitfallInfo PITFALL_INFO_S = new PitfallInfo(new PitfallId(13, 'S'),
             Set.of(new PitfallCategoryId('N', 3), new PitfallCategoryId('N', 7), new PitfallCategoryId('S', 5)),
-            Importance.MINOR, title + " - Symmetric or Transitive?",
+            Importance.MINOR, TITLE + " - Symmetric or Transitive?",
             "This pitfall appears when any relationship "
                     + "(except for those that are defined as symmetric properties using owl:SymmetricProperty) "
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
@@ -58,7 +58,7 @@ public class P13 implements Checker {
             // // TODO This message is a stub, make it real:
             "Symmetric or transitive suggestion: '%s'", AccompPer.INSTANCE);
 
-    public static final CheckerInfo INFO = new CheckerInfo(title,
+    public static final CheckerInfo INFO = new CheckerInfo(TITLE,
             Set.of(PITFALL_INFO_Y, PITFALL_INFO_N, PITFALL_INFO_S));
 
     @Override

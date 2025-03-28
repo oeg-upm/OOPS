@@ -105,12 +105,12 @@ public class Linter {
     // this.modelOWL = modelOWL;
     // }
 
-    public static void main(String[] args) {
-        OntModelSpec s = new OntModelSpec(OntModelSpec.OWL_MEM);
-        OntModel outputModel = ModelFactory.createOntologyModel(s);
+    public static void main(final String[] args) {
+        final OntModelSpec spec = new OntModelSpec(OntModelSpec.OWL_MEM);
+        final OntModel outputModel = ModelFactory.createOntologyModel(spec);
 
         outputModel.setNsPrefix("oops", NS_OOPS_DEF);
-        OntClass voafVocab = outputModel.createClass(NS_OOPS_DEF + "pitfall");
+        final OntClass voafVocab = outputModel.createClass(NS_OOPS_DEF + "pitfall");
 
         final Resource res = outputModel.createResource(NS_OOPS_DATA + "1234567890");
         final Resource responseType = outputModel.createResource(NS_OOPS_DEF + "response");
@@ -120,7 +120,7 @@ public class Linter {
         final Property titleProp = outputModel.createProperty(NS_OOPS_DEF + "hasCode");
 
         System.out.println("El modelo es:");
-        OutputStream obj2 = new ByteArrayOutputStream();
+        final OutputStream obj2 = new ByteArrayOutputStream();
         outputModel.write(obj2, "RDF/XML");
         System.out.println("------------------------------------------------------------------------------");
         System.out.println(obj2);

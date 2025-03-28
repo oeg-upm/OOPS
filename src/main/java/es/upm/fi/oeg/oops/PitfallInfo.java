@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class PitfallInfo {
 
-    public static enum AccompPer {
+    public enum AccompPer {
         INSTANCE, TYPE,
     }
 

@@ -63,9 +63,9 @@ public class P33 implements Checker {
         // Take the all axioms that appear on our ontology
         for (final OWLAxiom owlAxiom : onto.getAxioms()) {
             final AxiomType<?> axiomType = owlAxiom.getAxiomType();
-            final String axiom_name = axiomType.getName();
+            final String axiomName = axiomType.getName();
             // Only if the axiom is a SubPropertyChainOf axiom
-            if (axiom_name.equals("SubPropertyChainOf")) {
+            if (axiomName.equals("SubPropertyChainOf")) {
                 /*
                  * The structure of owl axiom if it is SubPropertyChainOf's kind is
                  * SubObjectPropertyOf(ObjectPropertyChain( <http://uri/hasParent> <http://uri/hasParent> )
@@ -100,10 +100,10 @@ public class P33 implements Checker {
                     }
                 }
                 if (propertyUri != null) {
-                    final String property_name = extractPropertyNameFromUri(propertyUri);
-                    final String antecedent_name = extractPropertyNameFromUri(antecedentUri);
+                    final String propertyName = extractPropertyNameFromUri(propertyUri);
+                    final String antecedentName = extractPropertyNameFromUri(antecedentUri);
                     final OntProperty property = context.getModel().getOntProperty(propertyUri);
-                    preResults.put(property_name, new AxiomExtras(property, antecedent_name));
+                    preResults.put(propertyName, new AxiomExtras(property, antecedentName));
                 }
             }
         }
@@ -120,7 +120,7 @@ public class P33 implements Checker {
         final OntProperty property;
         final String antecedentName;
 
-        public AxiomExtras(final OntProperty property, final String antecedentName) {
+        AxiomExtras(final OntProperty property, final String antecedentName) {
             this.property = property;
             this.antecedentName = antecedentName;
         }
@@ -128,13 +128,13 @@ public class P33 implements Checker {
 
     private static class AxiomPitfall implements Pitfall {
 
-        private static String OUT_FMT = "Single chained property-chain; property-name (property-URI), antecedent-name: '%s' ('%s'), '%s'";
+        private final static String OUT_FMT = "Single chained property-chain; property-name (property-URI), antecedent-name: '%s' ('%s'), '%s'";
 
         private final String propertyName;
         private final OntProperty property;
         private final String antecedentName;
 
-        public AxiomPitfall(final String propertyName, final OntProperty property, final String antecedentName) {
+        AxiomPitfall(final String propertyName, final OntProperty property, final String antecedentName) {
             this.propertyName = propertyName;
             this.property = property;
             this.antecedentName = antecedentName;

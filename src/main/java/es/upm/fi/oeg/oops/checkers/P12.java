@@ -125,7 +125,7 @@ public class P12 implements Checker {
         return isEquivalent;
     }
 
-    boolean isSubProperty(OntProperty property1, OntProperty property2, final CheckingContext context) {
+    boolean isSubProperty(final OntProperty property1, final OntProperty property2, final CheckingContext context) {
 
         // get properties
         ExtendedIterator<? extends OntProperty> p = property1.listSubProperties(false);

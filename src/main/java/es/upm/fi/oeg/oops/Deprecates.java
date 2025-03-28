@@ -18,61 +18,55 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 
 public class Deprecates {
 
-    public Deprecates(OntModel model) {
+    public Deprecates(final OntModel model) {
 
         // By annotation property value "deprecated"
-        AnnotationProperty ann = model
+        final AnnotationProperty ann = model
                 .getAnnotationProperty("http://www.w3.org/2003/06/sw-vocab-status/ns#term_status");
-        ExtendedIterator<Resource> r1 = model.listSubjectsWithProperty(ann, "deprecated");
+        final ExtendedIterator<Resource> r1 = model.listSubjectsWithProperty(ann, "deprecated");
 
         // System.out.println (" clase de owl: " + deprecatedClass.getURI());
 
         while (r1.hasNext()) {
-            Resource rcurrent = r1.next();
-
-            boolean isOntResource = rcurrent.canAs(OntResource.class);
-
+            final Resource resCurrent = r1.next();
+            final boolean isOntResource = resCurrent.canAs(OntResource.class);
             if (isOntResource) {
                 // System.out.println("Es OntResource y lo borro");
-
-                OntResource ontResource = rcurrent.as(OntResource.class);
+                final OntResource ontResource = resCurrent.as(OntResource.class);
                 ontResource.remove();
             }
         }
 
         // By annotation property value "Deprecated"
-        ExtendedIterator<Resource> r2 = model.listSubjectsWithProperty(ann, "Deprecated");
+        final ExtendedIterator<Resource> r2 = model.listSubjectsWithProperty(ann, "Deprecated");
 
         // System.out.println (" clase de owl: " + deprecatedClass.getURI());
 
         while (r2.hasNext()) {
-            Resource rcurrent = r2.next();
-
-            boolean isOntResource = rcurrent.canAs(OntResource.class);
-
+            final Resource resCurrent = r2.next();
+            final boolean isOntResource = resCurrent.canAs(OntResource.class);
             if (isOntResource) {
                 // System.out.println("Es OntResource y lo borro");
-
-                OntResource ontResource = rcurrent.as(OntResource.class);
+                final OntResource ontResource = resCurrent.as(OntResource.class);
                 ontResource.remove();
             }
         }
 
         // By annotation owl:deprecated value "true"
-        Property owlDep = model.getProperty("http://www.w3.org/2002/07/owl#deprecated");
-        ExtendedIterator<Resource> r3 = model.listSubjectsWithProperty(owlDep);
+        final Property owlDep = model.getProperty("http://www.w3.org/2002/07/owl#deprecated");
+        final ExtendedIterator<Resource> r3 = model.listSubjectsWithProperty(owlDep);
 
         // System.out.println (" clase de owl: " + deprecatedClass.getURI());
 
         while (r3.hasNext()) {
-            Resource rcurrent = r3.next();
+            final Resource resCurrent = r3.next();
 
             // cojo los valores
-            ExtendedIterator<RDFNode> values = model.listObjectsOfProperty(rcurrent, owlDep);
+            final ExtendedIterator<RDFNode> values = model.listObjectsOfProperty(resCurrent, owlDep);
             boolean allTrue = true;
 
             while (values.hasNext()) {
-                String valueDep = values.next().toString();
+                final String valueDep = values.next().toString();
                 if (valueDep.contains("false") || valueDep.contains("False")) {
                     // si algun valor no es true no lo borro
                     allTrue = false;
@@ -81,11 +75,9 @@ public class Deprecates {
 
             // si todos son true entonces lo borro
             if (allTrue) {
-
-                boolean isOntResource = rcurrent.canAs(OntResource.class);
-
+                final boolean isOntResource = resCurrent.canAs(OntResource.class);
                 if (isOntResource) {
-                    OntResource ontResource = rcurrent.as(OntResource.class);
+                    final OntResource ontResource = resCurrent.as(OntResource.class);
                     ontResource.remove();
                 }
             }

@@ -22,6 +22,7 @@ import es.upm.fi.oeg.oops.RuleScope;
 import es.upm.fi.oeg.oops.SynsetHelp;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -57,23 +58,23 @@ public class P32 implements Checker {
 
         final OntModel model = context.getModel();
 
-        final HashMap<String, Set<OntClass>> preResults = new HashMap<>();
-        for (final OntClass class_ : new ExtIterIterable<>(model.listClasses())) {
-            for (final OntClass class_face : new ExtIterIterable<>(model.listClasses())) {
-                final String clsUri = class_.getURI();
-                final String clsFaceUri = class_face.getURI();
+        final Map<String, Set<OntClass>> preResults = new HashMap<>();
+        for (final OntClass class2 : new ExtIterIterable<>(model.listClasses())) {
+            for (final OntClass classFace2 : new ExtIterIterable<>(model.listClasses())) {
+                final String clsUri = class2.getURI();
+                final String clsFaceUri = classFace2.getURI();
 
                 // If both classes have URI
                 // If both classes are not the same, it means has not the same URI
                 if (clsUri != null && clsFaceUri != null && !clsUri.equals(clsFaceUri)) {
-                    final String class_name = class_.getLocalName(), class_face_name = class_face.getLocalName();
-                    if (this.classesWithSameLabelLanguages(context.getDictionary(), class_, class_face)) {
-                        final boolean equivalent_oneside = ConstrainsClasses.areEquivalentClasses(class_, class_face);
-                        final boolean equivalent_otherside = ConstrainsClasses.areEquivalentClasses(class_face, class_);
-                        if (!equivalent_oneside && !equivalent_otherside) {
+                    final String className = class2.getLocalName(), classFaceName = classFace2.getLocalName();
+                    if (this.classesWithSameLabelLanguages(context.getDictionary(), class2, classFace2)) {
+                        final boolean equivalentOneSide = ConstrainsClasses.areEquivalentClasses(class2, classFace2);
+                        final boolean equivalentOtherSide = ConstrainsClasses.areEquivalentClasses(classFace2, class2);
+                        if (!equivalentOneSide && !equivalentOtherSide) {
                             // If the label class has not considered yet,
                             // because the label_class_face was seen before
-                            P31.buildListResults(preResults, class_name, class_face_name, class_, class_face);
+                            P31.buildListResults(preResults, className, classFaceName, class2, classFace2);
                         }
                     }
                 }
@@ -101,12 +102,12 @@ public class P32 implements Checker {
     private boolean classesWithSameLabel(final SynsetHelp dictionary, final OntClass cls, final OntClass clsFace,
             final String lang) {
         boolean sameLabel = false;
-        for (final RDFNode node_class : new ExtIterIterable<>(cls.listLabels(lang))) {
-            for (final RDFNode node_class_face : new ExtIterIterable<>(clsFace.listLabels(lang))) {
-                final String label_class = node_class.toString();
-                final String label_class_face = node_class_face.toString();
-                if (label_class != null && label_class_face != null
-                        && dictionary.areEqualsWords(label_class, label_class_face)) {
+        for (final RDFNode nodeClass : new ExtIterIterable<>(cls.listLabels(lang))) {
+            for (final RDFNode nodeClassFace : new ExtIterIterable<>(clsFace.listLabels(lang))) {
+                final String labelClass = nodeClass.toString();
+                final String labelClassFace = nodeClassFace.toString();
+                if (labelClass != null && labelClassFace != null
+                        && dictionary.areEqualsWords(labelClass, labelClassFace)) {
                     sameLabel = true;
                 }
             }

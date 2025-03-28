@@ -28,7 +28,10 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
-public class ModelLoader {
+public final class ModelLoader {
+
+    private ModelLoader() {
+    }
 
     public static Model loadJenaBasic(final SrcSpec srcSpec) {
         // System.out.println("Load model");
@@ -42,16 +45,14 @@ public class ModelLoader {
         final Model model = spec.createBaseModel();
 
         switch (srcSpec.getSrcType()) {
-            case URI : {
+            case URI :
                 final String uri = srcSpec.getIri();
                 final SerializationFormats cType = srcSpec.getContentType();
                 final String jenaLang = cType == null ? null : cType.toJena();
                 model.read(uri, jenaLang);
                 break;
-            }
-            case RDF_CODE : {
+            case RDF_CODE :
                 throw new UnsupportedOperationException("Not Implemented; requires IRI");
-            }
             default :
                 throw new UnsupportedOperationException("Not Implemented");
         }

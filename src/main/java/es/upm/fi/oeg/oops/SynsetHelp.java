@@ -88,7 +88,7 @@ public class SynsetHelp {
                 final List<Word> words = nounSynset.getWords();
                 for (final Word word : words) {
                     // System.out.println(wordsForms[j]);
-                    String wordLower = word.getLemma().toLowerCase();
+                    final String wordLower = word.getLemma().toLowerCase();
                     // If the word is not stringA1 which you have chosen to compare, then you find out if
                     // this word is a synonymous of stringA2
                     if (!wordLower.equals(stringA1Lower) && wordLower.equals(stringA2Lower)) {
@@ -140,13 +140,13 @@ public class SynsetHelp {
      * </ol>
      * </p>
      */
-    public List<String> splitWordsAcronym(String complexWord) {
+    public List<String> splitWordsAcronym(final String complexWord) {
 
-        List<String> separateAcronym = new ArrayList<>();
+        final List<String> separateAcronym = new ArrayList<>();
         String newWord = new String();
         boolean exit;
 
-        int length = complexWord.length();
+        final int length = complexWord.length();
         int i = 0;
         while (i < length) {
             final Character firstChar = complexWord.charAt(i);
@@ -185,8 +185,9 @@ public class SynsetHelp {
                                 while (i < length && Character.isLowerCase(anotherNextChar)) {
                                     newWord = newWord.concat(anotherNextChar.toString());
                                     i++;
-                                    if (i < length)
+                                    if (i < length) {
                                         anotherNextChar = complexWord.charAt(i);
+                                    }
                                 }
                                 // We have a complete word, then we have to store it as a word
                                 separateAcronym.add(newWord);
@@ -241,7 +242,7 @@ public class SynsetHelp {
      *
      * @pre The <tt>char</tt> value at the specified index of this string has to be a lower letter.
      */
-    private String getOneLowerWord(String complexWord, int position) {
+    private String getOneLowerWord(final String complexWord, final int position) {
         final int length = complexWord.length();
 
         boolean endWord = false;
@@ -288,8 +289,8 @@ public class SynsetHelp {
      *
      * @throws IOException
      */
-    public Map<String, String> containSynonymWord(String complex1, String complex2) throws JWNLException {
-        Map<String, String> hm = new HashMap<>();
+    public Map<String, String> containSynonymWord(final String complex1, final String complex2) throws JWNLException {
+        final Map<String, String> hm = new HashMap<>();
         List<String> words1 = this.splitWordsAcronym(complex1);
         words1 = this.buildCompoundWords(words1);
         List<String> words2 = this.splitWordsAcronym(complex2);
@@ -297,10 +298,10 @@ public class SynsetHelp {
         Iterator<String> itWords1 = words1.iterator();
 
         while (itWords1.hasNext()) {
-            String word1 = itWords1.next();
-            Iterator<String> itWords2 = words2.iterator();
+            final String word1 = itWords1.next();
+            final Iterator<String> itWords2 = words2.iterator();
             while (itWords2.hasNext()) {
-                String word2 = itWords2.next();
+                final String word2 = itWords2.next();
                 if (this.areSynonymousNouns(word1, word2)) {
                     hm.put(word1, word2);
                 }
@@ -313,8 +314,8 @@ public class SynsetHelp {
      * if all the non stop words in complex1 have a synonym in complex2 a lo mejor hay que añadir el caso de que sean la
      * misma palabra, no solo sinónimos.
      */
-    public boolean containSynonymsForAllNoStopWords(String complex1, String complex2) throws JWNLException {
-        Map<String, String> hm = new HashMap<String, String>();
+    public boolean containSynonymsForAllNoStopWords(final String complex1, final String complex2) throws JWNLException {
+        final Map<String, String> hm = new HashMap<String, String>();
         List<String> words1 = this.splitWordsAcronym(complex1);
         words1 = this.buildCompoundWords(words1);
         List<String> words2 = this.splitWordsAcronym(complex2);
@@ -322,21 +323,21 @@ public class SynsetHelp {
 
         // cuanto las no stop words
         int noStopWords = 0;
-        List<String> listWords1 = this.splitWordsAcronym(complex1);
-        Iterator<String> itListWords1 = listWords1.iterator();
+        final List<String> listWords1 = this.splitWordsAcronym(complex1);
+        final Iterator<String> itListWords1 = listWords1.iterator();
         while (itListWords1.hasNext()) {
-            String word = itListWords1.next();
+            final String word = itListWords1.next();
             if (!stop.isStopWord(word)) {
                 noStopWords++;
             }
         }
 
-        Iterator<String> itWords1 = words1.iterator();
+        final Iterator<String> itWords1 = words1.iterator();
         while (itWords1.hasNext()) {
-            String word1 = itWords1.next();
-            Iterator<String> itWords2 = words2.iterator();
+            final String word1 = itWords1.next();
+            final Iterator<String> itWords2 = words2.iterator();
             while (itWords2.hasNext()) {
-                String word2 = itWords2.next();
+                final String word2 = itWords2.next();
                 if (this.areSynonymousNouns(word1, word2) || word1.toLowerCase().contentEquals(word2.toLowerCase())) {
                     hm.put(word1, word2);
                 }
@@ -357,7 +358,7 @@ public class SynsetHelp {
      *
      * @return <tt>true</tt> if and only if <tt>word</tt> is an acronym, <tt>false</tt> in other fact.
      */
-    public boolean isAcronym(String word) {
+    public boolean isAcronym(final String word) {
         boolean isAcronym = true;
         int i = 0;
         while (i < word.length() && isAcronym) {
@@ -400,7 +401,7 @@ public class SynsetHelp {
      *
      * @throws IOException
      */
-    public boolean areHypernyms(String word1, String word2, int recursiveLevel) throws JWNLException {
+    public boolean areHypernyms(final String word1, final String word2, final int recursiveLevel) throws JWNLException {
 
         // System.out.println("Level:"+recursiveLevel);
         if (recursiveLevel > 0) {
@@ -511,8 +512,8 @@ public class SynsetHelp {
      *
      * @throws IOException
      */
-    public boolean areMeronyms(String word1, String word2, String typeMeronym, int recursiveLevel)
-            throws JWNLException {
+    public boolean areMeronyms(final String word1, final String word2, final String typeMeronym,
+            final int recursiveLevel) throws JWNLException {
 
         if (recursiveLevel > 0) {
             final IndexWord indexWord1 = dictionary.getIndexWord(POS.NOUN, word1);
@@ -629,8 +630,8 @@ public class SynsetHelp {
      *
      * @throws IOException
      */
-    public Map<String, String> containMeronymWord(String complex1, String complex2, String typeMeronym,
-            int recursiveLevel) throws JWNLException {
+    public Map<String, String> containMeronymWord(final String complex1, final String complex2,
+            final String typeMeronym, final int recursiveLevel) throws JWNLException {
         final Map<String, String> result = new HashMap<String, String>();
         List<String> words1 = this.splitWordsAcronym(complex1);
         words1 = this.buildCompoundWords(words1);
@@ -692,20 +693,20 @@ public class SynsetHelp {
      *
      * @throws IOException
      */
-    public Map<String, String> containHypernymWord(String complex1, String complex2, int recursiveLevel)
-            throws JWNLException {
-        Map<String, String> hm = new HashMap<>();
+    public Map<String, String> containHypernymWord(final String complex1, final String complex2,
+            final int recursiveLevel) throws JWNLException {
+        final Map<String, String> hm = new HashMap<>();
         List<String> words1 = this.splitWordsAcronym(complex1);
         words1 = this.buildCompoundWords(words1);
         List<String> words2 = this.splitWordsAcronym(complex2);
         words2 = this.buildCompoundWords(words2);
-        Iterator<String> itWords1 = words1.iterator();
+        final Iterator<String> itWords1 = words1.iterator();
 
         while (itWords1.hasNext()) {
-            String word1 = itWords1.next();
-            Iterator<String> itWords2 = words2.iterator();
+            final String word1 = itWords1.next();
+            final Iterator<String> itWords2 = words2.iterator();
             while (itWords2.hasNext()) {
-                String word2 = itWords2.next();
+                final String word2 = itWords2.next();
                 if (this.areHypernyms(word1, word2, recursiveLevel)) {
                     hm.put(word1, word2);
                 }
@@ -770,9 +771,9 @@ public class SynsetHelp {
      * </ol>
      * </p>
      */
-    public List<String> buildCompoundWords(List<String> words) {
-        List<String> compoundWords = new ArrayList<>();
-        Iterator<String> firstIt = words.iterator();
+    public List<String> buildCompoundWords(final List<String> words) {
+        final List<String> compoundWords = new ArrayList<>();
+        final Iterator<String> firstIt = words.iterator();
 
         // First at all put all the simple words into compoundWords list
         while (firstIt.hasNext()) {
@@ -782,11 +783,12 @@ public class SynsetHelp {
         // Then build the all possible combinations with all simple words but only catch them orderly
         for (int i = 0; i < words.size(); i++) {
             for (int j = i + 1; j < words.size(); j++) {
-                String newWord = null;
-                if (j == i + 1)
+                final String newWord;
+                if (j == i + 1) {
                     newWord = words.get(i) + " " + words.get(j);
-                else
+                } else {
                     newWord = compoundWords.get(compoundWords.size() - 1) + " " + words.get(j);
+                }
                 compoundWords.add(newWord);
 
             }

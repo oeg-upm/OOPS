@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 
 public class Tokenizer {
 
+    private Tokenizer() {
+    }
+
     public static List<String> tokenize(final String input) {
 
         final List<String> tokens = new ArrayList<>();

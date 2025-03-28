@@ -37,7 +37,7 @@ public class Cli implements Callable<Integer> {
     // private String algorithm = "SHA-256";
 
     @Override
-    public Integer call() throws Exception { // your business logic goes here...
+    public Integer call() throws Exception {
 
         final SrcSpec srcSpec;
         SrcType srcType = SrcType.RDF_CODE;
@@ -65,7 +65,7 @@ public class Cli implements Callable<Integer> {
 
     // this example implements Callable, so parsing, error handling and handling user
     // requests for usage help or version help can be done with one line of code.
-    public static void main(String... args) {
+    public static void main(final String... args) {
         final CommandLine cli = new CommandLine(new Cli());
         int exitCode;
         try {

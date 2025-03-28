@@ -13,12 +13,14 @@ import java.net.URL;
 import java.util.List;
 import org.apache.jena.atlas.lib.StrUtils;
 
-public class FollowRedirectRDF {
+public final class FollowRedirectRDF {
 
-    private static final String ACCEPT_HEADER_VALUE = StrUtils.strjoin(List.of("application/rdf+xml",
+    public static final String ACCEPT_HEADER_VALUE = StrUtils.strjoin(List.of("application/rdf+xml",
             "application/turtle;q=0.9", "application/x-turtle;q=0.9", "text/n3;q=0.8", "text/turtle;q=0.8",
-            "text/rdf+n3;q=0.7", "application/xml;q=0.5", "text/xml;q=0.5", "text/plain;q=0.4", // N-triples
-            "*/*;q=0.2"), ",");
+            "text/rdf+n3;q=0.7", "application/xml;q=0.5", "text/xml;q=0.5", "text/plain;q=0.4", "*/*;q=0.2"), ",");
+
+    private FollowRedirectRDF() {
+    }
 
     public static class FollowRes {
 

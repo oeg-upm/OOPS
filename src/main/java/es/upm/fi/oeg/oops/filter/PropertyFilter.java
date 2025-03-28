@@ -18,7 +18,7 @@ import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 public interface PropertyFilter<PT extends OntProperty> {
-    boolean accept(final PT prop);
+    boolean accept(PT prop);
 
     /**
      * Provides the concrete property type.

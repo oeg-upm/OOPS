@@ -20,21 +20,22 @@ public class EqualGroupOfAxiomsAndOr {
 
     private boolean isEqualGroup = false;
 
-    public EqualGroupOfAxiomsAndOr(ExtendedIterator<? extends OntResource> resources1,
-            ExtendedIterator<? extends OntResource> resources2, final CheckingContext context,
+    public EqualGroupOfAxiomsAndOr(final ExtendedIterator<? extends OntResource> resources1,
+            final ExtendedIterator<? extends OntResource> resources2, final CheckingContext context,
             final CheckerInfo ruleInfo) {
         this(resources1.toList(), resources2.toList(), context, ruleInfo);
     }
 
-    public EqualGroupOfAxiomsAndOr(List<? extends OntResource> listResources1,
-            List<? extends OntResource> listResources2, final CheckingContext context, final CheckerInfo ruleInfo) {
+    public EqualGroupOfAxiomsAndOr(final List<? extends OntResource> listResources1,
+            final List<? extends OntResource> listResources2, final CheckingContext context,
+            final CheckerInfo ruleInfo) {
 
         if (listResources1.size() != listResources2.size()) {
             // no tienen el mismo numero de operandos, no pueden ser iguales
             // podr�an serlo en terminos l�gicos pero no lo voy a tratar en este momento
             isEqualGroup = false;
         } else {
-            Iterator<OntResource> resources11 = (Iterator<OntResource>) listResources1.iterator();
+            final Iterator<OntResource> resources11 = (Iterator<OntResource>) listResources1.iterator();
             boolean allMatch = true;
 
             while (resources11.hasNext() && allMatch) {
