@@ -247,7 +247,6 @@ SPDX-License-Identifier: Apache-2.0
           <aggregate>true</aggregate>
           <linkXRef>true</linkXRef>
           <inputEncoding>${project.build.sourceEncoding}</inputEncoding>
-          <targetJdk>${java.old.version}</targetJdk>
           <rulesets>
             <ruleset>${root.basedir}/src/main/resources/pmd.xml</ruleset>
           </rulesets>
