@@ -77,10 +77,9 @@ public class P41 implements Checker {
                      * "UTF-8"); writer.write(onto); writer.close(); out.close();
                      */
 
-                    final OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                    wr.write(srcSpec.getContent());
-                    wr.flush();
-                    wr.close();
+                    try (final OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream())) {
+                        wr.write(srcSpec.getContent());
+                    }
 
                     if (conn.getResponseCode() != 200) {
                         throw new RuntimeException("HTTP error code : " + conn.getResponseCode());
@@ -119,10 +118,11 @@ public class P41 implements Checker {
                     if (conn.getResponseCode() != 200) {
                         throw new RuntimeException("HTTP error code : " + conn.getResponseCode());
                     }
-                    final BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String linea;
-                    while ((linea = br.readLine()) != null) {
-                        output.append(linea);
+                    try (final BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            output.append(line);
+                        }
                     }
 
                     System.out.println("license mode 2: " + output);

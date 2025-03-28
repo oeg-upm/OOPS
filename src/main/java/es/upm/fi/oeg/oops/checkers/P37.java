@@ -122,8 +122,8 @@ public class P37 implements Checker {
             final URL url = URI.create(urlToFetch).toURL();
             final String content = P39.download(url, null);
             // look for the HTML tag
-            if (content != null && content.contains("<!DOCTYPE html") || content.contains("<html>")
-                    || content.contains("<head>")) {
+            if (content != null && (content.contains("<!DOCTYPE html") || content.contains("<html>")
+                    || content.contains("<head>"))) {
                 // System.out.println("HTML in: " + url.toString());
                 return true;
             } else {

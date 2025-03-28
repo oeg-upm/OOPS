@@ -42,7 +42,7 @@ public class Tokenizer {
         } else {
             boolean firstWord = true;
             char charActual;
-            String word = new String();
+            String word = "";
             while (stringIn.length() > 0) {
                 charActual = stringIn.charAt(0);
                 stringIn = stringIn.substring(1);
@@ -50,24 +50,16 @@ public class Tokenizer {
                 if (Character.toString(charActual).equals(delimiter)) {
                     if (word.length() > 0) {
                         tokens.add(word);
-
-                        // numWords++;
-                        word = new String();
+                        word = "";
                     }
                 } else if (Character.isUpperCase(charActual)) {
                     if (firstWord) {
                         word = word.concat(Character.toString(charActual));
                     } else if (word.length() > 0) {
                         tokens.add(word);
-
-                        // numWords++;
-                        word = new String();
-                        word = word.concat(Character.toString(charActual));
+                        word = Character.toString(charActual);
                     }
                 } else if (Character.isLowerCase(charActual)) {
-                    word = word.concat(Character.toString(charActual));
-                } else {
-                    // System.out.println("Es un caracter raro: " + charActual);
                     word = word.concat(Character.toString(charActual));
                 }
                 firstWord = false;

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.ontology.OntResource;
@@ -42,12 +43,12 @@ public class Report {
             final Map<WarningType, List<Warning>> warnings, final String xmlOutput, final Model outputModel) {
         this.numClasses = numClasses;
         this.numProperties = numProperties;
-        this.pitfalls = pitfalls;
+        this.pitfalls = Collections.unmodifiableMap(pitfalls);
         this.numPitfalls = pitfalls.entrySet().stream().map(entry -> entry.getValue().size()).reduce(0,
                 (a, b) -> a + b);
-        this.exceptions = exceptions;
+        this.exceptions = Collections.unmodifiableList(exceptions);
         this.executionTimeMillis = executionTime.toMillis();
-        this.warnings = warnings;
+        this.warnings = Collections.unmodifiableMap(warnings);
         // this.symmetricOrTransitiveSuggestion = symmetricOrTransitiveSuggestion;
         // this.importsFailing = importsFailing;
         this.xmlOutput = xmlOutput;

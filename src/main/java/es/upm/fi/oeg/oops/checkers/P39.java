@@ -19,15 +19,16 @@ import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
 import es.upm.fi.oeg.oops.RuleScope;
 import es.upm.fi.oeg.oops.SrcSpec;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,7 +105,7 @@ public class P39 implements Checker {
     public static String download(final URL url, final String acceptHeaderValue) {
 
         try {
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             HttpURLConnection.setFollowRedirects(true);
             if (acceptHeaderValue != null) {
                 conn.setRequestProperty("Accept", acceptHeaderValue);
@@ -112,53 +113,21 @@ public class P39 implements Checker {
             conn.setInstanceFollowRedirects(true);
             conn.connect();
 
-            InputStream stream = conn.getInputStream();
-
-            // HttpURLConnection conn2 = (HttpURLConnection) url.openConnection();
-            //// HttpURLConnection.setFollowRedirects(true);
-            // conn2.setInstanceFollowRedirects(true);
-            // conn2.setRequestProperty("Accept", acceptHeaderValue);
-            // conn2.connect();
-
-            // InputStream stream2 = conn2.getInputStream();
-
-            if (stream != null) {
-                // final String prefix = urlToFetch.substring(urlToFetch.lastIndexOf("/")+1)
-                // FileOutputStream fout = new FileOutputStream("htmlFiles/" + prefix + ".txt");
-
-                InputStreamReader is = new InputStreamReader(stream);
-                StringBuilder sb = new StringBuilder();
-                BufferedReader br = new BufferedReader(is);
-                String read = br.readLine();
-
-                while (read != null) {
-                    // System.out.println(read);
-                    sb.append(read);
-                    read = br.readLine();
+            try (final InputStream rawStream = conn.getInputStream()) {
+                if (rawStream != null) {
+                    try (final Scanner contentAggregator = new Scanner(rawStream, StandardCharsets.UTF_8.toString())
+                            .useDelimiter("\\A")) {
+                        return contentAggregator.hasNext() ? contentAggregator.next() : "";
+                    }
                 }
-
-                final String content = sb.toString();
-
-                // byte[] buffer = new byte[4096];
-                // int bytesRead;
-                // while ((bytesRead = stream2.read(buffer)) != -1) {
-                //
-                // fout.write(buffer, 0, bytesRead);
-                // }
-
-                stream.close();
-                // stream2.close();
-                // fout.close();
-
-                return content;
             }
-        } catch (java.net.MalformedURLException exc) {
+        } catch (final MalformedURLException exc) {
             System.err.println("1) " + exc.getMessage());
             System.out.println("1) en OntologyDeclaration" + exc.getMessage());
-        } catch (IOException exc) {
+        } catch (final IOException exc) {
             System.err.println("2) " + exc.getMessage());
             System.out.println("2) en OntologyDeclaration " + exc.getMessage());
-        } catch (Exception exc) {
+        } catch (final Exception exc) {
             exc.printStackTrace();
             System.out.println("Failed to download");
         }
@@ -171,7 +140,7 @@ public class P39 implements Checker {
         try {
             final URL url = URI.create(urlStr).toURL();
             return download(url, acceptHeaderValue);
-        } catch (java.net.MalformedURLException exc) {
+        } catch (final MalformedURLException exc) {
             System.err.println("1) " + exc.getMessage());
             System.out.println("1) en OntologyDeclaration" + exc.getMessage());
         }

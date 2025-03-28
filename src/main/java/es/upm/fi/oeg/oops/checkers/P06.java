@@ -111,9 +111,6 @@ public class P06 implements Checker {
                     withPitfall.add(ontoClass);
                     break;
                 }
-                if (repeatedClass) {
-                    break;
-                }
             }
         }
 

@@ -6,6 +6,7 @@
 
 package es.upm.fi.oeg.oops;
 
+import java.util.Collections;
 import java.util.Set;
 import org.apache.jena.ontology.OntResource;
 
@@ -39,7 +40,7 @@ public class WarningImpl implements Warning {
 
     @Override
     public Set<OntResource> getScope() {
-        return scope;
+        return Collections.unmodifiableSet(scope);
     }
 
     @Override

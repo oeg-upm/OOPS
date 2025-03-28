@@ -143,7 +143,7 @@ public class SynsetHelp {
     public List<String> splitWordsAcronym(final String complexWord) {
 
         final List<String> separateAcronym = new ArrayList<>();
-        String newWord = new String();
+        String newWord = "";
         boolean exit;
 
         final int length = complexWord.length();

@@ -25,7 +25,7 @@ public class StopWords {
     public List<String> load(final InputStream input) throws IOException {
 
         final List<String> stopWordsTmp = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
+        try (final BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 stopWordsTmp.add(line);
@@ -35,8 +35,9 @@ public class StopWords {
     }
 
     public List<String> loadDefault() throws IOException {
-        final InputStream defLoc = StopWords.class.getResourceAsStream("/stop-words.csv");
-        return load(defLoc);
+        try (final InputStream defLoc = StopWords.class.getResourceAsStream("/stop-words.csv")) {
+            return load(defLoc);
+        }
     }
 
     public boolean isStopWord(final String word) {

@@ -77,8 +77,8 @@ public class P22 implements Checker {
         public boolean hasNoHyphen = false;
         public OntResource elementWithL = null;
         public OntResource elementWithU = null;
-        public String nsElementWithL = new String();
-        public String nsElementWithU = new String();
+        public String nsElementWithL = null;
+        public String nsElementWithU = null;
     }
 
     private <PT extends OntResource> void analyze(final CheckingContext context, final TypeContext typeContext,
