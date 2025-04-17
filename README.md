@@ -66,6 +66,19 @@ and choose Deploy.  In "Applications" you can click on
 [/oops-2.0.0-SNAPSHOT](http://localhost:8080/oops-2.0.0-SNAPSHOT/) to see the
 application running.
 
+The WAR file may be too large which leads to a failing upload.
+
+You can adjust the maximum value (default 50 MiB) in `/var/lib/tomcat10/webapps/manager/WEB-INF/web.xml`:
+
+```xml
+    <multipart-config>
+      <!-- 50 MiB max -->
+      <max-file-size>209715200</max-file-size>
+      <max-request-size>209715200</max-request-size>
+      <file-size-threshold>0</file-size-threshold>
+    </multipart-config>
+```
+
 ## Testing the CLI
 
 How to setup OOPS on your local machine:
