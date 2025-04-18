@@ -18,19 +18,18 @@ public class CamelCase implements UnaryOperator<String> {
 
     public static String toCamelCase(final String input) {
 
+        if (!input.contains(" ")) {
+            return input;
+        }
+
         final StringBuffer output = new StringBuffer();
+        final String[] tokens = input.split(" ");
+        for (int i = 0; i < tokens.length; i++) {
+            final String intermediate = tokens[i];
+            final char first = intermediate.charAt(0);
+            final char firstUpper = Character.toUpperCase(first);
 
-        if (input.contains(" ")) {
-            String[] tokens = input.split(" ");
-            for (int i = 0; i < tokens.length; i++) {
-                final String intermediate = tokens[i];
-                final char first = intermediate.charAt(0);
-                final char firstUpper = Character.toUpperCase(first);
-
-                output.append(firstUpper).append(intermediate.substring(1));
-            }
-        } else {
-            output.append(input);
+            output.append(firstUpper).append(intermediate.substring(1));
         }
 
         return output.toString();
