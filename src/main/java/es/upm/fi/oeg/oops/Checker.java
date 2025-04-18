@@ -31,7 +31,7 @@ public interface Checker {
 
     CheckerInfo getInfo();
 
-    static boolean fromModels(OntResource resource) {
+    static boolean fromModels(final OntResource resource) {
         if (!resource.isURIResource()) {
             return false;
         }

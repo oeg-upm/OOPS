@@ -40,7 +40,7 @@ public class Cli implements Callable<Integer> {
     public Integer call() throws Exception {
 
         final SrcSpec srcSpec;
-        SrcType srcType = SrcType.RDF_CODE;
+        final SrcType srcType;
         if (ontology != null) {
             srcType = SrcType.RDF_CODE;
             final String ontologyContent = Files.readString(ontology, StandardCharsets.UTF_8);
@@ -52,7 +52,7 @@ public class Cli implements Callable<Integer> {
             throw new IllegalStateException();
         }
 
-        List<Checker> checkers = CheckersCatalogue.getAllCheckers();
+        final List<Checker> checkers = CheckersCatalogue.getAllCheckers();
         final SrcModel srcModel = ModelLoader.load(srcSpec);
         final Linter executor = new Linter();
         System.out.println("Checkers supplied: " + checkers.size());
