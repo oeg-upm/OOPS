@@ -69,7 +69,7 @@ public class P28 implements Checker {
                 if ((!setDomain1.isEmpty()) && (!setRange1.isEmpty())) {
                     final boolean equalDomRan = new EqualGroupOfAxiomsAndOr(property1.listDomain(),
                             property1.listRange(), context, INFO).getEqualGroup();
-                    final boolean sameOrEq = Checker.sameOrEquivalent(setDomain1, setRange1, model);
+                    final boolean sameOrEq = Checker.sameOrEquivalent(setDomain1, setRange1);
 
                     if (!sameOrEq && !equalDomRan && !propertiesWithPitfall.contains((ObjectProperty) property1)
                             && !Checker.fromModels(property1)) {

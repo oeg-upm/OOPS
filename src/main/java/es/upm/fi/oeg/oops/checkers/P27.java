@@ -66,8 +66,6 @@ public class P27 implements Checker {
             final Supplier<ExtendedIterator<PT>> allResGen, final Function<PT, PropertyFilter<PT>> equivalentsListerFac,
             final boolean compareRange) {
 
-        final OntModel model = context.getModel();
-
         final List<PT> resWithPitfall = new ArrayList<>();
         final List<String> resWithPitfall2 = new ArrayList<>();
 
@@ -90,7 +88,7 @@ public class P27 implements Checker {
                 if ((!setDomain1.isEmpty()) && (!setDomain2.isEmpty())) {
                     final boolean equalDomRan = new EqualGroupOfAxiomsAndOr(property1.listDomain(),
                             property2.listDomain(), context, INFO).getEqualGroup();
-                    final boolean sameOrEq = Checker.sameOrEquivalent(setDomain1, setDomain2, model);
+                    final boolean sameOrEq = Checker.sameOrEquivalent(setDomain1, setDomain2);
 
                     if (!sameOrEq && !equalDomRan && !resWithPitfall2.contains(prop1prop2)
                             && !Checker.fromModels(property1) && !Checker.fromModels(property2)) {
@@ -112,9 +110,9 @@ public class P27 implements Checker {
                             property2.listRange(), context, INFO).getEqualGroup();
                     final boolean sameOrEq;
                     if (compareRange) {
-                        sameOrEq = Checker.sameOrEquivalent(setRange1, setRange2, model);
+                        sameOrEq = Checker.sameOrEquivalent(setRange1, setRange2);
                     } else {
-                        sameOrEq = Checker.sameOrEquivalent(setDomain1, setDomain2, model);
+                        sameOrEq = Checker.sameOrEquivalent(setDomain1, setDomain2);
                     }
 
                     if (!sameOrEq && !equalDomRan && !resWithPitfall2.contains(prop1prop2)

@@ -44,12 +44,12 @@ public interface Checker {
         return MODEL_BASES.contains(parts[0]);
     }
 
-    static boolean sameOrEquivalent(final Set<? extends OntResource> set1, final Set<? extends OntResource> set2,
-            final OntModel model) {
+    static boolean sameOrEquivalent(final Set<? extends OntResource> resources1,
+            final Set<? extends OntResource> resources2) {
 
-        if (set1.size() == 1 && set2.size() == 1) {
-            final OntResource resource1 = set1.iterator().next();
-            final OntResource resource2 = set2.iterator().next();
+        if (resources1.size() == 1 && resources2.size() == 1) {
+            final OntResource resource1 = resources1.iterator().next();
+            final OntResource resource2 = resources2.iterator().next();
 
             if (resource1.isClass() && resource2.isClass()) {
                 final OntClass class1 = resource1.asClass();
