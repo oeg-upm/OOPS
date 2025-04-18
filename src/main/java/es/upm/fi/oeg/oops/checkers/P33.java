@@ -58,7 +58,7 @@ public class P33 implements Checker {
 
         final OWLOntology onto = context.getModelOwl();
 
-        final HashMap<String, AxiomExtras> preResults = new HashMap<>();
+        final Map<String, AxiomExtras> preResults = new HashMap<>();
 
         // Take the all axioms that appear on our ontology
         for (final OWLAxiom owlAxiom : onto.getAxioms()) {
