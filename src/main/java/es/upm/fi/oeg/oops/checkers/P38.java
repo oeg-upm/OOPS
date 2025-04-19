@@ -12,6 +12,7 @@ import es.upm.fi.oeg.oops.Checker;
 import es.upm.fi.oeg.oops.CheckerInfo;
 import es.upm.fi.oeg.oops.CheckingContext;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.PitfallCategory;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -23,6 +24,8 @@ import java.util.Collections;
 import java.util.Set;
 import org.apache.jena.ontology.OntModel;
 import org.kohsuke.MetaInfServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // TODO FIXME important! We need to differentiate between when I get the code or the URI
 @MetaInfServices(Checker.class)
@@ -39,6 +42,8 @@ public class P38 implements Checker {
             RuleScope.ONTOLOGY, Arity.ZERO, "The RDF has no owl:Ontology declaration", AccompPer.INSTANCE);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
+
+    private final Logger logger = LoggerFactory.getLogger(P38.class);
 
     public P38() {
     }
@@ -93,8 +98,7 @@ public class P38 implements Checker {
                 context.addResult(PITFALL_INFO, Collections.emptySet());
             }
         } catch (final Exception exc) {
-            exc.printStackTrace();
-            System.out.println("No encuentro file para comprobar si tiene owl:Ontology " + exc.getMessage());
+            logger.warn("Can;t find content (file) to check for  the existence of owl:Ontology", exc);
         }
     }
 

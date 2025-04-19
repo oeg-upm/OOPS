@@ -10,12 +10,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import es.upm.fi.oeg.oops.Utils;
 import java.io.IOException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class RestResponseException extends Exception {
 
     public enum Type {
         INVALID_PARAMETERS, BAD_INPUT, BAD_EXECUTION,
     }
+
+    private final Logger logger = LoggerFactory.getLogger(RestResponseException.class);
 
     private final Type type;
     private final List<String> msgs;
@@ -41,7 +45,7 @@ public final class RestResponseException extends Exception {
             final ObjectMapper mapper = new ObjectMapper();
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
         } catch (final IOException exc) {
-            exc.printStackTrace();
+            logger.error("Failed to convert REST response object to JSON", exc);
             return "{ \"error\": \"An error happened during processing of the request, and we failed to convert that error into JSON.\"}";
         }
     }

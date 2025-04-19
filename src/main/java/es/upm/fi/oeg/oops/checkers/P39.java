@@ -19,7 +19,6 @@ import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
 import es.upm.fi.oeg.oops.RuleScope;
 import es.upm.fi.oeg.oops.SrcSpec;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -34,6 +33,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.jena.ontology.OntResource;
 import org.kohsuke.MetaInfServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @MetaInfServices(Checker.class)
 public class P39 implements Checker {
@@ -48,6 +49,8 @@ public class P39 implements Checker {
             RuleScope.ONTOLOGY, Arity.ZERO);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
+
+    private final Logger logger = LoggerFactory.getLogger(P39.class);
 
     public P39() {
     }
@@ -67,7 +70,7 @@ public class P39 implements Checker {
                 content = srcSpec.getContent();
                 break;
             case URI :
-                content = fetchUrl(srcSpec.getIri());
+                content = fetchUrl(logger, srcSpec.getIri());
                 break;
             default :
                 throw new UnsupportedOperationException("Not implemented");
@@ -98,11 +101,11 @@ public class P39 implements Checker {
         }
     }
 
-    private static String fetchUrl(final String onto) {
-        return download(onto, FollowRedirectRDF.ACCEPT_HEADER_VALUE);
+    private static String fetchUrl(final Logger logger, final String onto) {
+        return download(logger, onto, FollowRedirectRDF.ACCEPT_HEADER_VALUE);
     }
 
-    public static String download(final URL url, final String acceptHeaderValue) {
+    public static String download(final Logger logger, final URL url, final String acceptHeaderValue) {
 
         try {
             final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -121,28 +124,20 @@ public class P39 implements Checker {
                     }
                 }
             }
-        } catch (final MalformedURLException exc) {
-            System.err.println("1) " + exc.getMessage());
-            System.out.println("1) en OntologyDeclaration" + exc.getMessage());
-        } catch (final IOException exc) {
-            System.err.println("2) " + exc.getMessage());
-            System.out.println("2) en OntologyDeclaration " + exc.getMessage());
         } catch (final Exception exc) {
-            exc.printStackTrace();
-            System.out.println("Failed to download");
+            logger.warn("Failed to download {}", url, exc);
         }
 
         return null;
     }
 
-    public static String download(final String urlStr, final String acceptHeaderValue) {
+    public static String download(final Logger logger, final String urlStr, final String acceptHeaderValue) {
 
         try {
             final URL url = URI.create(urlStr).toURL();
-            return download(url, acceptHeaderValue);
+            return download(logger, url, acceptHeaderValue);
         } catch (final MalformedURLException exc) {
-            System.err.println("1) " + exc.getMessage());
-            System.out.println("1) en OntologyDeclaration" + exc.getMessage());
+            logger.warn("Failed to download {}", urlStr, exc);
         }
 
         return null;

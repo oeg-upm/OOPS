@@ -32,6 +32,8 @@ import java.util.Set;
 import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Model;
 import org.kohsuke.MetaInfServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Look whether there the ontology is available. If there is an RDF model, we can also create the model and provide it
@@ -61,6 +63,8 @@ public class P37 implements Checker {
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 
+    private final Logger logger = LoggerFactory.getLogger(P37.class);
+
     @Override
     public CheckerInfo getInfo() {
         return INFO;
@@ -86,7 +90,7 @@ public class P37 implements Checker {
         boolean thereIsHTML = askForHTML(urlToFetch);
 
         // prepare content type to load it in Jena later
-        final String followedContentType = FollowRedirectRDF.follow(urlToFetch).getContentType();
+        final String followedContentType = new FollowRedirectRDF().follow(urlToFetch).getContentType();
         final SerializationFormats parsedRdfCType;
         try {
             parsedRdfCType = SerializationFormats.from(followedContentType);
@@ -120,7 +124,7 @@ public class P37 implements Checker {
 
         try {
             final URL url = URI.create(urlToFetch).toURL();
-            final String content = P39.download(url, null);
+            final String content = P39.download(logger, url, null);
             // look for the HTML tag
             if (content != null && (content.contains("<!DOCTYPE html") || content.contains("<html>")
                     || content.contains("<head>"))) {

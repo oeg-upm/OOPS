@@ -30,6 +30,8 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.vocabulary.RDF;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Linter {
 
@@ -37,6 +39,8 @@ public class Linter {
 
     private static String NS_OOPS_DEF = "http://oops.linkeddata.es/def#";
     private static String NS_OOPS_DATA = "http://oops.linkeddata.es/data/";
+
+    private final Logger logger = LoggerFactory.getLogger(Linter.class);
 
     // private final OntModel model;
     // private final OWLOntology modelOWL;
@@ -106,6 +110,10 @@ public class Linter {
     // }
 
     public static void main(final String[] args) {
+        new Linter().run();
+    }
+
+    public void run() {
         final OntModelSpec spec = new OntModelSpec(OntModelSpec.OWL_MEM);
         final OntModel outputModel = ModelFactory.createOntologyModel(spec);
 
@@ -119,12 +127,12 @@ public class Linter {
         final Property pitfallProp = outputModel.createProperty(NS_OOPS_DEF + "hasPitfall");
         final Property titleProp = outputModel.createProperty(NS_OOPS_DEF + "hasCode");
 
-        System.out.println("El modelo es:");
+        logger.debug("The input RDF model:");
         final OutputStream obj2 = new ByteArrayOutputStream();
         outputModel.write(obj2, "RDF/XML");
-        System.out.println("------------------------------------------------------------------------------");
-        System.out.println(obj2);
-        System.out.println("------------------------------------------------------------------------------");
+        logger.debug("------------------------------------------------------------------------------");
+        logger.debug(obj2.toString());
+        logger.debug("------------------------------------------------------------------------------");
     }
 
     public Report partialExecution(final SrcModel srcModel, final List<Integer> options, final List<Checker> checkers) {
@@ -219,16 +227,16 @@ public class Linter {
                 final CheckingContext context;
                 try {
                     context = new CheckingContext(srcModel);
-                    System.out.println("Checking " + checker.getInfo().getId() + " ...");
+                    logger.info("Checking {} ...", checker.getInfo().getId());
                     checker.check(context);
-                    System.out.println("Checking " + checker.getInfo().getId() + " done.");
+                    logger.info("Checking {} done.", checker.getInfo().getId());
                 } catch (final Exception exc) {
-                    exc.printStackTrace();
+                    logger.error("General/unknown error occurred during checking", exc);
                     exceptions.add(exc);
                     continue;
                 }
                 final Map<PitfallId, List<Pitfall>> results = context.getResults();
-                System.out.println("#Pitfall Ids triggered: " + results.keySet().size());
+                logger.info("#Pitfall Ids triggered: {}", results.keySet().size());
                 for (final Map.Entry<PitfallId, List<Pitfall>> pfEntry : results.entrySet()) {
                     final PitfallId pId = pfEntry.getKey();
                     final List<Pitfall> pfs = pfEntry.getValue();
@@ -485,22 +493,22 @@ public class Linter {
 
             OutputStream obj = new ByteArrayOutputStream();
             outputModel.write(obj, "RDF/XML");
-            System.out.println("The output model (in RDF/XML:");
-            System.out.println("------------------------------------------------------------------------------");
-            System.out.println(obj);
-            System.out.println("------------------------------------------------------------------------------");
+            logger.debug("The output model (in RDF/XML:");
+            logger.debug("------------------------------------------------------------------------------");
+            logger.debug(obj.toString());
+            logger.debug("------------------------------------------------------------------------------");
 
             obj = new ByteArrayOutputStream();
             outputModel.write(obj, "Turtle");
-            System.out.println("The output model (in Turtle):");
-            System.out.println("------------------------------------------------------------------------------");
-            System.out.println(obj);
-            System.out.println("------------------------------------------------------------------------------");
+            logger.debug("The output model (in Turtle):");
+            logger.debug("------------------------------------------------------------------------------");
+            logger.debug(obj.toString());
+            logger.debug("------------------------------------------------------------------------------");
 
             // output = obj.toString();
             // xmlOutput.append("</oops:OOPSResponse>\n");
             // } catch (final Exception exc) {
-            // // System.out.println("ha habido una excepci�n durante la ejecución de las pitfalls");
+            // // logger.error("ha habido una excepci�n durante la ejecución de las pitfalls");
             // exc.printStackTrace();
             // exceptions.add(exc);
             //// xmlOutput.setLength(0);

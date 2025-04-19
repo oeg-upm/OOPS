@@ -12,6 +12,8 @@ import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import org.apache.jena.atlas.lib.StrUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class FollowRedirectRDF {
 
@@ -19,7 +21,9 @@ public final class FollowRedirectRDF {
             "application/turtle;q=0.9", "application/x-turtle;q=0.9", "text/n3;q=0.8", "text/turtle;q=0.8",
             "text/rdf+n3;q=0.7", "application/xml;q=0.5", "text/xml;q=0.5", "text/plain;q=0.4", "*/*;q=0.2"), ",");
 
-    private FollowRedirectRDF() {
+    private final Logger logger = LoggerFactory.getLogger(FollowRedirectRDF.class);
+
+    public FollowRedirectRDF() {
     }
 
     public static class FollowRes {
@@ -41,7 +45,7 @@ public final class FollowRedirectRDF {
         }
     }
 
-    public static FollowRes follow(final String url) {
+    public FollowRes follow(final String url) {
 
         String newURL = url;
         String contentType = null;
@@ -99,7 +103,7 @@ public final class FollowRedirectRDF {
             // System.out.println("URL Content... \n" + html.toString());
             // System.out.println("Done follows redirect and there was no redirect");
         } catch (final Exception exc) {
-            exc.printStackTrace();
+            logger.warn("Failed to follow redirect", exc);
         }
 
         return new FollowRes(newURL, contentType);

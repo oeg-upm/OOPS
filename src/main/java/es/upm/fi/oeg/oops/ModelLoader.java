@@ -27,8 +27,12 @@ import org.semanticweb.owlapi.model.OWLDocumentFormat;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public final class ModelLoader {
+
+    private final static Logger logger = LoggerFactory.getLogger(ModelLoader.class);
 
     private ModelLoader() {
     }
@@ -67,7 +71,7 @@ public final class ModelLoader {
             model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
             switch (srcSpec.getSrcType()) {
                 case RDF_CODE :
-                    System.out.println(srcSpec.getContent());
+                    logger.debug(srcSpec.getContent());
                     final byte[] contentBytes = srcSpec.getContent().trim().getBytes();
                     final InputStream contentStream = new ByteArrayInputStream(contentBytes);
                     final SerializationFormats cType = srcSpec.getContentType();

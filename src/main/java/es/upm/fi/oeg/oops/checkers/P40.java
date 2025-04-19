@@ -24,6 +24,8 @@ import java.net.URL;
 import java.util.Set;
 import org.apache.jena.ontology.OntResource;
 import org.kohsuke.MetaInfServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @MetaInfServices(Checker.class)
 public class P40 implements Checker {
@@ -42,6 +44,8 @@ public class P40 implements Checker {
                     + "Up to now, this pitfall is only available for the \"Scanner by URI\" option.\n");
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
+
+    private final Logger logger = LoggerFactory.getLogger(P37.class);
 
     public P40() {
     }
@@ -74,7 +78,7 @@ public class P40 implements Checker {
             // System.err.println("Trying Triple Checker with: " + urlTripleChecker+toAppend);
 
             final URL url = URI.create(urlTripleChecker + toAppend).toURL();
-            final String content = P39.download(url, null);
+            final String content = P39.download(logger, url, null);
             if (content != null && content.contains("<h2>Terms</h2>")) {
                 final String contentNew = content.split("<h2>Terms</h2>")[1];
 

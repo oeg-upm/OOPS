@@ -13,12 +13,16 @@ import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 @Command(name = "OOPS!", mixinStandardHelpOptions = true, description = "Lints RDF/OWL ontologies")
 public class Cli implements Callable<Integer> {
+
+    private final Logger logger = LoggerFactory.getLogger(Cli.class);
 
     // @Parameters(index = "0", description = "ontology file")
     // private File ontology;
@@ -35,6 +39,10 @@ public class Cli implements Callable<Integer> {
 
     // @Option(names = {"-a", "--algorithm"}, description = "MD5, SHA-1, SHA-256, ...")
     // private String algorithm = "SHA-256";
+
+    public Logger getLogger() {
+        return logger;
+    }
 
     @Override
     public Integer call() throws Exception {
@@ -55,7 +63,7 @@ public class Cli implements Callable<Integer> {
         final List<Checker> checkers = CheckersCatalogue.getAllCheckers();
         final SrcModel srcModel = ModelLoader.load(srcSpec);
         final Linter executor = new Linter();
-        System.out.println("Checkers supplied: " + checkers.size());
+        logger.info("Checkers supplied: " + checkers.size());
         final Report report = executor.partialExecution(srcModel, Collections.emptyList(), checkers);
         // Files.write(Path.of("tstOut.owl.xml"), report.getXmlOutput().getBytes());
         report.getOutputModel().write(Files.newOutputStream(Path.of("tstOut.model.ttl")), "Turtle");
@@ -66,12 +74,14 @@ public class Cli implements Callable<Integer> {
     // this example implements Callable, so parsing, error handling and handling user
     // requests for usage help or version help can be done with one line of code.
     public static void main(final String... args) {
-        final CommandLine cli = new CommandLine(new Cli());
+        final Cli cli = new Cli();
+        final CommandLine cliWrapper = new CommandLine(cli);
         int exitCode;
         try {
-            exitCode = cli.execute(args);
+            exitCode = cliWrapper.execute(args);
         } catch (final Throwable exc) {
             exc.printStackTrace();
+            cli.getLogger().error("Generic issue detected", exc);
             exitCode = 1;
         }
         System.exit(exitCode);

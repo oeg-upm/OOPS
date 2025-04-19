@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import threescale.v3.api.AuthorizeResponse;
 import threescale.v3.api.ParameterMap;
 import threescale.v3.api.ServerError;
@@ -37,6 +39,8 @@ import threescale.v3.api.impl.ServiceApiDriver;
 
 @Path("")
 public class WebServiceOOPS {
+
+    private final Logger logger = LoggerFactory.getLogger(WebServiceOOPS.class);
 
     // // This method is called if TEXT_PLAIN is request
     // @GET
@@ -97,7 +101,7 @@ public class WebServiceOOPS {
         return str == null || str.isEmpty();
     }
 
-    private static String req(final RunSettings runSettings,
+    private String req(final RunSettings runSettings,
             final IOAndRestResponseExceptionFunction<Report, String> serializer) throws RestResponseException {
 
         try {
@@ -133,7 +137,7 @@ public class WebServiceOOPS {
                 try {
                     return serializer.apply(report);
                 } catch (final IOException exc) {
-                    exc.printStackTrace();
+                    logger.error("Failed to serialize output", exc);
                     throw RestResponseException.createFailedToSerializeOutput();
                 }
             } else {
@@ -322,7 +326,7 @@ public class WebServiceOOPS {
         R apply(T t) throws IOException, RestResponseException;
     }
 
-    private static String reqToJson(final String body, final IOExceptionFunction<String, RunSettings> parser) {
+    private String reqToJson(final String body, final IOExceptionFunction<String, RunSettings> parser) {
 
         try {
             try {
@@ -336,7 +340,7 @@ public class WebServiceOOPS {
         }
     }
 
-    private static String reqToXml(final String body, final IOExceptionFunction<String, RunSettings> parser) {
+    private String reqToXml(final String body, final IOExceptionFunction<String, RunSettings> parser) {
 
         try {
             try {
@@ -350,7 +354,7 @@ public class WebServiceOOPS {
         }
     }
 
-    private static String reqToText(final String body, final IOExceptionFunction<String, RunSettings> parser) {
+    private String reqToText(final String body, final IOExceptionFunction<String, RunSettings> parser) {
 
         try {
             try {
@@ -367,46 +371,46 @@ public class WebServiceOOPS {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public static String reqJsonJson(final String body) {
+    public String reqJsonJson(final String body) {
         return reqToJson(body, RunSettings::fromJson);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_XML)
-    public static String reqJsonXml(final String body) {
+    public String reqJsonXml(final String body) {
         return reqToXml(body, RunSettings::fromJson);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    public static String reqJsonText(final String body) {
+    public String reqJsonText(final String body) {
         return reqToText(body, RunSettings::fromJson);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_JSON)
-    public static String reqXmlJson(final String body) {
+    public String reqXmlJson(final String body) {
         return reqToJson(body, RunSettings::fromXml);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public static String reqXmlXml(final String body) {
+    public String reqXmlXml(final String body) {
         return reqToXml(body, RunSettings::fromXml);
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.TEXT_PLAIN)
-    public static String reqXmlText(final String body) {
+    public String reqXmlText(final String body) {
         return reqToText(body, RunSettings::fromXml);
     }
 
-    public static void registerCall(final String requestedFormat) {
+    public void registerCall(final String requestedFormat) {
 
         final ServiceApi serviceApi = new ServiceApiDriver("c6041650eca6b1a4303bf5758abd633f");
 
@@ -434,18 +438,17 @@ public class WebServiceOOPS {
         // the 'preferred way' of calling the backend: authrep
         try {
             final AuthorizeResponse response = serviceApi.authrep(params);
-            System.out.println("AuthRep on User Key Success: " + response.success());
+            logger.info("AuthRep on User Key Success: {}", response.success());
             if (response.success()) {
-                // your api access got authorized and the traffic added to
-                // 3scale backend
-                System.out.println("Plan: " + response.getPlan());
+                logger.info("Your API access got authorized and the traffic added to 3scale backend");
+                logger.info("Plan: {}", response.getPlan());
             } else {
-                // your api access did not authorized, check why
-                System.out.println("Error: " + response.getErrorCode());
-                System.out.println("Reason: " + response.getReason());
+                logger.error("Your API access did not authorized, check why");
+                logger.error("Error: {}", response.getErrorCode());
+                logger.error("Reason: {}", response.getReason());
             }
         } catch (final ServerError serverError) {
-            serverError.printStackTrace();
+            logger.error("Failed to verify API access", serverError);
         }
     }
 }

@@ -31,6 +31,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.Set;
 import org.kohsuke.MetaInfServices;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //import org.omg.CORBA.portable.OutputStream;
 
@@ -43,6 +45,8 @@ public class P41 implements Checker {
             RuleScope.ONTOLOGY, Arity.ZERO, "The ontology is missing a license statement", AccompPer.INSTANCE);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
+
+    private final Logger logger = LoggerFactory.getLogger(P41.class);
 
     public P41() {
     }
@@ -101,8 +105,7 @@ public class P41 implements Checker {
 
                     conn.disconnect();
                 } catch (final Exception exc) {
-                    exc.printStackTrace();
-                    // System.out.println("P41 exception ");
+                    logger.error("Failed to reinterpret RDF content", exc);
                 }
                 break;
             case URI :
@@ -125,7 +128,7 @@ public class P41 implements Checker {
                         }
                     }
 
-                    System.out.println("license mode 2: " + output);
+                    logger.debug("license mode 2: {}", output);
 
                     if (output.toString().toLowerCase().startsWith("[]")) {
                         context.addResult(PITFALL_INFO, Collections.emptySet());
@@ -136,13 +139,13 @@ public class P41 implements Checker {
                     // System.out.println("Get license: " + output);
                     conn.disconnect();
                 } catch (final MalformedURLException exc) {
-                    // exc.printStackTrace();
+                    logger.error("Failed to create URL for fetching ontology", exc);
                 } catch (final IOException exc) {
-                    // exc.printStackTrace();
+                    logger.error("Failed to reinterpret RDF content", exc);
                 }
                 break;
             default :
-                System.out.println("this should not be possible. P41");
+                logger.error("Unknown source type: {} - this should not be possible", srcSpec.getSrcType());
         }
 
         // if (!byPredicate){
