@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.OntModel;
 
+/**
+ * TODO Make use of this in a (new) check/pitfall, or remove it.
+ */
 public class ImportsChecker {
 
     public final List<String> listImportsFailing = new ArrayList<>();
