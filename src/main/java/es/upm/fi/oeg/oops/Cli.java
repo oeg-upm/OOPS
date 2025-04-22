@@ -78,7 +78,6 @@ public class Cli implements Callable<Integer> {
         try {
             exitCode = cliWrapper.execute(args);
         } catch (final Throwable exc) {
-            exc.printStackTrace();
             cli.getLogger().error("Generic issue detected", exc);
             exitCode = 1;
         }
