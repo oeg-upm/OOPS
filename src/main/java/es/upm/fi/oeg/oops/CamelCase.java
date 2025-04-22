@@ -16,6 +16,12 @@ public class CamelCase implements UnaryOperator<String> {
         return toCamelCase(input);
     }
 
+    /**
+     * Converts a string where words are separated by spaces into camelCase.
+     * @param input
+     *     For example "Hello worLd"
+     * @return example "HelloWorLd"
+     */
     public static String toCamelCase(final String input) {
 
         if (!input.contains(" ")) {
