@@ -18,69 +18,62 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 
 public class Deprecates {
 
-    public Deprecates(final OntModel model) {
+    private static final String URI_TERM_STATUS = "http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
 
-        // By annotation property value "deprecated"
-        final AnnotationProperty ann = model
-                .getAnnotationProperty("http://www.w3.org/2003/06/sw-vocab-status/ns#term_status");
-        final ExtendedIterator<Resource> r1 = model.listSubjectsWithProperty(ann, "deprecated");
+    private void removeSubjectsByTermStatus(final OntModel model, final String termStatus) {
 
-        // System.out.println (" clase de owl: " + deprecatedClass.getURI());
+        final AnnotationProperty ann = model.getAnnotationProperty(URI_TERM_STATUS);
+        final ExtendedIterator<Resource> subjectsToRemove = model.listSubjectsWithProperty(ann, termStatus);
 
-        while (r1.hasNext()) {
-            final Resource resCurrent = r1.next();
-            final boolean isOntResource = resCurrent.canAs(OntResource.class);
+        while (subjectsToRemove.hasNext()) {
+            final Resource resToRemove = subjectsToRemove.next();
+            final boolean isOntResource = resToRemove.canAs(OntResource.class);
             if (isOntResource) {
-                // System.out.println("Es OntResource y lo borro");
-                final OntResource ontResource = resCurrent.as(OntResource.class);
+                final OntResource ontResource = resToRemove.as(OntResource.class);
                 ontResource.remove();
             }
         }
+    }
 
-        // By annotation property value "Deprecated"
-        final ExtendedIterator<Resource> r2 = model.listSubjectsWithProperty(ann, "Deprecated");
-
-        // System.out.println (" clase de owl: " + deprecatedClass.getURI());
-
-        while (r2.hasNext()) {
-            final Resource resCurrent = r2.next();
-            final boolean isOntResource = resCurrent.canAs(OntResource.class);
-            if (isOntResource) {
-                // System.out.println("Es OntResource y lo borro");
-                final OntResource ontResource = resCurrent.as(OntResource.class);
-                ontResource.remove();
-            }
-        }
+    private void removeSubjectsByOwlDeprecated(final OntModel model) {
 
         // By annotation owl:deprecated value "true"
         final Property owlDep = model.getProperty("http://www.w3.org/2002/07/owl#deprecated");
-        final ExtendedIterator<Resource> r3 = model.listSubjectsWithProperty(owlDep);
+        final ExtendedIterator<Resource> subjectsToCheck = model.listSubjectsWithProperty(owlDep);
 
-        // System.out.println (" clase de owl: " + deprecatedClass.getURI());
+        while (subjectsToCheck.hasNext()) {
+            final Resource subj = subjectsToCheck.next();
 
-        while (r3.hasNext()) {
-            final Resource resCurrent = r3.next();
-
-            // cojo los valores
-            final ExtendedIterator<RDFNode> values = model.listObjectsOfProperty(resCurrent, owlDep);
+            final ExtIterIterable<RDFNode> depValues = new ExtIterIterable<>(model.listObjectsOfProperty(subj, owlDep));
             boolean allTrue = true;
-
-            while (values.hasNext()) {
-                final String valueDep = values.next().toString();
-                if (valueDep.contains("false") || valueDep.contains("False")) {
-                    // si algun valor no es true no lo borro
+            for (final RDFNode depValue : depValues) {
+                final String depValueStr = depValue.toString().toLowerCase().trim();
+                if (depValueStr == "false") {
+                    // if just one value is false, do not remove
                     allTrue = false;
                 }
             }
 
-            // si todos son true entonces lo borro
+            // if all are true, remove
             if (allTrue) {
-                final boolean isOntResource = resCurrent.canAs(OntResource.class);
+                final boolean isOntResource = subj.canAs(OntResource.class);
                 if (isOntResource) {
-                    final OntResource ontResource = resCurrent.as(OntResource.class);
+                    final OntResource ontResource = subj.as(OntResource.class);
                     ontResource.remove();
                 }
             }
         }
+    }
+
+    /**
+     * Removes all deprecated subjects from the given ontology model.
+     * @param model
+     *     to be cleaned of subjects marked as deprecated
+     */
+    public Deprecates(final OntModel model) {
+
+        removeSubjectsByTermStatus(model, "deprecated");
+        removeSubjectsByTermStatus(model, "Deprecated");
+        removeSubjectsByOwlDeprecated(model);
     }
 }
