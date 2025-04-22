@@ -134,7 +134,7 @@ public class P37 implements Checker {
                 // System.out.println("other in: " + url.toString());
             }
         } catch (final MalformedURLException exc) {
-            System.err.println("1) " + exc.getMessage());
+            logger.warn("Failed to ask for HTML because of bad URL '{}': {}", urlToFetch, exc);
         }
 
         return false;

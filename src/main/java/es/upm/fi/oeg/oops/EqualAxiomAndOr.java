@@ -13,6 +13,7 @@ import java.util.Set;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 import org.apache.jena.ontology.BooleanClassDescription;
 import org.apache.jena.ontology.CardinalityRestriction;
+import org.apache.jena.ontology.ConversionException;
 import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.MaxCardinalityRestriction;
 import org.apache.jena.ontology.MinCardinalityRestriction;
@@ -24,12 +25,16 @@ import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * compara si dos clases compuestas por uniones y conjunciones es la misma. ignora cardinalidades y axiomas de
  * restricci�n universales y existenciales.
  */
 public class EqualAxiomAndOr {
+
+    private final Logger logger = LoggerFactory.getLogger(EqualAxiomAndOr.class);
 
     boolean isEqual = false;
 
@@ -110,26 +115,24 @@ public class EqualAxiomAndOr {
                     .listOperands();
             List<OntClass> classesIntersection2 = new ArrayList<>();
 
-            boolean exc = true;
-            while (exc) {
-                System.err.println("Bucle exc EqualAxiomAndOr en " + class1.toString());
-
+            do {
                 try {
                     classesIntersection2 = (List<OntClass>) ((BooleanClassDescription) intersection2).listOperands()
                             .toList();
-                } catch (org.apache.jena.ontology.ConversionException b) {
-                    final String classUri = b.getMessage().split(" ")[3];
+                } catch (ConversionException exc) {
+                    final String classUri = exc.getMessage().split(" ")[3];
+                    logger.warn("Creating new class '{}', required because of '{}'", classUri, class1);
                     final OntClass cAux = context.getModel().createClass(classUri);
+
                     context.addClassWarning(ruleInfo, cAux,
                             "The attached resources do not have `rdf:type` `owl:Class` or equivalent");
                     // System.err.println("WARNING: the class " + classUri + " does not have rdf:type
                     // owl:Class or equivalent");
                     continue;
                 }
-                exc = false;
                 intersection2 = class2.asIntersectionClass();
                 classesIntersection2 = new ArrayList<OntClass>();
-            }
+            } while (false);
 
             final Set<OntClass> listOperands1 = (Set<OntClass>) ((BooleanClassDescription) intersection1).listOperands()
                     .toSet();
