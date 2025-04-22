@@ -14,6 +14,7 @@ import java.util.Properties;
  * @author Daniel Garijo
  */
 public class Constants {
+
     // Licensius service
     // public static final String licensiusServiceLicenseRaw = "http://licensius.appspot.com/getLicenseRaw?rdf=";
     // public static final String licensiusServiceLicenseRaw =
@@ -24,16 +25,17 @@ public class Constants {
     // "http://www.licensius.appspot.com/api/license/getLicense?content=";
     public static final String licensiusURIServiceLicense = "http://www.licensius.com/api/license/findlicenseinrdf?uri=";
     public static final String licensiusServiceGuess = "http://licensius.appspot.com/licenseguess?txt=";
-    public static final String licensiusURIServiceLicenseInfo = "http://www.licensius.com/api/license/getlicenseinfo?uri=";// "http://licensius.appspot.com/getLicenseTitle?content=";
+    public static final String licensiusURIServiceLicenseInfo = "http://www.licensius.com/api/license/getlicenseinfo?uri=";
+    // "http://licensius.appspot.com/getLicenseTitle?content=";
     public static final int licensiusTimeOut = 10000;
 
     public static final int oopsTimeOut = 30000;
 
     public static final String[] vocabPossibleSerializations = { "application/rdf+xml", "text/turtle", "text/n3" };
+
     /**
      * Constants for the Step 2 (table)
      */
-
     public static final String abstractSectionContent = "abstract";
     public static final String ontTitle = "ontologyTitle";
     public static final String ontName = "ontologyName";
@@ -98,22 +100,4 @@ public class Constants {
         ns.append("</tbody>\n</table>\n</div>\n</div>\n");
         return ns.toString();
     }
-
-    /**
-     * Method that writes an htaccess file according to the W3C best practices. Note that hash is different than slash
-     *
-     * @param c
-     *
-     * @return
-     */
-
-    /**
-     * Text for the 406 page
-     *
-     * @param c
-     * @param lang
-     *
-     * @return the content of the 406 page
-     */
-
 }
