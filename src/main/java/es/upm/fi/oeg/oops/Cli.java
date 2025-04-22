@@ -71,8 +71,6 @@ public class Cli implements Callable<Integer> {
         return 0;
     }
 
-    // this example implements Callable, so parsing, error handling and handling user
-    // requests for usage help or version help can be done with one line of code.
     public static void main(final String... args) {
         final Cli cli = new Cli();
         final CommandLine cliWrapper = new CommandLine(cli);
