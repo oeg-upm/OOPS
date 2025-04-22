@@ -37,11 +37,14 @@ public final class ModelLoader {
     private ModelLoader() {
     }
 
+    /**
+     * Loads a Jena RDF model.
+     * @param srcSpec
+     *     specifies the RDF content source to load
+     * @return a basic/non-Ontology Jena RDF model
+     */
     public static Model loadJenaBasic(final SrcSpec srcSpec) {
-        // System.out.println("Load model");
 
-        // try to load the file in final uri
-        // create an empty model
         final OntDocumentManager dm = new OntDocumentManager();
         dm.setProcessImports(false);
 
@@ -64,6 +67,12 @@ public final class ModelLoader {
         return model;
     }
 
+    /**
+     * Loads a Jena RDF-Ontology model.
+     * @param srcSpec
+     *     specifies the RDF content source to load
+     * @return a Jena RDF-Ontology model
+     */
     public static OntModel loadJena(final SrcSpec srcSpec) throws IOException {
 
         OntModel model;
@@ -98,6 +107,12 @@ public final class ModelLoader {
         return model;
     }
 
+    /**
+     * Loads an ONTAPI RDF-Ontology model.
+     * @param srcSpec
+     *     specifies the RDF content source to load
+     * @return an ONTAPI RDF-Ontology model
+     */
     public static OWLOntology loadOwl(final SrcSpec srcSpec) throws IOException, OWLOntologyCreationException {
 
         final OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
@@ -122,6 +137,12 @@ public final class ModelLoader {
         return manager.loadOntologyFromOntologyDocument(docSrc);
     }
 
+    /**
+     * Loads a complete set of different models representing the same RDF Ontology source.
+     * @param srcSpec
+     *     specifies the RDF content source to load
+     * @return a Jena RDF-Ontology model and an ONTAPI RDF-Ontology model, packaged up with the source spec.
+     */
     public static SrcModel load(final SrcSpec srcSpec) throws IOException, OWLOntologyCreationException {
         return new SrcModel(srcSpec, loadJena(srcSpec), loadOwl(srcSpec));
     }
