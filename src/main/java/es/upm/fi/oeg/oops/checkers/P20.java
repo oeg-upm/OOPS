@@ -64,11 +64,9 @@ public class P20 implements Checker {
                 boolean pitfall = false;
                 if (label.isEmpty() || comment.isEmpty()) {
                     pitfall = true;
-                    /*
-                     * System.out.println("el comment o el label esta vacio");
-                     * System.out.println("                Comment: " + comment);
-                     * System.out.println("                Label: " + label);
-                     */
+                    // System.out.println("el comment o el label esta vacio");
+                    // System.out.println("                Comment: " + comment);
+                    // System.out.println("                Label: " + label);
                 } else if ((label.split(" ").length > comment.split(" ").length) && !Checker.fromModels(ontoRes)) {
                     pitfall = true;
                     // } else if ((label.length() > comment.length()) && !Checker.fromModels(ontoClass)) {

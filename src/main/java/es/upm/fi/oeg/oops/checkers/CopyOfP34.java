@@ -62,10 +62,8 @@ public class CopyOfP34 {
             String predicate_name = predicate.getLocalName();
             String object_name = getName(object_uri);
             String predicate_uri = predicate.getURI();
-            /*
-             * System.out.println("Sujeto:"+subject_uri); System.out.println("Predicado:"+predicate_uri);
-             * System.out.println("Objeto:"+object_uri); System.out.println();
-             */
+            // System.out.println("Sujeto:"+subject_uri); System.out.println("Predicado:"+predicate_uri);
+            // System.out.println("Objeto:"+object_uri); System.out.println();
 
             // If the predicate is rdf:type or rdfs:domain or rdfs:range
             if (predicate_name.equals("type") || predicate_name.equals("domain") || predicate_name.equals("range")
@@ -261,10 +259,11 @@ public class CopyOfP34 {
             String k = itk.next();
             String value = preListResults.get(k);
             // If we have information about the class' ID name
-            if (value != null)
+            if (value != null) {
                 System.out.println("\tClass:" + k + "\tID:" + value);
-            else
+            } else {
                 System.out.println("\tClass:" + k);
+            }
         }
     }
 
