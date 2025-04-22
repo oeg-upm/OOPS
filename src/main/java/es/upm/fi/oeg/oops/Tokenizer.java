@@ -21,50 +21,48 @@ public class Tokenizer {
 
         final List<String> tokens = new ArrayList<>();
 
-        final String delimiter;
+        final char delimiter;
         if (input.contains("_")) {
-            delimiter = "_";
+            delimiter = '_';
         } else if (input.contains("-")) {
-            delimiter = "-";
+            delimiter = '-';
         } else {
-            delimiter = "_";
+            delimiter = '_';
         }
+        final String delimiterStr = Character.toString(delimiter);
 
-        // System.out.println("el input en tokeniar is: " + input);
-
-        String stringIn = input;
-        if (input.startsWith(delimiter)) {
+        final String stringIn;
+        if (input.startsWith(delimiterStr)) {
             stringIn = input.substring(1);
+        } else {
+            stringIn = input;
         }
 
-        if (stringIn.contains(delimiter)) {
-            tokens.addAll(Arrays.asList(stringIn.split(delimiter)));
+        if (stringIn.contains(delimiterStr)) {
+            tokens.addAll(Arrays.asList(stringIn.split(delimiterStr)));
         } else {
             boolean firstWord = true;
-            char charActual;
-            String word = "";
-            while (stringIn.length() > 0) {
-                charActual = stringIn.charAt(0);
-                stringIn = stringIn.substring(1);
-
-                if (Character.toString(charActual).equals(delimiter)) {
+            final StringBuffer word = new StringBuffer();
+            for (final char charActual : stringIn.toCharArray()) {
+                if (charActual == delimiter) {
                     if (word.length() > 0) {
-                        tokens.add(word);
-                        word = "";
+                        tokens.add(word.toString());
+                        word.setLength(0);
                     }
                 } else if (Character.isUpperCase(charActual)) {
                     if (firstWord) {
-                        word = word.concat(Character.toString(charActual));
-                    } else if (word.length() > 0) {
-                        tokens.add(word);
-                        word = Character.toString(charActual);
+                        word.append(charActual);
+                    } else if (!word.isEmpty()) {
+                        tokens.add(word.toString());
+                        word.setLength(0);
+                        word.append(charActual);
                     }
                 } else if (Character.isLowerCase(charActual)) {
-                    word = word.concat(Character.toString(charActual));
+                    word.append(charActual);
                 }
                 firstWord = false;
             }
-            tokens.add(word);
+            tokens.add(word.toString());
         }
 
         return tokens;
