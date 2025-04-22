@@ -33,7 +33,7 @@ import org.apache.jena.ontology.OntClass;
 public class ConstrainsClasses {
 
     /**
-     * Finds out if two <tt>OntClass</tt> have the <tt>sameAs</tt> connection o relationship.
+     * Finds out if two <tt>OntClass</tt> have the <tt>sameAs</tt> connection/relationship.
      *
      * @param class1
      *     Ontology class to be compared with.
@@ -41,14 +41,14 @@ public class ConstrainsClasses {
      *     Ontology class to be compared.
      *
      * @return <tt>true</tt> if and only if these ontology classes have the <tt>sameAs</tt> relationship, <tt>false</tt>
-     * in other fact.
+     * otherwise.
      */
     public static boolean areSameAs(final OntClass class1, final OntClass class2) {
         return class1.isSameAs(class2);
     }
 
     /**
-     * Recognizes if two <tt>OntClass</tt> have the <tt>equivalent</tt> connection o relationship.
+     * Recognizes if two <tt>OntClass</tt> have the <tt>equivalent</tt> connection/relationship.
      *
      * @param class1
      *     Ontology class to be compared with.
@@ -56,7 +56,7 @@ public class ConstrainsClasses {
      *     Ontology class to be compared.
      *
      * @return <tt>true</tt> if and only if these ontology classes have the <tt>equivalent</tt> relationship,
-     * <tt>false</tt> in other fact.
+     * <tt>false</tt> otherwise.
      */
     public static boolean areEquivalentClasses(final OntClass class1, final OntClass class2) {
         boolean equivalent = false;
