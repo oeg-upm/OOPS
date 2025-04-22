@@ -62,8 +62,8 @@ public class ConstrainsClasses {
         boolean equivalent = false;
         final Iterable<OntClass> equivalentClasses = new ExtIterIterable<OntClass>(class1.listEquivalentClasses());
         for (final OntClass equivalentClass : equivalentClasses) {
-            String uriClass2 = class2.getURI();
-            String uriEquivalentClass = equivalentClass.getURI();
+            final String uriClass2 = class2.getURI();
+            final String uriEquivalentClass = equivalentClass.getURI();
 
             if (uriClass2.equals(uriEquivalentClass)) {
                 equivalent = true;
