@@ -370,8 +370,15 @@ SPDX-License-Identifier: Apache-2.0
     </dependency>
 
     <dependency>
+        <groupId>ch.qos.reload4j</groupId>
+        <artifactId>reload4j</artifactId>
+        <version>1.2.26</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
         <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-simple</artifactId>
+        <artifactId>slf4j-reload4j</artifactId>
         <version>2.0.17</version>
         <scope>runtime</scope>
     </dependency>
