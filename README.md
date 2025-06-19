@@ -29,17 +29,31 @@ _OOPS!_ is a [linter] for [RDF]/[OWL] [Ontologies][Ontology].  The software is a
 ## Building
 
 ```shell
-# To create JAR/WAR
+# To create JAR/WAR and running all tests
 mvn package
+
+# To create JAR/WAR without running tests
+mvn package -Dmaven.test.skip=true
 ```
 
 ## Testing
 
-To run unit-, doc- and integration-tests:
+To run the tests:
 
 ```shell
-# To run unit-tests
 mvn test
+```
+
+It is also possible to run a specific test on the command line:
+
+```shell
+./run/test-pitfall.sh P02
+```
+
+To see all possible tests:
+
+```shell
+./run/test-pitfall.sh --help
 ```
 
 ## Deploying the webapp
@@ -61,10 +75,10 @@ systemctl start tomcat10
 
 Browse to <http://localhost:8080/manager>.
 
-In "WAR file to deploy", select the WAR file that you've just built to upload
-and choose Deploy.  In "Applications" you can click on
-[/oops-2.0.0-SNAPSHOT](http://localhost:8080/oops-2.0.0-SNAPSHOT/) to see the
-application running.
+In "WAR file to deploy", select the WAR file that you've just built in
+directory `target` to upload and choose Deploy.  In "Applications" you can
+click on [/oops-2.0.0-SNAPSHOT](http://localhost:8080/oops-2.0.0-SNAPSHOT/) to
+see the application running.
 
 The WAR file may be too large which leads to a failing upload.
 
@@ -121,7 +135,7 @@ Use the XML file below as `example-request.xml`:
   </owl:Class>
   <owl:Class rdf:ID="ExerciseLO">
   <rdfs:comment xml:lang="en">"A task, problem, or other effort performed
-  to develop or maintain fitness 
+  to develop or maintain fitness
   or increase skill:"</rdfs:comment>
   <rdfs:subClassOf rdf:resource="#LearningObject"/>
   </owl:Class>
@@ -156,7 +170,6 @@ Use the XML file below as `example-request.xml`:
   </rdf:RDF>
   ]]></OntologyContent>
   <Pitfalls>10</Pitfalls>
-  <OutputFormat>RDF/XML</OutputFormat>
 </OOPSRequest>
 ```
 
@@ -168,29 +181,32 @@ curl -X POST http://localhost:8080/oops-2.0.0-SNAPSHOT/rest -H "Content-Type: ap
 
 The answer should be:
 
-```xml
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:oops="http://oops.linkeddata.es/def#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-  <owl:Class rdf:about="http://oops.linkeddata.es/def#warning"/>
-  <owl:Class rdf:about="http://oops.linkeddata.es/def#pitfall"/>
-  <owl:Class rdf:about="http://oops.linkeddata.es/def#suggestion"/>
-  <oops:response rdf:about="http://oops.linkeddata.es/data/576052e7-1475-47da-a959-0c2cb334a08a">
-    <oops:hasPitfall>
-      <oops:pitfall rdf:about="http://oops.linkeddata.es/data/67449ee5-b7fe-4ea1-9601-ce3c43c72218">
-        <oops:hasNumberAffectedElements rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
-        >1</oops:hasNumberAffectedElements>
-        <oops:hasImportanceLevel>Important</oops:hasImportanceLevel>
-        <oops:hasDescription>The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].	</oops:hasDescription>
-        <oops:hasName>Missing disjointness</oops:hasName>
-        <oops:hasCode>P10</oops:hasCode>
-      </oops:pitfall>
-    </oops:hasPitfall>
-  </oops:response>
-</rdf:RDF>
+```ttl
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/5b610be9-7e7d-40a9-a04d-72b6a6cea1a9>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/9ed73d6b-e820-4cc5-b044-4a78a9ef7861>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/5b610be9-7e7d-40a9-a04d-72b6a6cea1a9> .
+```
+
+For convenience, it is also possible to run:
+
+```shell
+./run/example-request.sh
+```
+
+It is also possible to execute the tests by means of the service:
+
+```shell
+./run/test-pitfall-service.sh P02
 ```
 
 ## Similar projects
