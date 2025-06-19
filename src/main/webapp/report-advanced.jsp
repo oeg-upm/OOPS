@@ -57,7 +57,6 @@ SPDX-License-Identifier: Apache-2.0
 
 			int pos = 0;
 
-			final Classifications classifications = new Classifications();
 			final List<String> classKeys = new ArrayList<>();
 			final List<String> classificationParam = new ArrayList<>();
 
@@ -255,7 +254,6 @@ SPDX-License-Identifier: Apache-2.0
 					we will find out what was wrong within OOPS!.</div></div><br>
 					<%
 				} else {
-					final Classifications classifications2 = new Classifications();
 					final Map<PitfallId, List<Pitfall>> pitfalls = report.getPitfalls();
 					// final HashMap <String, Integer> cases = model.getNumberCases();
 
