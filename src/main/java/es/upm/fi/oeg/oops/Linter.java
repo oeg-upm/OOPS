@@ -135,7 +135,8 @@ public class Linter {
         logger.debug("------------------------------------------------------------------------------");
     }
 
-    public Report partialExecution(final SrcModel srcModel, final List<Integer> options, final List<Checker> checkers) {
+    public Report partialExecution(final SrcModel srcModel, final List<Integer> checkersToExecute,
+            final List<Checker> checkers) {
 
         final Map<PitfallId, List<Pitfall>> pitfalls = new HashMap<>();
         final Map<PitfallId, Integer> numCases = new HashMap<>();
@@ -196,6 +197,9 @@ public class Linter {
             for (final Checker checker : checkers) {
                 final CheckingContext context;
                 try {
+                    if (!shouldExecute(checker, checkersToExecute)) {
+                        continue;
+                    }
                     context = new CheckingContext(srcModel, outputModel);
                     logger.info("Checking {} ...", checker.getInfo().getId());
                     checker.check(context);
@@ -366,6 +370,12 @@ public class Linter {
         final String xmlOutputStr = null;
         return new Report(numClasses, numProperties, pitfalls, exceptions, executionTime, warnings,
                 /* symmetricOrTransitiveSuggestion, importsFailing, */ xmlOutputStr, outputModel);
+    }
+
+    private boolean shouldExecute(Checker checker, List<Integer> checkersToExecute) {
+        // an empty or nonexistent checkersToExecute list implies that all checkers are executed
+        return checkersToExecute == null || checkersToExecute.isEmpty()
+                || checkersToExecute.contains(checker.getInfo().getId().getNumeral());
     }
 
     private Model createModel() {
