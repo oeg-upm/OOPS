@@ -1,0 +1,68 @@
+<oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
+<oops:Pitfall>
+<oops:Code>P04</oops:Code><oops:Name>Creating unconnected ontology elements</oops:Name>
+<oops:Description>Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.	</oops:Description>
+<oops:Importance>Minor</oops:Importance>
+<oops:NumberAffectedElements>2</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#ClassAuxB</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#ClassAuxA</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+<oops:Pitfall>
+<oops:Code>P10</oops:Code><oops:Name>Missing disjointness</oops:Name>
+<oops:Description>The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].	</oops:Description>
+<oops:Importance>Important</oops:Importance>
+</oops:Pitfall>
+<oops:NumberAffectedElements>1</oops:NumberAffectedElements>
+<oops:Pitfall>
+<oops:Code>P11</oops:Code><oops:Name>Missing domain or range in properties</oops:Name>
+<oops:Description>Object and/or datatype properties without domain or range (or none of them) are included in the ontology. 	</oops:Description>
+<oops:Importance>Important</oops:Importance>
+<oops:NumberAffectedElements>8</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxC</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxD</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxE</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxF</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxG</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxH</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxI</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxJ</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+<oops:Pitfall>
+<oops:Code>P13</oops:Code><oops:Name>Inverse relationships not explicitly declared</oops:Name>
+<oops:Description>This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.	</oops:Description>
+<oops:Importance>Minor</oops:Importance>
+<oops:NumberAffectedElements>7</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:NoInverseSuggestion>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxJ</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxH</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxG</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxF</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxE</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxD</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipAuxC</oops:AffectedElement>
+</oops:NoInverseSuggestion>
+</oops:Affects>
+</oops:Pitfall>
+<oops:Pitfall>
+<oops:Code>P35</oops:Code><oops:Name>Untyped property</oops:Name>
+<oops:Description>An ontology element is used as a property without having been explicitly declared as such using the primitives rdf:Property, owl:ObjectProperty or owl:DatatypeProperty. This pitfall is related with the common problems listed in [8].	</oops:Description>
+<oops:Importance>Important</oops:Importance>
+<oops:NumberAffectedElements>9</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipH</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipE</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipF</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipI</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipD</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipJ</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipB</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipA</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP35#relationshipG</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+</oops:OOPSResponse>
