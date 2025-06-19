@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 --%>
 
 <%@ page contentType="text/html; charset=utf-8"
-	import="es.upm.fi.oeg.oops.*, java.util.*, java.util.function.Function, java.util.stream.Collectors, java.io.PrintStream, org.apache.jena.ontology.OntResource" errorPage=""%>
+	import="es.upm.fi.oeg.oops.*, java.util.*, java.util.function.Function, java.util.stream.Collectors, java.io.PrintStream, org.apache.jena.rdf.model.Resource, org.apache.jena.ontology.OntResource" errorPage=""%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +39,7 @@ SPDX-License-Identifier: Apache-2.0
 	<div id="wrap">
 		<div id=main>
 			<%!
-			public String asLink(final OntResource res) {
+			public String asLink(final Resource res) {
 				return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", res.getURI(), res.getLocalName());
 			}
 			%>
@@ -434,7 +434,7 @@ SPDX-License-Identifier: Apache-2.0
 							<br>
 							<%
 							for (final Pitfall pf : pfs) {
-								for (final OntResource res : pf.getResources()) {
+								for (final Resource res : pf.getResources()) {
 								final String linkRes = asLink(res);
 								%> &rsaquo; <%out.print(linkRes);%>
 								<br>
