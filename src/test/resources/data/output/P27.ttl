@@ -1,0 +1,66 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/a44c7a98-cacc-4290-892f-6bb68051009f>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP27#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeZ"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipV"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipU"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeW"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeY"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeX"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  8 .
+
+<http://oops.linkeddata.es/data/eb50af06-b91c-45a8-89b5-a44d65f723f9>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP27#relationshipV"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipU"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  4 .
+
+
+<http://oops.linkeddata.es/data/1bc59761-1ab7-4a66-80a3-030e6bfe5610>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/3f9b41ca-f2c1-4934-9f67-ab6fbf55382f>
+        a                        oops:wrongEquivalentProperty;
+        oops:hasAffectedElement  <http://oops.linkeddata.es/data/testP27#relationshipS> , <http://oops.linkeddata.es/data/testP27#relationshipT> .
+
+<http://oops.linkeddata.es/data/0e0f7b11-8803-464e-967b-93b25c9d0397>
+        a                        oops:wrongEquivalentProperty;
+        oops:hasAffectedElement  <http://oops.linkeddata.es/data/testP27#relationshipU> , <http://oops.linkeddata.es/data/testP27#relationshipV> .
+
+<http://oops.linkeddata.es/data/d110ea98-9a34-4f57-b972-d00730f9bc80>
+        a                        oops:wrongEquivalentProperty;
+        oops:hasAffectedElement  <http://oops.linkeddata.es/data/testP27#attributeY> , <http://oops.linkeddata.es/data/testP27#attributeZ> .
+
+<http://oops.linkeddata.es/data/19ad752d-e484-4e04-aa1b-8e26defbc15a>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/c7b48367-3a04-4277-9d40-3be8735e498d> , <http://oops.linkeddata.es/data/eb50af06-b91c-45a8-89b5-a44d65f723f9> , <http://oops.linkeddata.es/data/a44c7a98-cacc-4290-892f-6bb68051009f> , <http://oops.linkeddata.es/data/1bc59761-1ab7-4a66-80a3-030e6bfe5610> , <http://oops.linkeddata.es/data/916d1d23-1424-49b8-9a87-50b7394ff838> .
+
+<http://oops.linkeddata.es/data/916d1d23-1424-49b8-9a87-50b7394ff838>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP27#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeY"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipV"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeZ"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeX"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#attributeW"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP27#relationshipU"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  10 .
+
+<http://oops.linkeddata.es/data/1b0dc7d7-3616-4a40-a375-b110c221a4eb>
+        a                        oops:wrongEquivalentProperty;
+        oops:hasAffectedElement  <http://oops.linkeddata.es/data/testP27#attributeW> , <http://oops.linkeddata.es/data/testP27#attributeX> .
+
+<http://oops.linkeddata.es/data/c7b48367-3a04-4277-9d40-3be8735e498d>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/1b0dc7d7-3616-4a40-a375-b110c221a4eb"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/3f9b41ca-f2c1-4934-9f67-ab6fbf55382f"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/0e0f7b11-8803-464e-967b-93b25c9d0397"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/d110ea98-9a34-4f57-b972-d00730f9bc80"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P27 - Defining wrong equivalent properties";
+        oops:hasDescription             "Two object properties or two datatype properties are defined as equivalent, using owl:equivalentProperty, even though they do not have the same semantics.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining wrong equivalent properties";
+        oops:hasNumberAffectedElements  4 .

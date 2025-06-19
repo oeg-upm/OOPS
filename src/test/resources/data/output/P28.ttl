@@ -1,0 +1,31 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/d2a5ce89-631b-4512-a8a1-95433c371703>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/4dd9446a-bc0d-4536-a221-f8baac11f8fc>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/d0978f3f-a746-40a5-99fd-d9b97fffc4da> , <http://oops.linkeddata.es/data/d2a5ce89-631b-4512-a8a1-95433c371703> , <http://oops.linkeddata.es/data/e225c15f-d515-4aea-a53c-dfe5b0cf9b78> .
+
+<http://oops.linkeddata.es/data/d0978f3f-a746-40a5-99fd-d9b97fffc4da>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP28#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P28 - Defining wrong symmetric relationships";
+        oops:hasDescription             "A relationship is defined as symmetric, using owl:SymmetricProperty, when the relationship is not necessarily symmetric.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining wrong symmetric relationships";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/e225c15f-d515-4aea-a53c-dfe5b0cf9b78>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP28#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP28#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  2 .

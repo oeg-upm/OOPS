@@ -1,0 +1,30 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/af01cf01-f671-49b0-aa05-02872a3c0e8b>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/875d1912-c7e7-4475-a2dc-c14b580e46ad> , <http://oops.linkeddata.es/data/8451fafa-6e24-4878-868c-cf760e15a122> , <http://oops.linkeddata.es/data/4ed16ff0-dd6d-4823-8e9c-d877c51e2e3d> .
+
+<http://oops.linkeddata.es/data/875d1912-c7e7-4475-a2dc-c14b580e46ad>
+        a                               oops:pitfall;
+        oops:hasCode                    "P41 - No license declared";
+        oops:hasDescription             "The ontology metadata omits information about the license that applies to the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "No license declared";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/8451fafa-6e24-4878-868c-cf760e15a122>
+        a                               oops:pitfall;
+        oops:hasCode                    "P38 - No OWL ontology declaration";
+        oops:hasDescription             "This pitfall consists in not declaring an owl:Ontology resource, which provides the ontology metadata. The owl:Ontology tag aims at gathering metadata about a given ontology such as version information, license, provenance, creation date, and so on. It is also used to declare the inclusion of other ontologies.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "No OWL ontology declaration";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/4ed16ff0-dd6d-4823-8e9c-d877c51e2e3d>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://www.co-ode.org/ontologies/ont.owl#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  1 .

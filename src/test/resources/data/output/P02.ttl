@@ -1,0 +1,44 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/cdd676e6-97d7-4094-9061-0aa910149441>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP02#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P02 - Creating synonyms as classes";
+        oops:hasDescription             "Several classes whose identifiers are synonyms are created and defined as equivalent (owl:equivalentClass) in the same namespace. This pitfall is related to the guidelines presented in [2], which explain that synonyms for the same concept do not represent different classes.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating synonyms as classes";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/3102b410-ea7e-4fa7-9cad-1631c6ca368f>
+        a                        oops:wrongEquivalentClass;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP02#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP02#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/709984f8-3fa2-411c-b4a5-786491682dc5>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/e3d0060c-adda-446c-b48c-f1bbaaa56870> , <http://oops.linkeddata.es/data/37747ef8-4eb5-4f48-916f-2d16e698f525> , <http://oops.linkeddata.es/data/3370588f-5e0c-4273-b8c4-ebb74d8ab37b> , <http://oops.linkeddata.es/data/cdd676e6-97d7-4094-9061-0aa910149441> .
+
+<http://oops.linkeddata.es/data/e3d0060c-adda-446c-b48c-f1bbaaa56870>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/3102b410-ea7e-4fa7-9cad-1631c6ca368f"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P31 - Defining wrong equivalent classes";
+        oops:hasDescription             "Two classes are defined as equivalent, using owl:equivalentClass, when they are not necessarily equivalent.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining wrong equivalent classes";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/37747ef8-4eb5-4f48-916f-2d16e698f525>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/3370588f-5e0c-4273-b8c4-ebb74d8ab37b>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP02#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP02#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .

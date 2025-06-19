@@ -1,0 +1,35 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/4d662ec7-6d61-46ec-9d4e-369cbcdf3e12>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/793fd521-0724-46d9-954c-b3cf17eae3ed>
+        a                        oops:sameLabel;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP32#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP32#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/7ed60fc1-be76-436d-9394-c419387e3ea9>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/be3a455a-3fd3-480b-a1ca-d0618f1579ec> , <http://oops.linkeddata.es/data/4d662ec7-6d61-46ec-9d4e-369cbcdf3e12> , <http://oops.linkeddata.es/data/c6186825-4d39-4c98-8ca0-1ee82a39dc86> .
+
+<http://oops.linkeddata.es/data/be3a455a-3fd3-480b-a1ca-d0618f1579ec>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/793fd521-0724-46d9-954c-b3cf17eae3ed"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P32 - Several classes with the same label";
+        oops:hasDescription             "Two or more classes have the same content for natural language annotations for naming, for example the rdfs:label annotation. This pitfall involves lack of accuracy when defining terms.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Several classes with the same label";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/c6186825-4d39-4c98-8ca0-1ee82a39dc86>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP32#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP32#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .

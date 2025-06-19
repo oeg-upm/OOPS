@@ -1,0 +1,40 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/5b9beed2-dc82-455a-8131-4023a1455403>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP24#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP24#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/f26b4b38-a180-482e-be9f-dab9bd162702>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP24#attributeU"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP24#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP24#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P24 - Using recursive definitions";
+        oops:hasDescription             "An ontology element (a class, an object property or a datatype property) is used in its own definition. Some examples of this would be: (a) the definition of a class as the enumeration of several classes including itself; (b) the appearance of a class within its owl:equivalentClass or rdfs:subClassOf axioms; (c) the appearance of an object property in its rdfs:domain or range rdfs:range definitions; or (d) the appearance of a datatype property in its rdfs:domain definition.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Using recursive definitions";
+        oops:hasNumberAffectedElements  3 .
+
+<http://oops.linkeddata.es/data/aa9ad501-ad32-4b16-9786-34c94fb24946>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP24#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/557d7066-5535-4ce1-8fe1-0186f60b91d9>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/f26b4b38-a180-482e-be9f-dab9bd162702> , <http://oops.linkeddata.es/data/aa9ad501-ad32-4b16-9786-34c94fb24946> , <http://oops.linkeddata.es/data/95261dad-ad5e-4c11-be2f-036c2419376c> , <http://oops.linkeddata.es/data/5b9beed2-dc82-455a-8131-4023a1455403> .
+
+<http://oops.linkeddata.es/data/95261dad-ad5e-4c11-be2f-036c2419376c>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .

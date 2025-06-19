@@ -1,0 +1,54 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/42487be6-9393-4f0c-b053-4e01d3ece69f>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/1c6df3f3-ee37-4234-a5ff-51658048ce2b> , <http://oops.linkeddata.es/data/6185b9e4-3108-403e-b8dd-a318cb41b0a6> , <http://oops.linkeddata.es/data/1abe28c9-1bce-4623-afc5-94bcd7655e46> , <http://oops.linkeddata.es/data/2321ef1b-450d-4829-b2dd-3fc9be1ca842> , <http://oops.linkeddata.es/data/2296e686-f19a-47b7-818d-865c9f99b770> .
+
+<http://oops.linkeddata.es/data/6185b9e4-3108-403e-b8dd-a318cb41b0a6>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#RelationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/1c6df3f3-ee37-4234-a5ff-51658048ce2b>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#RelationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P22 - Using different naming conventions in the ontology";
+        oops:hasDescription             "The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as \"-\" or \"_\"). Some notions about naming conventions are provided in [2].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using different naming conventions in the ontology";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/f99058a0-26cc-492a-bd2b-6ca6d9ca53f3>
+        a                        oops:equivalentProperty;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP22#RelationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/2296e686-f19a-47b7-818d-865c9f99b770>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#RelationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/1abe28c9-1bce-4623-afc5-94bcd7655e46>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/f99058a0-26cc-492a-bd2b-6ca6d9ca53f3"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P12 - Equivalent properties not explicitly declared";
+        oops:hasDescription             "The ontology lacks information about equivalent properties (owl:equivalentProperty) in the cases of duplicated relationships and/or attributes.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Equivalent properties not explicitly declared";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/2321ef1b-450d-4829-b2dd-3fc9be1ca842>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#RelationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  2 .

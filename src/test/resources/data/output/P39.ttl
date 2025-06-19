@@ -1,0 +1,22 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/98e880ce-2ae3-491b-960e-22888d6b3530>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP39#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/1d853f5c-6b90-4694-932f-be55f6b92864>
+        a                               oops:pitfall;
+        oops:hasCode                    "P39 - Ambiguous namespace";
+        oops:hasDescription             "This pitfall consists in declaring neither the ontology URI nor the base namespace. If this is the case, the ontology namespace is matched to the file location. This situation is not desirable, as the location of a file might change while the ontology should remain stable, as proposed in [12].";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Ambiguous namespace";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/e7d41553-4df2-40f1-859b-9aa9507dc436>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/1d853f5c-6b90-4694-932f-be55f6b92864> , <http://oops.linkeddata.es/data/98e880ce-2ae3-491b-960e-22888d6b3530> .

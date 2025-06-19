@@ -1,0 +1,49 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/8bda5aff-a841-4b47-8a13-3139a0c017fd>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/2b0e7691-a9f2-4e8b-8a78-42b3e487ccd7> , <http://oops.linkeddata.es/data/bb87877c-bc58-452c-ab8a-d712085ace5f> , <http://oops.linkeddata.es/data/2a3407ab-ccca-49fb-b248-2ab8d3562f40> , <http://oops.linkeddata.es/data/b46b8c61-fb72-4a28-8e68-4f277a4cb156> , <http://oops.linkeddata.es/data/75f4a00b-e490-4e10-ba28-b8eaa6d624b3> .
+
+<http://oops.linkeddata.es/data/2a3407ab-ccca-49fb-b248-2ab8d3562f40>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP20#relationshipSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  8 .
+
+<http://oops.linkeddata.es/data/b46b8c61-fb72-4a28-8e68-4f277a4cb156>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/75f4a00b-e490-4e10-ba28-b8eaa6d624b3>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP20#ClassSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/bb87877c-bc58-452c-ab8a-d712085ace5f>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP20#relationshipExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/2b0e7691-a9f2-4e8b-8a78-42b3e487ccd7>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP20#attributeEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipEmptyLabel"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassEmptyComment"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#ClassSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#relationshipSameContent"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP20#attributeExchangedContent"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P20 - Misusing ontology annotations";
+        oops:hasDescription             "The contents of some annotation properties are swapped or misused. This pitfall might affect annotation properties related to natural language information (for example, annotations for naming such as rdfs:label or for providing descriptions such as rdfs:comment). Other types of annotation could also be affected; temporal and versioning information, among others.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Misusing ontology annotations";
+        oops:hasNumberAffectedElements  12 .

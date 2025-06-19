@@ -1,0 +1,40 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/aca2be25-dad6-40f4-b2a4-eafd12c070ce>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/3368f40d-d56c-4704-af64-dfd371bf2c86> , <http://oops.linkeddata.es/data/4e373205-5f93-4dd4-9c78-020dcadb8be3> , <http://oops.linkeddata.es/data/3b0a7b30-f85d-4360-9b3c-433d8399bcf1> , <http://oops.linkeddata.es/data/449d0ca2-d403-4a0b-bbfa-b9b5b187762d> .
+
+<http://oops.linkeddata.es/data/3b0a7b30-f85d-4360-9b3c-433d8399bcf1>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP21#MiscClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneaClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneousClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellanyClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#OtherClass"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  5 .
+
+<http://oops.linkeddata.es/data/4e373205-5f93-4dd4-9c78-020dcadb8be3>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/449d0ca2-d403-4a0b-bbfa-b9b5b187762d>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP21#MiscellanyClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneaClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#OtherClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneousClass"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  5 .
+
+<http://oops.linkeddata.es/data/3368f40d-d56c-4704-af64-dfd371bf2c86>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP21#OtherClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellanyClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneousClass"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP21#MiscellaneaClass"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P21 - Using a miscellaneous class";
+        oops:hasDescription             "This pitfall refers to the creation of a class with the only goal of classifying the instances that do not belong to any of its sibling classes (classes with which the miscellaneous problematic class shares a common direct ancestor).";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using a miscellaneous class";
+        oops:hasNumberAffectedElements  5 .

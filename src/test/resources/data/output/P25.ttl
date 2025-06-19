@@ -1,0 +1,32 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/65783cf8-9541-49af-8564-f7bf04d48b48>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP25#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P25 - Defining a relationship as inverse to itself";
+        oops:hasDescription             "A relationship is defined as inverse of itself. In this case, this relationship could have been defined as owl:SymmetricProperty instead.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Defining a relationship as inverse to itself";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/d92a7850-cef5-4d87-aa8d-0fc8f267086e>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP25#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P24 - Using recursive definitions";
+        oops:hasDescription             "An ontology element (a class, an object property or a datatype property) is used in its own definition. Some examples of this would be: (a) the definition of a class as the enumeration of several classes including itself; (b) the appearance of a class within its owl:equivalentClass or rdfs:subClassOf axioms; (c) the appearance of an object property in its rdfs:domain or range rdfs:range definitions; or (d) the appearance of a datatype property in its rdfs:domain definition.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Using recursive definitions";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/7c4eebd8-e634-4c20-82cc-a086b3332e57>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/65783cf8-9541-49af-8564-f7bf04d48b48> , <http://oops.linkeddata.es/data/d92a7850-cef5-4d87-aa8d-0fc8f267086e> , <http://oops.linkeddata.es/data/b90dbfb5-49a8-42b8-a50e-cf614e7df5b8> .
+
+<http://oops.linkeddata.es/data/b90dbfb5-49a8-42b8-a50e-cf614e7df5b8>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP25#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  1 .

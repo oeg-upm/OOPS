@@ -1,0 +1,40 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/b158bc3a-0808-4d42-aa20-d751f472d726>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#classB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/6e993828-2c08-4308-94c2-ee32a90631ff>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/a09014d7-fe46-49dd-ba41-e7f5aede749f>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/91e6bdd2-33f0-4cfb-9fbd-456ee8f529b3> , <http://oops.linkeddata.es/data/6e993828-2c08-4308-94c2-ee32a90631ff> , <http://oops.linkeddata.es/data/b158bc3a-0808-4d42-aa20-d751f472d726> , <http://oops.linkeddata.es/data/f475c68e-d0c6-471b-b22d-cb3227d9548e> .
+
+<http://oops.linkeddata.es/data/f475c68e-d0c6-471b-b22d-cb3227d9548e>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#classB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/91e6bdd2-33f0-4cfb-9fbd-456ee8f529b3>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP22#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP22#classB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P22 - Using different naming conventions in the ontology";
+        oops:hasDescription             "The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as \"-\" or \"_\"). Some notions about naming conventions are provided in [2].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using different naming conventions in the ontology";
+        oops:hasNumberAffectedElements  1 .

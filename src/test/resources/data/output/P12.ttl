@@ -1,0 +1,57 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/4949340f-a908-446b-a6ba-557723b951b5>
+        a                        oops:equivalentAttribute;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP12namespace2#attributeU"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#attributeU"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/be602262-f9de-4048-bd6a-dfd03474a9d8>
+        a                        oops:equivalentProperty;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP12#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12namespace2#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/ba95c2a0-bc1e-49b0-a114-9eb16ca4aa5d>
+        a                        oops:equivalentProperty;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP12#relationship_T"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/97c72c25-dcfa-4bad-84e4-eee0aaa8c80a>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP12namespace2#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationship_T"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/be0e2a29-3485-4799-9bd1-ea842df90fe1>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP12#relationship_T"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12namespace2#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P22 - Using different naming conventions in the ontology";
+        oops:hasDescription             "The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as \"-\" or \"_\"). Some notions about naming conventions are provided in [2].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using different naming conventions in the ontology";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/143aa779-b04e-4303-a1b1-864cd0fb3265>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/89659dfb-efb4-4c8d-b646-6f85066b5a89"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/be602262-f9de-4048-bd6a-dfd03474a9d8"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/4949340f-a908-446b-a6ba-557723b951b5"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/ba95c2a0-bc1e-49b0-a114-9eb16ca4aa5d"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P12 - Equivalent properties not explicitly declared";
+        oops:hasDescription             "The ontology lacks information about equivalent properties (owl:equivalentProperty) in the cases of duplicated relationships and/or attributes.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Equivalent properties not explicitly declared";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/736528df-9209-40ed-a5a8-09d59bd5d17e>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/be0e2a29-3485-4799-9bd1-ea842df90fe1> , <http://oops.linkeddata.es/data/97c72c25-dcfa-4bad-84e4-eee0aaa8c80a> , <http://oops.linkeddata.es/data/143aa779-b04e-4303-a1b1-864cd0fb3265> , <http://oops.linkeddata.es/data/dcceeeb7-92da-45b9-aa5e-897ec8167179> .
+
+<http://oops.linkeddata.es/data/89659dfb-efb4-4c8d-b646-6f85066b5a89>
+        a                        oops:equivalentAttribute;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP12#attributeV"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#attribute_V"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/dcceeeb7-92da-45b9-aa5e-897ec8167179>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP12#relationship_T"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12namespace2#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#attribute_V"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12namespace2#attributeU"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#attributeV"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP12#attributeU"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  8 .

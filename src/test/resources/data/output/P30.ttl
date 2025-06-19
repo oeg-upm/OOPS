@@ -1,0 +1,35 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/9482c08a-b737-4481-9f08-b3f8f7da0acd>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/699b9160-094e-481b-86cd-a1756305202f"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P30 - Equivalent classes not explicitly declared";
+        oops:hasDescription             "This pitfall consists in missing the definition of equivalent classes (owl:equivalentClass) in case of duplicated concepts. When an ontology reuses terms from other ontologies, classes that have the same meaning should be defined as equivalent in order to benefit the interoperability between both ontologies.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Equivalent classes not explicitly declared";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/8be6b5be-0ea9-420b-a70c-4f22b037066e>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/9482c08a-b737-4481-9f08-b3f8f7da0acd> , <http://oops.linkeddata.es/data/1d28866a-e8a5-4aca-a12c-d6b4be595789> , <http://oops.linkeddata.es/data/a232d9a5-13b2-4b59-bb3d-85a75b3e887a> .
+
+<http://oops.linkeddata.es/data/a232d9a5-13b2-4b59-bb3d-85a75b3e887a>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP30#Car"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP30#Motorcar"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/1d28866a-e8a5-4aca-a12c-d6b4be595789>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/699b9160-094e-481b-86cd-a1756305202f>
+        a                        oops:equivalentClass;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP30#Car"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP30#Motorcar"^^<http://www.w3.org/2001/XMLSchema#anyURI> .

@@ -1,0 +1,58 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/f999169a-b567-4e48-9151-ea9936aa668f>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP35#ClassAuxB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P22 - Using different naming conventions in the ontology";
+        oops:hasDescription             "The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as \"-\" or \"_\"). Some notions about naming conventions are provided in [2].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using different naming conventions in the ontology";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/dff15d08-948a-4374-941b-2df28d9bcb66>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP35#ClassAuxB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#ClassAuxA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/9bf4bca6-7f14-472b-a8e0-903d1622e4b2>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP35#relationshipAuxJ"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxE"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxD"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxI"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxH"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxF"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxG"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  8 .
+
+<http://oops.linkeddata.es/data/31ccb04e-7875-467b-b3c6-c0a73198b415>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP35#relationshipAuxF"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxD"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxH"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxE"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxJ"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipAuxG"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  7 .
+
+<http://oops.linkeddata.es/data/5728daf1-aadf-4dbc-9775-81e8119fe066>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP35#relationshipE"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipG"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipD"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipJ"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipF"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipI"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipH"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP35#relationshipC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P35 - Untyped property";
+        oops:hasDescription             "An ontology element is used as a property without having been explicitly declared as such using the primitives rdf:Property, owl:ObjectProperty or owl:DatatypeProperty. This pitfall is related with the common problems listed in [8].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Untyped property";
+        oops:hasNumberAffectedElements  10 .
+
+<http://oops.linkeddata.es/data/b93f88f0-e3b3-4c4d-a46a-4079702e5477>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/d1d1699d-7081-4e5f-8bb5-fafaddcaa091>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/5728daf1-aadf-4dbc-9775-81e8119fe066> , <http://oops.linkeddata.es/data/f999169a-b567-4e48-9151-ea9936aa668f> , <http://oops.linkeddata.es/data/31ccb04e-7875-467b-b3c6-c0a73198b415> , <http://oops.linkeddata.es/data/9bf4bca6-7f14-472b-a8e0-903d1622e4b2> , <http://oops.linkeddata.es/data/b93f88f0-e3b3-4c4d-a46a-4079702e5477> , <http://oops.linkeddata.es/data/dff15d08-948a-4374-941b-2df28d9bcb66> .
