@@ -58,3 +58,16 @@ SPDX-FileCopyrightText = [
 ]
 SPDX-License-Identifier = "Apache-2.0"
 
+[[annotations]]
+path = "src/test/resources/output-tests-oops-linkeddata-es/*.owl"
+SPDX-FileCopyrightText = [
+     "2014 María Poveda Villalón <mpovedavillalon@gmail.com>"
+]
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "src/test/resources/data/output/*.ttl"
+SPDX-FileCopyrightText = [
+    "2025 Pieter Hijma <info@pieterhijma.net>"
+]
+SPDX-License-Identifier = "Apache-2.0"
