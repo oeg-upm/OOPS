@@ -1,0 +1,34 @@
+<oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
+<oops:Pitfall>
+<oops:Code>P08</oops:Code><oops:Name>Missing annotations</oops:Name>
+<oops:Description>This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].	</oops:Description>
+<oops:Importance>Minor</oops:Importance>
+<oops:NumberAffectedElements>2</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipV</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipT</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+<oops:Pitfall>
+<oops:Code>P11</oops:Code><oops:Name>Missing domain or range in properties</oops:Name>
+<oops:Description>Object and/or datatype properties without domain or range (or none of them) are included in the ontology. 	</oops:Description>
+<oops:Importance>Important</oops:Importance>
+<oops:NumberAffectedElements>4</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipS</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipT</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipU</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipV</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+<oops:Pitfall>
+<oops:Code>P26</oops:Code><oops:Name>Defining inverse relationships for a symmetric one</oops:Name>
+<oops:Description>A symmetric object property (owl:SymmetricProperty) is defined as inverse of another object property (using owl:inverseOf).	</oops:Description>
+<oops:Importance>Important</oops:Importance>
+<oops:NumberAffectedElements>2</oops:NumberAffectedElements>
+<oops:Affects>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipU</oops:AffectedElement>
+<oops:AffectedElement>http://oops.linkeddata.es/data/testP26#relationshipS</oops:AffectedElement>
+</oops:Affects>
+</oops:Pitfall>
+</oops:OOPSResponse>
