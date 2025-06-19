@@ -19,11 +19,14 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 public class CheckingContext {
 
     private final SrcModel srcModel;
+    private final Model outputModel;
 
     private final Map<PitfallId, List<Pitfall>> results;
 
@@ -33,10 +36,15 @@ public class CheckingContext {
 
     private final SynsetHelp dictionary;
 
-    public CheckingContext(final SrcModel srcModel) throws IOException, JWNLException {
+    public CheckingContext(final SrcModel srcModel, final Model outputModel) throws IOException, JWNLException {
         this.srcModel = srcModel;
+        this.outputModel = outputModel;
         this.results = new HashMap<>();
         dictionary = new SynsetHelp();
+    }
+
+    public Model getOutputModel() {
+        return this.outputModel;
     }
 
     public void addResult(final Pitfall pitfall) {
@@ -51,7 +59,7 @@ public class CheckingContext {
         pitfalls.add(pitfall);
     }
 
-    public <RT extends OntResource> void addResult(final PitfallInfo info, final RT resource) {
+    public <RT extends Resource> void addResult(final PitfallInfo info, final RT resource) {
         this.addResult(new PitfallImpl(info, Set.of(resource)));
     }
 

@@ -13,6 +13,7 @@ import es.upm.fi.oeg.oops.CheckerInfo;
 import es.upm.fi.oeg.oops.CheckingContext;
 import es.upm.fi.oeg.oops.ExtIterIterable;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.Linter;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -24,12 +25,19 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Supplier;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.ontology.ConversionException;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.vocabulary.RDF;
 import org.kohsuke.MetaInfServices;
 
 @MetaInfServices(Checker.class)
@@ -56,6 +64,39 @@ public class P12 implements Checker {
 
         analyze(context, () -> model.listObjectProperties());
         analyze(context, () -> model.listDatatypeProperties());
+    }
+
+    private void addToOutput(CheckingContext context, Map<String, Set<OntProperty>> mapResource) {
+        Model outputModel = context.getOutputModel();
+        final Property equivalentProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "mightBeEquivalentProperty");
+        final Resource equivalentPropType = outputModel.createResource(Linter.NS_OOPS_DEF + "equivalentProperty");
+        final Property equivalentAttrProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "hasEquivalentAttribute");
+        final Resource equivalentAttrType = outputModel.createResource(Linter.NS_OOPS_DEF + "equivalentAttribute");
+        final Property valueProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "hasAffectedElement");
+
+        for (final Set<OntProperty> values : mapResource.values()) {
+            final Resource type;
+
+            OntProperty firstProp = values.iterator().next();
+            if (firstProp.isObjectProperty()) {
+                type = equivalentPropType;
+            } else if (firstProp.isDatatypeProperty()) {
+                type = equivalentAttrType;
+            } else {
+                throw new IllegalStateException(
+                        "Unexpected property type: neither object nor datatype property: " + firstProp.getURI());
+            }
+
+            final Resource equivalentRes = outputModel
+                    .createResource(Linter.NS_OOPS_DATA + UUID.randomUUID().toString());
+            outputModel.add(equivalentRes, RDF.type, type);
+
+            for (OntProperty p : values) {
+                final Literal value = outputModel.createTypedLiteral(p.getURI(), XSDDatatype.XSDanyURI);
+                equivalentRes.addProperty(valueProp, value);
+            }
+            context.addResult(PITFALL_INFO, equivalentRes);
+        }
     }
 
     private <PT extends OntProperty> void analyze(final CheckingContext context,
@@ -104,10 +145,7 @@ public class P12 implements Checker {
                 }
             }
         }
-
-        for (final Set<OntProperty> values : mapResource.values()) {
-            context.addResult(PITFALL_INFO, values);
-        }
+        addToOutput(context, mapResource);
     }
 
     public <PT extends OntProperty> boolean isEquivalentOfAny(final PT property,

@@ -15,6 +15,7 @@ import es.upm.fi.oeg.oops.EqualGroupOfAxiomsAndOr;
 import es.upm.fi.oeg.oops.ExtIterIterable;
 import es.upm.fi.oeg.oops.FilterInverses;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.Linter;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -24,11 +25,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.ontology.ConversionException;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.vocabulary.RDF;
 import org.kohsuke.MetaInfServices;
 
 // import com.sun.xml.internal.org.jvnet.fastinfoset.RestrictedAlphabet;
@@ -49,8 +57,27 @@ public class P05 implements Checker {
         return INFO;
     }
 
+    private void addToContext(final CheckingContext context, final Model outputModel, final Property notInverse,
+            final Resource notInverseType, final Property valueProp, final ObjectProperty property1,
+            final ObjectProperty property2) {
+        final Resource inverseRes = outputModel.createResource(Linter.NS_OOPS_DATA + UUID.randomUUID().toString());
+        outputModel.add(inverseRes, RDF.type, notInverseType);
+        Literal value = outputModel.createTypedLiteral(property1.getURI(), XSDDatatype.XSDanyURI);
+        inverseRes.addProperty(valueProp, value);
+        value = outputModel.createTypedLiteral(property2.getURI(), XSDDatatype.XSDanyURI);
+        inverseRes.addProperty(valueProp, value);
+
+        context.addResult(PITFALL_INFO, inverseRes);
+    }
+
     @Override
     public void check(final CheckingContext context) throws IOException {
+
+        final Model outputModel = context.getOutputModel();
+
+        final Property notInverse = outputModel.createProperty(Linter.NS_OOPS_DEF + "mightNotBeInverseOf");
+        final Resource notInverseType = outputModel.createResource(Linter.NS_OOPS_DEF + "notInverseRelationship");
+        final Property valueProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "hasAffectedElement");
 
         // create lists for elements containing the pitfall
         final List<ObjectProperty> propertiesWithPitfall = new ArrayList<ObjectProperty>();
@@ -85,7 +112,7 @@ public class P05 implements Checker {
                     if (!equalDomRan && !propertiesWithPitfall.contains((ObjectProperty) property1)
                             && !Checker.fromModels(property1) && !Checker.fromModels(property2)) {
                         propertiesWithPitfall.add(property1);
-                        context.addResult(PITFALL_INFO, property1, property2);
+                        addToContext(context, outputModel, notInverse, notInverseType, valueProp, property1, property2);
                     }
                 } else {
                     // System.out.println("Uno de los dos es vacio.");
@@ -99,7 +126,7 @@ public class P05 implements Checker {
                     if (!equalDomRan && !propertiesWithPitfall.contains((ObjectProperty) property1)
                             && !Checker.fromModels(property1) && !Checker.fromModels(property2)) {
                         propertiesWithPitfall.add(property1);
-                        context.addResult(PITFALL_INFO, property1, property2);
+                        addToContext(context, outputModel, notInverse, notInverseType, valueProp, property1, property2);
                     }
                 } else {
                     // System.out.println("Uno de los dos es vacio.");

@@ -62,7 +62,7 @@ public class P28 implements Checker {
             final Set<? extends OntResource> setDomain1 = property1.listDomain().toSet();
             final Set<? extends OntResource> setRange1 = property1.listRange().toSet();
 
-            if (property1.isTransitiveProperty()) {
+            if (selector.test(property1)) {
                 // Primero analizo el dominio1 y rango1
 
                 // si no son null los analizo Si alguno o los dos es null no hay pitfall

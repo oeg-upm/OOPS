@@ -59,7 +59,7 @@ public class P24 implements Checker {
         analyze(context, () -> model.listNamedClasses(), (OntClass ontoRes) -> {
             final FlattenAxiom flattenAxiom = new FlattenAxiom();
             flattenAxiom.calculateClassesInAxiomsClass(ontoRes, context, INFO);
-            return flattenAxiom.getClassesInAxiomsOnto();
+            return flattenAxiom.getClassesInAxiomsClass();
         });
         analyze(context, () -> model.listObjectProperties(), (ObjectProperty ontoRes) -> {
             final FlattenAxiom flattenAxiom = new FlattenAxiom();

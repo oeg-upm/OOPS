@@ -31,7 +31,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Resource;
 import org.kohsuke.MetaInfServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -280,7 +280,7 @@ public class P39 implements Checker {
         }
 
         @Override
-        public List<OntResource> getResources() {
+        public List<Resource> getResources() {
             return Collections.emptyList();
         }
 

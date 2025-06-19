@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Resource;
 
 /**
  * The result of a linting rule check.
@@ -18,14 +18,14 @@ import org.apache.jena.ontology.OntResource;
 public class PitfallImpl implements Pitfall {
 
     private final PitfallInfo info;
-    private final List<OntResource> resources;
+    private final List<Resource> resources;
 
-    public PitfallImpl(final PitfallInfo info, final List<OntResource> resources) {
+    public PitfallImpl(final PitfallInfo info, final List<Resource> resources) {
         this.info = info;
         this.resources = resources;
     }
 
-    public PitfallImpl(final PitfallInfo info, final Set<OntResource> resources) {
+    public PitfallImpl(final PitfallInfo info, final Set<Resource> resources) {
         this.info = info;
         this.resources = new ArrayList<>(resources);
     }
@@ -40,7 +40,7 @@ public class PitfallImpl implements Pitfall {
     }
 
     @Override
-    public List<OntResource> getResources() {
+    public List<Resource> getResources() {
         return resources;
     }
 
@@ -58,7 +58,7 @@ public class PitfallImpl implements Pitfall {
                 .append("\n\n");
         out.append(locInfo.getExplanation()).append("\n\n");
 
-        for (final OntResource res : this.getResources()) {
+        for (final Resource res : this.getResources()) {
             out.append("- ").append(res.getURI()).append("\n");
         }
 

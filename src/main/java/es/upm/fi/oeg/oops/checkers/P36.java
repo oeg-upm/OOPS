@@ -23,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Resource;
 import org.kohsuke.MetaInfServices;
 
 @MetaInfServices(Checker.class)
@@ -80,7 +81,7 @@ public class P36 implements Checker {
         }
 
         @Override
-        public List<OntResource> getResources() {
+        public List<Resource> getResources() {
             return Collections.emptyList();
         }
 

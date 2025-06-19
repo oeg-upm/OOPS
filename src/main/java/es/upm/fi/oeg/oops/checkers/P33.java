@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Resource;
 import org.kohsuke.MetaInfServices;
 import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLAxiom;
@@ -84,7 +84,8 @@ public class P33 implements Checker {
                 // has or not antecedent and consequent.
                 // If part_axiom[2] is only a white space
                 // then this ObjectPropertyChain has neither antecedent nor consequent.
-                if (partAxiom[2].equals(" ")) {
+                // In this version of Jena, there appears to be no whitespace.
+                if (partAxiom[2].equals("")) {
                     propertyUri = partAxiom[3];
                 } else {
                     final String[] antecedentConsequent = partAxiom[2].split(" <", 0);
@@ -93,7 +94,7 @@ public class P33 implements Checker {
                     // due to the fact to apply split function.
                     // The first antecedent_consequent array's element will be a white space.
                     // The second will be the uri.
-                    if (antecedentConsequent.length == 2) {
+                    if (antecedentConsequent.length == 1) {
                         // listResults.put(, );
                         propertyUri = partAxiom[3];
                         antecedentUri = partAxiom[2];
@@ -102,7 +103,7 @@ public class P33 implements Checker {
                 if (propertyUri != null) {
                     final String propertyName = extractPropertyNameFromUri(propertyUri);
                     final String antecedentName = extractPropertyNameFromUri(antecedentUri);
-                    final OntProperty property = context.getModel().getOntProperty(propertyUri);
+                    final OntProperty property = context.getModel().getOntProperty(propertyName);
                     preResults.put(propertyName, new AxiomExtras(property, antecedentName));
                 }
             }
@@ -146,7 +147,7 @@ public class P33 implements Checker {
         }
 
         @Override
-        public List<OntResource> getResources() {
+        public List<Resource> getResources() {
             return List.of(this.property);
         }
 

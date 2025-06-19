@@ -15,6 +15,7 @@ import es.upm.fi.oeg.oops.CheckingContext;
 import es.upm.fi.oeg.oops.ConstrainsClasses;
 import es.upm.fi.oeg.oops.ExtIterIterable;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.Linter;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -26,9 +27,16 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import net.sf.extjwnl.JWNLException;
+import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.RDF;
 import org.kohsuke.MetaInfServices;
 
 @MetaInfServices(Checker.class)
@@ -196,7 +204,35 @@ public class P31 implements Checker {
             }
         }
 
-        context.addResultsIndividualSets(PITFALL_INFO, preResults.values());
+        addToOutput(context, preResults);
+    }
+
+    private void addToOutput(CheckingContext context, HashMap<String, Set<OntClass>> preResults) {
+        Model outputModel = context.getOutputModel();
+        final Resource wrongEquivalentClassType = outputModel
+                .createResource(Linter.NS_OOPS_DEF + "wrongEquivalentClass");
+
+        addToOutput(PITFALL_INFO, context, wrongEquivalentClassType, preResults);
+    }
+
+    public static void addToOutput(PitfallInfo info, final CheckingContext context, Resource type,
+            final Map<String, Set<OntClass>> preResults) {
+        Model outputModel = context.getOutputModel();
+        final Property valueProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "hasAffectedElement");
+
+        for (final String classTag : preResults.keySet()) {
+            final Set<OntClass> pairUris = preResults.get(classTag);
+
+            final Resource res = outputModel.createResource(Linter.NS_OOPS_DATA + UUID.randomUUID().toString());
+
+            outputModel.add(res, RDF.type, type);
+
+            for (final OntClass class2 : pairUris) {
+                final Literal value = outputModel.createTypedLiteral(class2.getURI(), XSDDatatype.XSDanyURI);
+                res.addProperty(valueProp, value);
+            }
+            context.addResult(info, res);
+        }
     }
 
     /**

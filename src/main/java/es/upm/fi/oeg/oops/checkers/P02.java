@@ -61,26 +61,9 @@ public class P02 implements Checker {
             // System.out.println("Analizando inverse of: " + localName);
 
             // get the equivalent classes for a given class
-            ExtendedIterator<OntClass> equivalents = null;
-            do {
-                try {
-                    equivalents = ontoClass.listEquivalentClasses();
-                    equivalents.toList();
-                } catch (final ConversionException exc) {
-                    final String classUri = exc.getMessage().split(" ")[3];
-                    // TODO Check: Is it not a problem to create new classes in the source model,
-                    //             which then are analyzed also by other pitfalls?
-                    //             It very likely is, so we would need to separate this,
-                    //             or re-load the model for each pitfall,
-                    //             which might be OK, performance wise! -> test!
-                    final OntClass cAux = model.createClass(classUri);
-                    context.addClassWarning(INFO, cAux,
-                            "The attached resources do not have `rdf:type owl:Class` or equivalent");
-                    continue;
-                }
-            } while (false);
+            List<OntClass> equivalents = getEquivalentClasses(model, ontoClass, localName, context);
 
-            for (final OntClass equivalent : new ExtIterIterable<>(equivalents)) {
+            for (final OntClass equivalent : equivalents) {
                 if (equivalent.getURI() != null) {
                     final String localNameEq = equivalent.getLocalName();
                     final String namespace1 = ontoClass.getURI().replace(localName, "");
@@ -93,11 +76,35 @@ public class P02 implements Checker {
                         // si no son el mismo string es pitfall.
                         // Supongo que son sinonimos.
                         if (!lowerClass.equals(lowerEq) && !Checker.fromModels(ontoClass)) {
-                            context.addResult(PITFALL_INFO, ontoClass, equivalent);
+                            context.addResult(PITFALL_INFO, ontoClass);
                         }
                     }
                 }
             }
         }
+    }
+
+    private List<OntClass> getEquivalentClasses(OntModel model, OntClass ontoClass, String localName,
+            CheckingContext context) {
+
+        // Assume the RDF is malformed and conversion errors may occur
+        boolean conversionError = false;
+        List<OntClass> equivalentClasses = null;
+        do {
+            try {
+                equivalentClasses = ontoClass.listEquivalentClasses().toList();
+                conversionError = false;
+            } catch (final ConversionException exc) {
+                final String classUri = exc.getMessage().split(" ")[3];
+
+                // Create a new class in the model to avoid further exceptions
+                final OntClass cAux = model.createClass(classUri);
+                context.addClassWarning(INFO, cAux,
+                        "The attached resources do not have `rdf:type owl:Class` or equivalent");
+                conversionError = true;
+            }
+        } while (conversionError);
+
+        return equivalentClasses;
     }
 }
