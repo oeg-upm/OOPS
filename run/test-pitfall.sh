@@ -41,6 +41,7 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help)
             print_help
+	    exit 0
             ;;
         --) # Stop parsing options
             shift

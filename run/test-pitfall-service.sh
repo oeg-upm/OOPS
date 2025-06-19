@@ -13,6 +13,12 @@ script_dir="$(dirname "$script_path")"
 script_name="$(basename "$script_path")"
 
 data_dir="$script_dir/../src/test/resources/data"
+input_dir="$data_dir/input"
+valid_pitfalls=("P02" "P03" "P04" "P05" "P06" "P07" "P08" "P10" \
+	"P10-A" "P10-B" "P10-C" "P11" "P12" "P13" "P19" "P20" "P21" \
+	"P22M1" "P22M2" "P22M3" "P22M4" \
+	"P24" "P25" "P26" "P27" "P28" "P29" "P30" "P31" "P32" "P33" "P34" "P35" "P36" \
+	"P38" "P39" "P40" "P41")
 
 # parameters
 api_endpoint="http://localhost:8080/oops-2.0.0-SNAPSHOT/rest"
@@ -23,21 +29,19 @@ function print_help() {
 	echo
 	echo "Usage:"
 	echo "  $script_name [OPTION...] <pitfall>"
-	echo "    where <pitfall> is one of {P02, P03, P04, etc.}"
+	echo "    where <pitfall> is one of ${valid_pitfalls[*]}"
 	echo
 	echo "Options:"
 	echo "  -h, --help"
 	echo "    Print this usage help and exits"
 }
 
-# Define valid pitfalls
-valid_pitfalls=("P02" "P03" "P04")
-
 # Parse options manually
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -h|--help)
             print_help
+	    exit 0
             ;;
         --) # Stop parsing options
             shift
@@ -65,23 +69,21 @@ pitfall="$1"
 
 # Validate pitfall
 if [[ ! " ${valid_pitfalls[*]} " =~ " ${pitfall} " ]]; then
-    echo "Error: Invalid pitfall '${pitfall}'. Must be one of {P02, P03, P04}."
+    echo "Error: Invalid pitfall '${pitfall}'. Must be one of ${valid_pitfalls[*]}."
     print_help
     exit 1
 fi
 
 # echo "Selected pitfall: $pitfall"
 
-prefix_xml_request="<?xml version="1.0" encoding="UTF-8"?>
+prefix_xml_request="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <OOPSRequest>
   <OntologyUrl></OntologyUrl>
   <OntologyContent><![CDATA[
 "
 suffix_xml_request=" ]]></OntologyContent>
-  <Pitfalls>10</Pitfalls>
-  <OutputFormat>RDF/XML</OutputFormat>
 </OOPSRequest>"
 
-{ printf "%s" "$prefix_xml_request"; cat "$data_dir/${pitfall}.owl"; printf "%s" "$suffix_xml_request"; }
-    #| curl -X POST "$api_endpoint" -H "Content-Type: applicaton/xml" -d @-
+{ printf "%s" "$prefix_xml_request"; cat "$input_dir/${pitfall}.owl"; printf "%s" "$suffix_xml_request"; } \
+    | curl -X POST "$api_endpoint" -H "Content-Type: application/xml" -H "Accept: text/turtle" -d @-
 
