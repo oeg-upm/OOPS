@@ -168,6 +168,15 @@ public class WebServiceOOPS {
         }
     }
 
+    private static String toTurtle(final Report report) throws RestResponseException {
+
+        if (report.getExceptions().isEmpty()) {
+            return report.toTurtle();
+        } else {
+            throw RestResponseException.createErrorWhileAnalyzing();
+        }
+    }
+
     // @POST
     // @Consumes(MediaType.APPLICATION_XML)
     // @Produces(MediaType.TEXT_XML)
@@ -386,6 +395,20 @@ public class WebServiceOOPS {
         }
     }
 
+    private String reqToTurtle(final String body, final IOExceptionFunction<String, RunSettings> parser) {
+
+        try {
+            try {
+                final RunSettings runSettings = parser.apply(body);
+                return req(runSettings, WebServiceOOPS::toTurtle);
+            } catch (final IOException exc) {
+                throw RestResponseException.createBadInput();
+            }
+        } catch (final RestResponseException exc) {
+            return exc.toString();
+        }
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -408,6 +431,13 @@ public class WebServiceOOPS {
     }
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("text/turtle")
+    public String reqJsonTurtle(final String body) {
+        return reqToTurtle(body, RunSettings::fromJson);
+    }
+
+    @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_JSON)
     public String reqXmlJson(final String body) {
@@ -426,6 +456,13 @@ public class WebServiceOOPS {
     @Produces(MediaType.TEXT_PLAIN)
     public String reqXmlText(final String body) {
         return reqToText(body, RunSettings::fromXml);
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces("text/turtle")
+    public String reqXmlTurtle(final String body) {
+        return reqToTurtle(body, RunSettings::fromXml);
     }
 
     public void registerCall(final String requestedFormat) {
