@@ -1,0 +1,13 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/1d145a26-f697-41a2-bebc-bf993cf96e1d>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/8acd7b3d-9a2b-473f-af16-a723cb3ec8f2> .
+
+<http://oops.linkeddata.es/data/8acd7b3d-9a2b-473f-af16-a723cb3ec8f2>
+        a                               oops:pitfall;
+        oops:hasCode                    "P41 - No license declared";
+        oops:hasDescription             "The ontology metadata omits information about the license that applies to the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "No license declared";
+        oops:hasNumberAffectedElements  1 .

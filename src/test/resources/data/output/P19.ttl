@@ -1,0 +1,49 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/52a92ebd-c707-40f5-8d2f-8ec8f1ba5f20>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP19#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/ff96aa10-014f-4fc4-ab03-19c0a8def0f1>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP19#attributeRangeUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#attributeDomainUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#relationshipRangeUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#relationshipDomainUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/6b0de631-d31a-460a-9618-2bd8a4dcb4c8>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/569198cc-3934-4456-8e6d-420b8902b85f> , <http://oops.linkeddata.es/data/11187196-43d5-42c0-b71f-c87591de4f36> , <http://oops.linkeddata.es/data/ff96aa10-014f-4fc4-ab03-19c0a8def0f1> , <http://oops.linkeddata.es/data/36bbbb55-5c85-4632-8c4b-f122f397c9e9> , <http://oops.linkeddata.es/data/52a92ebd-c707-40f5-8d2f-8ec8f1ba5f20> .
+
+<http://oops.linkeddata.es/data/36bbbb55-5c85-4632-8c4b-f122f397c9e9>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/569198cc-3934-4456-8e6d-420b8902b85f>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP19#attributeDomainUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#attributeRangeUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#relationshipRangeUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#relationshipDomainUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P19 - Defining multiple domains or ranges in properties";
+        oops:hasDescription             "The domain or range (or both) of a property (relationships and attributes) is defined by stating more than one rdfs:domain or rdfs:range statements. In OWL multiple rdfs:domain or rdfs:range axioms are allowed, but they are interpreted as conjunction, therefore being equivalent to the construct owl:intersectionOf. This pitfall is related to the common error that appears when defining domains and ranges described in [7].";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining multiple domains or ranges in properties";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/11187196-43d5-42c0-b71f-c87591de4f36>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP19#relationshipDomainUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP19#relationshipRangeUnion"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  2 .

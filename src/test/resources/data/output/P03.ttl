@@ -1,0 +1,63 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/62a78c57-239c-4f85-a014-af1f72cc237c>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is-a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/94021d70-ea8f-4e4d-8550-2901bc65681c>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is-a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P03 - Creating the relationship \"is\" instead of using \"rdfs:subClassOf\", \"rdf:type\" or \"owl:sameAs\"";
+        oops:hasDescription             "The relationship \"is\" is created in the ontology instead of using OWL primitives for representing the subclass relationship (rdfs:subClassOf), class membership (rdf:type), or the equality between instances (owl:sameAs). When concerning a class hierarchy, this pitfall is related to the guidelines for understanding the \"is-a\" relation provided in [2].";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Creating the relationship \"is\" instead of using \"rdfs:subClassOf\", \"rdf:type\" or \"owl:sameAs\"";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/12b5ee29-4870-4ef8-ac8f-fa40d54e9515>
+        a                        oops:equivalentProperty;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is-a"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/3bf7253b-7f5b-42e7-aaec-7c1185309b5d>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP03#is"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is-a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/fe274587-ea99-4f68-9f07-974f556a9f08>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is-a"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/06ba6b78-8cd4-46de-9fac-621a5be092d1>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/12b5ee29-4870-4ef8-ac8f-fa40d54e9515"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P12 - Equivalent properties not explicitly declared";
+        oops:hasDescription             "The ontology lacks information about equivalent properties (owl:equivalentProperty) in the cases of duplicated relationships and/or attributes.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Equivalent properties not explicitly declared";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/b98f550f-2e89-4049-97ae-919db271f0b7>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/421434e9-322e-4f1d-9ffd-24ea74b9dc39> , <http://oops.linkeddata.es/data/62a78c57-239c-4f85-a014-af1f72cc237c> , <http://oops.linkeddata.es/data/06ba6b78-8cd4-46de-9fac-621a5be092d1> , <http://oops.linkeddata.es/data/fe274587-ea99-4f68-9f07-974f556a9f08> , <http://oops.linkeddata.es/data/3bf7253b-7f5b-42e7-aaec-7c1185309b5d> , <http://oops.linkeddata.es/data/94021d70-ea8f-4e4d-8550-2901bc65681c> .
+
+<http://oops.linkeddata.es/data/421434e9-322e-4f1d-9ffd-24ea74b9dc39>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP03#isA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP03#is_a"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P22 - Using different naming conventions in the ontology";
+        oops:hasDescription             "The ontology elements are not named following the same convention (for example CamelCase or use of delimiters as \"-\" or \"_\"). Some notions about naming conventions are provided in [2].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Using different naming conventions in the ontology";
+        oops:hasNumberAffectedElements  1 .

@@ -1,0 +1,32 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/1b05b8d7-1d08-4537-b815-8e91ec796420>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/795024fd-5e75-43f3-8921-ce31f74702de> , <http://oops.linkeddata.es/data/88ab652e-995d-4d0d-8a11-5ff0e065ed10> , <http://oops.linkeddata.es/data/92711882-9009-46cb-87dc-bb1d79970fd6> .
+
+<http://oops.linkeddata.es/data/88ab652e-995d-4d0d-8a11-5ff0e065ed10>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP33#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP33#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/92711882-9009-46cb-87dc-bb1d79970fd6>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP33#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP33#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/795024fd-5e75-43f3-8921-ce31f74702de>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP33#relationshipT"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P33 - Creating a property chain with just one property";
+        oops:hasDescription             "The OWL 2 construct owl:propertyChainAxiom allows a property to be defined as the composition of several properties (see <http://www.w3.org/TR/owl2-new-features/F8:_Property_Chain_Inclusion> for additional details). In this sense, when an individual \"a\" is connected with an individual \"b\" by a chain of two or more object properties (specified in the antecedent of the chain), it is necessary to connect \"a\" with \"b\" by using the object property in the consequent of the chain. This pitfall consists in creating a property chain (owl:propertyChainAxiom) that includes only one property in the antecedent part.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating a property chain with just one property";
+        oops:hasNumberAffectedElements  1 .

@@ -1,0 +1,71 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/c25c30be-8027-43cc-9da4-b567b16d4f7a>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP29#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP29#ClassD"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/88bef8c1-ea6f-49c6-95eb-5a75c2faceeb>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/707f3282-87bc-4384-8bab-2c45d7242011"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P31 - Defining wrong equivalent classes";
+        oops:hasDescription             "Two classes are defined as equivalent, using owl:equivalentClass, when they are not necessarily equivalent.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining wrong equivalent classes";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/e14549da-1704-4fbb-afcf-797dcb5d8f67>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP29#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P02 - Creating synonyms as classes";
+        oops:hasDescription             "Several classes whose identifiers are synonyms are created and defined as equivalent (owl:equivalentClass) in the same namespace. This pitfall is related to the guidelines presented in [2], which explain that synonyms for the same concept do not represent different classes.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating synonyms as classes";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/7fc9b4ee-90a2-4ac9-871e-262e8406e230>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP29#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/121ff293-c719-4230-8524-240e595450e3>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/88bef8c1-ea6f-49c6-95eb-5a75c2faceeb> , <http://oops.linkeddata.es/data/64555bb0-87e5-446b-99c3-79604ebaf13a> , <http://oops.linkeddata.es/data/7fc9b4ee-90a2-4ac9-871e-262e8406e230> , <http://oops.linkeddata.es/data/8170be38-d45c-46f5-8d30-84f78e86fc09> , <http://oops.linkeddata.es/data/47166626-824d-4066-a92b-4342ad1067e9> , <http://oops.linkeddata.es/data/c25c30be-8027-43cc-9da4-b567b16d4f7a> , <http://oops.linkeddata.es/data/e14549da-1704-4fbb-afcf-797dcb5d8f67> .
+
+<http://oops.linkeddata.es/data/707f3282-87bc-4384-8bab-2c45d7242011>
+        a                        oops:wrongEquivalentClass;
+        oops:hasAffectedElement  "http://oops.linkeddata.es/data/testP29#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP29#ClassD"^^<http://www.w3.org/2001/XMLSchema#anyURI> .
+
+<http://oops.linkeddata.es/data/64555bb0-87e5-446b-99c3-79604ebaf13a>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP29#relationshipS"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P29 - Defining wrong transitive relationships";
+        oops:hasDescription             "A relationship is defined as transitive, using owl:TransitiveProperty, when the relationship is not necessarily transitive.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Defining wrong transitive relationships";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/47166626-824d-4066-a92b-4342ad1067e9>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP29#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP29#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP29#ClassD"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP29#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  4 .
+
+<http://oops.linkeddata.es/data/8170be38-d45c-46f5-8d30-84f78e86fc09>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .

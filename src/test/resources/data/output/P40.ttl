@@ -1,0 +1,32 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/b908ff96-3c70-45ba-a74c-823641a6029c>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://xmlns.com/foaf/0.1/edad"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://xmlns.com/foaf/0.1/conoce"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P11 - Missing domain or range in properties";
+        oops:hasDescription             "Object and/or datatype properties missing domain or range (or both of them) are included in the ontology.";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing domain or range in properties";
+        oops:hasNumberAffectedElements  2 .
+
+<http://oops.linkeddata.es/data/7b701865-f89e-4171-8ede-8e229bf7f893>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://xmlns.com/foaf/0.1/conoce"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P13-N - Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasDescription             "This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Inverse relationships not explicitly declared - No Suggestion";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/3e25d79c-a583-4318-919d-659b83c2430d>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/7b701865-f89e-4171-8ede-8e229bf7f893> , <http://oops.linkeddata.es/data/b908ff96-3c70-45ba-a74c-823641a6029c> , <http://oops.linkeddata.es/data/e38bde7a-549c-43d9-9537-ab5c287ad0d1> .
+
+<http://oops.linkeddata.es/data/e38bde7a-549c-43d9-9537-ab5c287ad0d1>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://xmlns.com/foaf/0.1/Persona"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  1 .

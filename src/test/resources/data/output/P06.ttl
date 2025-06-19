@@ -1,0 +1,40 @@
+PREFIX oops: <http://oops.linkeddata.es/def#>
+
+<http://oops.linkeddata.es/data/636a6968-03ab-412f-8900-277cf8396c79>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP06#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP06#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP06#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P08-A - Missing annotations - Label & Comment";
+        oops:hasDescription             "This pitfall consists in creating an ontology element and failing to provide human readable annotations attached to it. Consequently, ontology elements lack annotation properties that label them (e.g. rdfs:label, lemon:LexicalEntry, skos:prefLabel or skos:altLabel) or that define them (e.g. rdfs:comment or dc:description). This pitfall is related to the guidelines provided in [5].";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Missing annotations - Label & Comment";
+        oops:hasNumberAffectedElements  3 .
+
+<http://oops.linkeddata.es/data/01797fd4-7738-4cf4-9382-05c25f205836>
+        a                oops:response;
+        oops:hasPitfall  <http://oops.linkeddata.es/data/1f8c775e-b427-4f53-b582-8cbd344aa72a> , <http://oops.linkeddata.es/data/636a6968-03ab-412f-8900-277cf8396c79> , <http://oops.linkeddata.es/data/7c8a96bf-4345-4bed-98b4-aac0adf51943> , <http://oops.linkeddata.es/data/cfe9b41c-3941-4501-bb8c-dd2022eed152> .
+
+<http://oops.linkeddata.es/data/1f8c775e-b427-4f53-b582-8cbd344aa72a>
+        a                               oops:pitfall;
+        oops:hasCode                    "P10 - Missing disjoint-ness";
+        oops:hasDescription             "The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related to the guidelines provided in [6], [2] and [7].";
+        oops:hasImportanceLevel         "IMPORTANT";
+        oops:hasName                    "Missing disjoint-ness";
+        oops:hasNumberAffectedElements  1 .
+
+<http://oops.linkeddata.es/data/cfe9b41c-3941-4501-bb8c-dd2022eed152>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP06#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP06#ClassA"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP06#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P04 - Creating unconnected ontology elements";
+        oops:hasDescription             "Ontology elements (classes, object properties and datatype properties) exist in isolation, with no relation to the rest of the ontology.";
+        oops:hasImportanceLevel         "MINOR";
+        oops:hasName                    "Creating unconnected ontology elements";
+        oops:hasNumberAffectedElements  3 .
+
+<http://oops.linkeddata.es/data/7c8a96bf-4345-4bed-98b4-aac0adf51943>
+        a                               oops:pitfall;
+        oops:hasAffectedElement         "http://oops.linkeddata.es/data/testP06#ClassB"^^<http://www.w3.org/2001/XMLSchema#anyURI> , "http://oops.linkeddata.es/data/testP06#ClassC"^^<http://www.w3.org/2001/XMLSchema#anyURI>;
+        oops:hasCode                    "P06 - Including cycles in a class hierarchy";
+        oops:hasDescription             "A cycle between two classes in a hierarchy is included in the ontology. A cycle appears when some class A has a subclass (directly or indirectly) B, and at the same time B is a superclass (directly or indirectly) of A. This pitfall was first identified in [3]. Guidelines presented in [2] also provide recommendations to avoid this pitfall.";
+        oops:hasImportanceLevel         "CRITICAL";
+        oops:hasName                    "Including cycles in a class hierarchy";
+        oops:hasNumberAffectedElements  1 .
