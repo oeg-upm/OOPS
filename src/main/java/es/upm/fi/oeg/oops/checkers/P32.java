@@ -14,6 +14,7 @@ import es.upm.fi.oeg.oops.CheckingContext;
 import es.upm.fi.oeg.oops.ConstrainsClasses;
 import es.upm.fi.oeg.oops.ExtIterIterable;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.Linter;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -26,7 +27,9 @@ import java.util.Map;
 import java.util.Set;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
 import org.kohsuke.MetaInfServices;
 
 @MetaInfServices(Checker.class)
@@ -81,7 +84,14 @@ public class P32 implements Checker {
             }
         }
 
-        context.addResultsIndividualSets(PITFALL_INFO, preResults.values());
+        addToOutput(context, preResults);
+    }
+
+    private void addToOutput(CheckingContext context, Map<String, Set<OntClass>> preResults) {
+        Model outputModel = context.getOutputModel();
+        final Resource sameLabelType = outputModel.createResource(Linter.NS_OOPS_DEF + "sameLabel");
+
+        P31.addToOutput(PITFALL_INFO, context, sameLabelType, preResults);
     }
 
     /**

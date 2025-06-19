@@ -8,6 +8,7 @@ package es.upm.fi.oeg.oops;
 
 import java.util.List;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Resource;
 
 /**
  * The result of a linting rule check.
@@ -18,7 +19,7 @@ public interface Pitfall {
 
     PitfallInfo getInfo();
 
-    List<OntResource> getResources();
+    List<Resource> getResources();
 
     String toString();
 

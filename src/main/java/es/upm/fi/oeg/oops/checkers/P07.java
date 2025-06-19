@@ -56,10 +56,10 @@ public class P07 implements Checker {
             final String tokenizedString = Tokenizer.tokenizedString(localName);
             for (final String token : Tokenizer.tokenize(localName)) {
                 if (token.equalsIgnoreCase("and") || token.equalsIgnoreCase("or")) {
-                    // TODO FIXME Should this not rather check token vs tokenizedString?
+                    // Note that the synonym check should be done on the tokenized string.
                     final boolean hasSynSets = dictionary.hasSynsets(tokenizedString);
 
-                    if (!Checker.fromModels(ontoClass) && hasSynSets) {
+                    if (!Checker.fromModels(ontoClass) && !hasSynSets) {
                         withPitfall.add(ontoClass);
                     }
                 }

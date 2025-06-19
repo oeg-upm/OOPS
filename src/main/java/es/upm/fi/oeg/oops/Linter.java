@@ -37,8 +37,8 @@ public class Linter {
 
     // private static String ERROR_MSG = ErrorOuts.getErrorMessageWrongExec();
 
-    private static String NS_OOPS_DEF = "http://oops.linkeddata.es/def#";
-    private static String NS_OOPS_DATA = "http://oops.linkeddata.es/data/";
+    public static final String NS_OOPS_DEF = "http://oops.linkeddata.es/def#";
+    public static final String NS_OOPS_DATA = "http://oops.linkeddata.es/data/";
 
     private final Logger logger = LoggerFactory.getLogger(Linter.class);
 
@@ -144,20 +144,13 @@ public class Linter {
         for (final WarningType wType : WarningType.values()) {
             warnings.put(wType, new ArrayList<>());
         }
-        // final List<ObjectProperty> symmetricOrTransitiveSuggestion = new ArrayList<>();
-        // final List<String> importsFailing = new ArrayList<>();
-        // final List<Integer> options = new ArrayList<>();
-        // final List<Throwable> exceptions = new ArrayList<>(loadingExceptions);
         final List<Throwable> exceptions = new ArrayList<>();
 
         final int numClasses = srcModel.getModel().listClasses().toList().size();
         final int numProperties = srcModel.getModel().listAllOntProperties().toList().size();
 
-        // final long timeStart = System.nanoTime();
         final Instant timeStart = Instant.now();
 
-        // this.options = options;
-        // final StringBuffer xmlOutput = new StringBuffer();
         Model outputModel = createModel();
         outputModel.getNsPrefixMap().putAll(srcModel.getModel().getNsPrefixMap());
         UUID uuid = UUID.randomUUID();
@@ -199,34 +192,11 @@ public class Linter {
         final Property noSuggestionProp = outputModel.createProperty(NS_OOPS_DEF + "noSuggestion");
         final Resource noSuggestionType = outputModel.createResource(NS_OOPS_DEF + "noSuggestionProperty");
 
-        // OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-        // InputStream is2 = new ByteArrayInputStream(text.getBytes());
-        // OWLOntology modelOWL = manager.loadOntologyFromOntologyDocument(is2);
-
-        // xmlOutput.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        // xmlOutput.append("<oops:OOPSResponse xmlns:oops=\"http://www.oeg-upm.net/oops\">\n");
-        // final File dir1 = new File(".");
-        // try (final FileWriter csvWriter = new FileWriter(dir1.getCanonicalPath() + "/usos-web.csv", true)) {
-        // String path = System.getProperty("catalina.base") + "/work";
-        // try (final FileWriter csvWriter = new FileWriter(path + "/usos-web.csv", true)) {
-        // csvWriter.write(new Date().toString() + ";");
         {
-            // switch (srcModel.getSrcSpec().getSrcType()) {
-            // case RDF_CODE:
-            // csvWriter.write(srcModel.getModel().getNsPrefixURI("") + ";");
-            // break;
-            // case URI:
-            // csvWriter.write(srcModel.getSrcSpec().getIri() + ";");
-            // break;
-            // default:
-            // throw new UnsupportedOperationException("Not yet implemented");
-            // }
-
             for (final Checker checker : checkers) {
-                // final CheckerInfo info = checker.getInfo();
                 final CheckingContext context;
                 try {
-                    context = new CheckingContext(srcModel);
+                    context = new CheckingContext(srcModel, outputModel);
                     logger.info("Checking {} ...", checker.getInfo().getId());
                     checker.check(context);
                     logger.info("Checking {} done.", checker.getInfo().getId());
@@ -249,14 +219,6 @@ public class Linter {
                             .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
                     outputModel.add(pitfallSubj, RDF.type, pitfallType);
                     response.addProperty(pitfallProp, pitfallSubj);
-                    // xmlOutput.append("<oops:Pitfall>\n");
-                    // xmlOutput.append("<oops:Code>").append(pId.toString()).append("</oops:Code><oops:Name>")
-                    // .append(pInfo.getTitle()).append("</oops:Name>\n");
-                    // xmlOutput.append("<oops:Description>").append(pInfo.getExplanation())
-                    // .append("</oops:Description>\n");
-                    // xmlOutput.append("<oops:Importance>").append(pInfo.getImportance()).append("</oops:Importance>\n");
-                    // xmlOutput.append("<oops:NumberAffectedElements>").append(currentP)
-                    // .append("</oops:NumberAffectedElements>\n");
                     final Literal title = outputModel.createTypedLiteral(pId.toString() + " - " + pInfo.getTitle(),
                             XSDDatatype.XSDstring);
                     pitfallSubj.addProperty(titleProp, title);
@@ -271,136 +233,17 @@ public class Linter {
                             XSDDatatype.XSDstring);
                     pitfallSubj.addProperty(importanceProp, importance);
 
-                    // xmlOutput.append("<oops:Affects>\n");
-                    if (pId.getNumeral() == 5) {
-                        // XXX resourceArity == TWO
-                        for (final Pitfall result : pfs) {
-                            // xmlOutput.append("<oops:MightNotBeInverseOf>\n");
-                            final Resource inverseRes = outputModel
-                                    .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
-                            outputModel.add(inverseRes, RDF.type, notInverseType);
-                            pitfallSubj.addProperty(notInverse, inverseRes);
-                            final Iterator<OntResource> props = result.getResources().iterator();
-                            final String prop1Uri = props.next().getURI();
-                            final String prop2Uri = props.next().getURI();
-                            Literal value = outputModel.createTypedLiteral(prop1Uri, XSDDatatype.XSDanyURI);
-                            inverseRes.addProperty(valueProp, value);
-                            value = outputModel.createTypedLiteral(prop2Uri, XSDDatatype.XSDanyURI);
-                            inverseRes.addProperty(valueProp, value);
-                            // xmlOutput.append("<oops:AffectedElement>").append(prop1Uri)
-                            // .append("</oops:AffectedElement>\n");
-                            // xmlOutput.append("<oops:AffectedElement>").append(prop2Uri)
-                            // .append("</oops:AffectedElement>\n");
-                            // Literal value = outputModel.createTypedLiteral(st.nextToken(), XSDDatatype.XSDanyURI);
-                            // inverseRes.addProperty(valueProp, value);
-                            // value = outputModel.createTypedLiteral(st.nextToken(), XSDDatatype.XSDanyURI);
-                            // inverseRes.addProperty(valueProp, value);
-                            // xmlOutput.append("</oops:MightNotBeInverseOf>\n");
-                        }
-                    } else if (pId.getNumeral() == 12 || pId.getNumeral() == 30 || pId.getNumeral() == 31
-                            || pId.getNumeral() == 32) {
-                        // XXX resourceArity == ONE_PLUS || TWO_PLUS // -> "groups"
-                        for (final Pitfall result : pfs) {
-                            final String elemName;
-                            final Resource type;
-                            final Property prop;
-                            if (pId.getNumeral() == 12) {
-                                final OntResource firstProp = result.getResources().iterator().next();
-                                elemName = "MightBeEquivalentProperty";
-                                if (firstProp instanceof ObjectProperty) {
-                                    type = equivalentPropType;
-                                    prop = equivalentProp;
-                                } else if (firstProp instanceof DatatypeProperty) {
-                                    type = equivalentAttrType;
-                                    prop = equivalentAttrProp;
-                                } else {
-                                    throw new IllegalStateException();
-                                }
-                            } else if (pId.getNumeral() == 30) {
-                                elemName = "MightBeEquivalentClass";
-                                type = equivalentClassType;
-                                prop = equivalentClass;
-                            } else if (pId.getNumeral() == 31) {
-                                elemName = "MightNotBeEquivalentClass";
-                                type = wrongEquivalentClassType;
-                                prop = wrongEquivalentClass;
-                            } else if (pId.getNumeral() == 32) {
-                                elemName = "HaveSameLabel";
-                                type = sameLabelType;
-                                prop = sameLabel;
-                            } else {
-                                throw new IllegalStateException();
-                            }
-                            final Resource equivalentRes = outputModel
-                                    .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
-                            outputModel.add(equivalentRes, RDF.type, type);
-                            pitfallSubj.addProperty(prop, equivalentRes);
-                            // xmlOutput.append("<oops:").append(elemName).append(">\n");
-                            for (final OntResource ontRes : result.getResources()) {
-                                // xmlOutput.append("<oops:AffectedElement>").append(ontRes.getURI())
-                                // .append("</oops:AffectedElement>\n");
-                                final Literal value = outputModel.createTypedLiteral(ontRes.getURI(),
-                                        XSDDatatype.XSDanyURI);
-                                equivalentRes.addProperty(valueProp, value);
-                            }
-                            // xmlOutput.append("</oops:").append(elemName).append(">\n");
-                        }
-                        // } else if (pId.getNumeral() == 13) {
-                        // final List<ObjectProperty> noTransitiveNoInverse = new ArrayList<>();
-                        // for (final Pitfall result : pfs) {
-                        // if (result instanceof P13.TransitiveNoInversePitfall) {
-                        // noTransitiveNoInverse.add((ObjectProperty) result.getResources().get(0));
-                        // continue;
-                        // } else if (result instanceof P13.SymmetricOrTransitiveSuggestionPitfall) {
-                        // symmetricOrTransitiveSuggestion.add((ObjectProperty) result.getResources().get(0));
-                        // continue;
-                        // }
-                        // Resource equivalentRes = outputModel
-                        // .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
-                        // outputModel.add(equivalentRes, RDF.type, inverseType);
-                        // pitRes.addProperty(inverseProp, equivalentRes);
-                        //// xmlOutput.append("<oops:MightBeInverse>\n");
-                        // for (final OntResource prop : result.getResources()) {
-                        //// xmlOutput
-                        //// .append("<oops:AffectedElement>" + prop.getURI() + "</oops:AffectedElement>\n");
-                        // Literal value = outputModel.createTypedLiteral(prop.getURI(), XSDDatatype.XSDanyURI);
-                        // equivalentRes.addProperty(valueProp, value);
-                        // }
-                        //// xmlOutput.append("</oops:MightBeInverse>\n");
-                        // }
-                        // if (noTransitiveNoInverse.size() > 0) {
-                        //// xmlOutput.append("<oops:NoInverseSuggestion>\n");
-                        // Resource equivalentRes = outputModel
-                        // .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
-                        // outputModel.add(equivalentRes, RDF.type, noSuggestionType);
-                        // pitRes.addProperty(noSuggestionProp, equivalentRes);
-                        // for (final ObjectProperty result : noTransitiveNoInverse) {
-                        //// xmlOutput.append("<oops:AffectedElement>").append(result.getURI())
-                        //// .append("</oops:AffectedElement>\n");
-                        // Literal value = outputModel.createTypedLiteral(result.getURI(), XSDDatatype.XSDanyURI);
-                        // equivalentRes.addProperty(valueProp, value);
-                        // }
-                        //// xmlOutput.append("</oops:NoInverseSuggestion>\n");
-                        // }
-                    } else {
-                        // XXX resourceArity == ONE
-                        for (final Pitfall result : pfs) {
-                            for (final OntResource ontRes : result.getResources()) {
-                                final String resUri = ontRes.getURI();
-                                // xmlOutput.append("<oops:AffectedElement>").append(resUri)
-                                // .append("</oops:AffectedElement>\n");
-                                final Literal value = outputModel.createTypedLiteral(resUri, XSDDatatype.XSDanyURI);
-                                pitfallSubj.addProperty(valueProp, value);
-                            }
+                    for (final Pitfall result : pfs) {
+                        for (final Resource ontRes : result.getResources()) {
+                            final String resUri = ontRes.getURI();
+                            final Literal value = outputModel.createTypedLiteral(resUri, XSDDatatype.XSDanyURI);
+                            pitfallSubj.addProperty(valueProp, value);
                         }
                     }
-                    // xmlOutput.append("</oops:Affects>\n");
-                    // xmlOutput.append("</oops:Pitfall>\n");
                 }
                 for (final Warning warning : context.getWarnings()) {
                     warnings.get(warning.getType()).add(warning);
                 }
-                // csvWriter.write(String.valueOf(currentP) + ";");
             }
 
             // csvWriter.write(String.valueOf(numPitfalls) + ";\n");
@@ -439,57 +282,59 @@ public class Linter {
             // // xmlOutput.append("</oops:Suggestion>\n");
             // }
 
-            for (final Map.Entry<WarningType, List<Warning>> stWarningsEntry : warnings.entrySet()) {
-                final WarningType wType = stWarningsEntry.getKey();
-                final List<Warning> stWarnings = stWarningsEntry.getValue();
-                if (stWarnings.size() > 0) {
-                    // xmlOutput.append("<oops:Warning>\n");
-                    switch (wType) {
-                        case CLASS :
-                            // xmlOutput.append(
-                            // "<oops:Name>WARNING: the following classes do not have rdf:type owl:Class or
-                            // equivalent.</oops:Name>\n");
-                            break;
-                        case PROPERTY :
-                            // xmlOutput.append(
-                            // "<oops:Name>WARNING: the following properties do not have rdf:type Property.</oops:Name>\n");
-                            break;
-                        case ONTOLOGY :
-                            // xmlOutput.append("<oops:Name>WARNING: There is an issue with the ontology</oops:Name>\n");
-                            break;
-                        default :
-                            throw new UnsupportedOperationException("Not Implemented");
-                    }
-                    // xmlOutput.append("<oops:NumberAffectedElements>").append(stWarnings.size())
-                    // .append("</oops:NumberAffectedElements>\n");
-                    // xmlOutput.append("<oops:Affects>\n");
-                    final Resource warningSubj = outputModel
-                            .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
-                    outputModel.add(warningSubj, RDF.type, warningType);
-                    response.addProperty(warningProp, warningSubj);
-                    final Literal title = outputModel.createTypedLiteral(
-                            "WARNING: symmetric or transitive object properties.", XSDDatatype.XSDstring);
-                    warningSubj.addProperty(titleProp, title);
-                    final Literal description = outputModel.createTypedLiteral(
-                            "The domain and range axioms are equal for each of the following object properties. Could they be symmetric or transitive?",
-                            XSDDatatype.XSDstring);
-                    warningSubj.addProperty(descriptionProp, description);
-                    final Literal cases = outputModel.createTypedLiteral(stWarnings.size(), XSDDatatype.XSDinteger);
-                    warningSubj.addProperty(casesProp, cases);
+            // for (final Map.Entry<WarningType, List<Warning>> stWarningsEntry : warnings.entrySet()) {
+            //     final WarningType wType = stWarningsEntry.getKey();
+            //     final List<Warning> stWarnings = stWarningsEntry.getValue();
+            //     logger.debug("  warningtype: {}", wType);
+            //     logger.debug("  stWarnings.size(): {}", stWarnings.size());
+            //     if (stWarnings.size() > 0) {
+            //         // xmlOutput.append("<oops:Warning>\n");
+            //         switch (wType) {
+            //             case CLASS :
+            //                 // xmlOutput.append(
+            //                 // "<oops:Name>WARNING: the following classes do not have rdf:type owl:Class or
+            //                 // equivalent.</oops:Name>\n");
+            //                 break;
+            //             case PROPERTY :
+            //                 // xmlOutput.append(
+            //                 // "<oops:Name>WARNING: the following properties do not have rdf:type Property.</oops:Name>\n");
+            //                 break;
+            //             case ONTOLOGY :
+            //                 // xmlOutput.append("<oops:Name>WARNING: There is an issue with the ontology</oops:Name>\n");
+            //                 break;
+            //             default :
+            //                 throw new UnsupportedOperationException("Not Implemented");
+            //         }
+            //         // xmlOutput.append("<oops:NumberAffectedElements>").append(stWarnings.size())
+            //         // .append("</oops:NumberAffectedElements>\n");
+            //         // xmlOutput.append("<oops:Affects>\n");
+            //         final Resource warningSubj = outputModel
+            //                 .createResource(NS_OOPS_DATA + UUID.randomUUID().toString());
+            //         outputModel.add(warningSubj, RDF.type, warningType);
+            //         response.addProperty(warningProp, warningSubj);
+            //         final Literal title = outputModel.createTypedLiteral(
+            //                 "WARNING: symmetric or transitive object properties.", XSDDatatype.XSDstring);
+            //         warningSubj.addProperty(titleProp, title);
+            //         final Literal description = outputModel.createTypedLiteral(
+            //                 "The domain and range axioms are equal for each of the following object properties. Could they be symmetric or transitive?",
+            //                 XSDDatatype.XSDstring);
+            //         warningSubj.addProperty(descriptionProp, description);
+            //         final Literal cases = outputModel.createTypedLiteral(stWarnings.size(), XSDDatatype.XSDinteger);
+            //         warningSubj.addProperty(casesProp, cases);
 
-                    for (final Warning warning : stWarnings) {
-                        for (final OntResource scopeItem : warning.getScope()) {
-                            // xmlOutput.append("<oops:AffectedElement>").append(scopeItem.getURI())
-                            // .append("</oops:AffectedElement>\n");
-                            final Literal value = outputModel.createTypedLiteral(scopeItem.getURI(),
-                                    XSDDatatype.XSDanyURI);
-                            warningSubj.addProperty(valueProp, value);
-                        }
-                    }
-                    // xmlOutput.append("</oops:Affects>\n");
-                    // xmlOutput.append("</oops:Warning>\n");
-                }
-            }
+            //         for (final Warning warning : stWarnings) {
+            //             for (final OntResource scopeItem : warning.getScope()) {
+            //                 // xmlOutput.append("<oops:AffectedElement>").append(scopeItem.getURI())
+            //                 // .append("</oops:AffectedElement>\n");
+            //                 final Literal value = outputModel.createTypedLiteral(scopeItem.getURI(),
+            //                         XSDDatatype.XSDanyURI);
+            //                 warningSubj.addProperty(valueProp, value);
+            //             }
+            //         }
+            //         // xmlOutput.append("</oops:Affects>\n");
+            //         // xmlOutput.append("</oops:Warning>\n");
+            //     }
+            // }
 
             OutputStream obj = new ByteArrayOutputStream();
             outputModel.write(obj, "RDF/XML");

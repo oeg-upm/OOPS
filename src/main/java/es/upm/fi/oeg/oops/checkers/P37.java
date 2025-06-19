@@ -29,8 +29,8 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
 import org.kohsuke.MetaInfServices;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -156,7 +156,7 @@ public class P37 implements Checker {
         }
 
         @Override
-        public List<OntResource> getResources() {
+        public List<Resource> getResources() {
             return Collections.emptyList();
         }
 

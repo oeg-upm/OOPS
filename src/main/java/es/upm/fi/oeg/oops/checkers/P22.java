@@ -61,8 +61,14 @@ public class P22 implements Checker {
         final OntModel model = context.getModel();
         final TypeContext typeContext = new TypeContext();
 
-        analyze(context, typeContext, () -> model.listNamedClasses());
-        analyze(context, typeContext, () -> model.listObjectProperties());
+        int detectedPitfalls = analyze(context, typeContext, () -> model.listNamedClasses());
+        if (detectedPitfalls > 0) {
+            return;
+        }
+        detectedPitfalls = analyze(context, typeContext, () -> model.listObjectProperties());
+        if (detectedPitfalls > 0) {
+            return;
+        }
         analyze(context, typeContext, () -> model.listDatatypeProperties());
     }
 
@@ -81,11 +87,11 @@ public class P22 implements Checker {
         public String nsElementWithU = null;
     }
 
-    private <PT extends OntResource> void analyze(final CheckingContext context, final TypeContext typeContext,
+    private <PT extends OntResource> int analyze(final CheckingContext context, final TypeContext typeContext,
             final Supplier<ExtendedIterator<PT>> allResGen) {
 
         // TODO FIXME The logic in here needs revising, taking into control single-word-terms, that classes should start
-        // with U nad everythign else with L, and check for _ and _ mixing. Maybe more.
+        // with U and everything else with L, and check for _ and _ mixing. Maybe more.
         boolean startsL = false;
         boolean startsU = false;
         for (final PT ontoProperty : new ExtIterIterable<>(allResGen.get())) {
@@ -110,7 +116,7 @@ public class P22 implements Checker {
                     if (typeContext.hasHyphen && typeContext.hasNoHyphen) {
                         context.addResult(PITFALL_INFO, typeContext.elementWithHyphen,
                                 typeContext.elementWithNoDelimiter);
-                        break;
+                        return 1;
                     }
                 }
             }
@@ -128,9 +134,10 @@ public class P22 implements Checker {
             if (startsL && startsU && !Checker.fromModels(ontoProperty)) {
                 // if (nsElementWithL.equals(nsElementWithU) ){
                 context.addResult(PITFALL_INFO, typeContext.elementWithL, typeContext.elementWithU);
-                break;
+                return 1;
                 // }
             }
         }
+        return 0;
     }
 }

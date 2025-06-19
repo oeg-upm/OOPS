@@ -15,6 +15,7 @@ import es.upm.fi.oeg.oops.EqualGroupOfAxiomsAndOr;
 import es.upm.fi.oeg.oops.ExtIterIterable;
 import es.upm.fi.oeg.oops.FilterEquivalents;
 import es.upm.fi.oeg.oops.Importance;
+import es.upm.fi.oeg.oops.Linter;
 import es.upm.fi.oeg.oops.PitfallCategoryId;
 import es.upm.fi.oeg.oops.PitfallId;
 import es.upm.fi.oeg.oops.PitfallInfo;
@@ -23,6 +24,7 @@ import es.upm.fi.oeg.oops.filter.PropertyFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import org.apache.jena.ontology.DatatypeProperty;
@@ -30,7 +32,11 @@ import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.vocabulary.RDF;
 import org.kohsuke.MetaInfServices;
 
 /**
@@ -60,6 +66,22 @@ public class P27 implements Checker {
         analyze(context, () -> model.listObjectProperties(), FilterEquivalents.factory(ObjectProperty.class), true);
         analyze(context, () -> model.listDatatypeProperties(), FilterEquivalents.factory(DatatypeProperty.class),
                 false);
+    }
+
+    private <PT extends OntProperty> void addToOutput(CheckingContext context, PT property1, PT property2) {
+        Model outputModel = context.getOutputModel();
+
+        final Resource wrongEquivalentPropertyType = outputModel
+                .createResource(Linter.NS_OOPS_DEF + "wrongEquivalentProperty");
+        final Property valueProp = outputModel.createProperty(Linter.NS_OOPS_DEF + "hasAffectedElement");
+
+        final Resource res = outputModel.createResource(Linter.NS_OOPS_DATA + UUID.randomUUID().toString());
+        outputModel.add(res, RDF.type, wrongEquivalentPropertyType);
+
+        res.addProperty(valueProp, property1);
+        res.addProperty(valueProp, property2);
+
+        context.addResult(PITFALL_INFO, res);
     }
 
     private <PT extends OntProperty> void analyze(final CheckingContext context,
@@ -97,7 +119,9 @@ public class P27 implements Checker {
                         resWithPitfall2.add(prop1prop2);
                         resWithPitfall2.add(prop2prop1);
 
-                        context.addResult(PITFALL_INFO, property1, property2);
+                        addToOutput(context, property1, property2);
+
+                        //context.addResult(PITFALL_INFO, property1, property2);
                     }
                 } else {
                     // System.out.println("One of the two is empty.");
@@ -122,7 +146,8 @@ public class P27 implements Checker {
                         resWithPitfall2.add(prop1prop2);
                         resWithPitfall2.add(prop2prop1);
 
-                        context.addResult(PITFALL_INFO, property1, property2);
+                        //context.addResult(PITFALL_INFO, property1, property2);
+                        addToOutput(context, property1, property2);
                     }
                 } else {
                     // System.out.println("One of the two is empty.");
@@ -130,4 +155,5 @@ public class P27 implements Checker {
             }
         }
     }
+
 }
