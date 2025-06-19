@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.List;
@@ -100,6 +102,17 @@ public class Report {
     public void toXml(final File file) throws IOException {
         final ObjectMapper mapper = createXmlMapper();
         mapper.writerWithDefaultPrettyPrinter().writeValue(file, this);
+    }
+
+    public void toTurtle(final File file) throws IOException {
+        FileOutputStream fos = new FileOutputStream(file);
+        outputModel.write(fos, "TURTLE");
+    }
+
+    public String toTurtle() {
+        StringWriter sw = new StringWriter();
+        outputModel.write(sw, "TURTLE");
+        return sw.toString();
     }
 
     public Map<PitfallId, List<Pitfall>> getPitfalls() {
