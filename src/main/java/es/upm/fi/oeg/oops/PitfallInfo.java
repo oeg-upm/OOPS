@@ -65,7 +65,7 @@ public class PitfallInfo {
 
     public PitfallInfo(final PitfallId id, final Set<PitfallCategoryId> categoryIds, final Importance importance,
             final String title, final String explanation, final RuleScope scope, final Arity resourceArity) {
-        this(id, categoryIds, importance, title, explanation, scope, resourceArity, title, null, null);
+        this(id, categoryIds, importance, title, explanation, scope, resourceArity, null, null, null);
     }
 
     // public PitfallInfo(final PitfallId id, final Importance importance, final String title, final String explanation)
@@ -102,12 +102,16 @@ public class PitfallInfo {
     }
 
     public String getAccomp() {
-        String accompNonNull = (accomp != null) ? accomp : title + " appears in the elements: %s";
-        if (getScope() == RuleScope.ONTOLOGY) {
-            accompNonNull = accompNonNull
-                    + "\n\n*This pitfall applies to the ontology in general instead of specific elements.";
-        }
-        return accompNonNull;
+        // This code is commented out, because it is easier to handle this
+        // in the jsp page.
+
+        // String accompNonNull = (accomp != null) ? accomp : title + " appears in the elements: %s";
+        // if (getScope() == RuleScope.ONTOLOGY) {
+        //     accompNonNull = accompNonNull
+        //             + "\n\n*This pitfall applies to the ontology in general instead of specific elements.";
+        // }
+        //return accompNonNull;
+        return accomp;
     }
 
     public AccompPer getAccompPer() {

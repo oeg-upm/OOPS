@@ -43,7 +43,7 @@ public class P08 implements Checker {
                     + "or that define them (e.g. rdfs:comment or dc:description). "
                     + "This pitfall is related to the guidelines provided in [5].",
             RuleScope.RESOURCE, Arity.ONE,
-            "These resources have neither `rdfs:label` nor `rdfs:comment` (nor `skos:definition`) defined",
+            "These resources have neither `rdfs:label` or `rdfs:comment` (or `skos:definition`) defined",
             AccompPer.TYPE);
 
     private static final PitfallInfo PITFALL_INFO_C = new PitfallInfo(new PitfallId(8, 'C'),
