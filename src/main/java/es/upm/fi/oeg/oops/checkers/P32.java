@@ -39,13 +39,11 @@ public class P32 implements Checker {
             Set.of(new PitfallCategoryId('N', 7)), Importance.MINOR, "Several classes with the same label",
             "Two or more classes have the same content for natural language annotations for naming, "
                     + "for example the rdfs:label annotation. "
-                    + "This pitfall involves lack of accuracy when defining terms.",
-            RuleScope.CLASS, Arity.TWO_PLUS,
-            "These classes contain the same label. "
-                    + "Maybe they should be replaced by one class with several labels, "
-                    + "or they might be equivalent classes, "
-                    + "and thus should be marked as such with `owl:equivalentClass`.",
-            AccompPer.TYPE);
+                    + "This pitfall involves lack of accuracy when defining terms. "
+                    + "These classes may need to be replaced by one class with several labels or "
+                    + "they might be equivalent classes and "
+                    + "should then be marked as such with owl:equivalentClass.",
+            RuleScope.CLASS, Arity.TWO_PLUS, "The following classes contain the same label", AccompPer.TYPE);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 

@@ -7,7 +7,7 @@ SPDX-License-Identifier: Apache-2.0
 --%>
 
 <%@ page contentType="text/html; charset=utf-8"
-	import="es.upm.fi.oeg.oops.*, java.util.*, java.util.function.Function, java.util.stream.Collectors, java.io.PrintStream, org.apache.jena.rdf.model.Resource, org.apache.jena.ontology.OntResource" errorPage=""%>
+	import="es.upm.fi.oeg.oops.*, java.util.*, java.util.function.Function, java.util.stream.Collectors, java.io.PrintStream, org.apache.jena.rdf.model.*, org.apache.jena.ontology.OntResource" errorPage=""%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,6 +41,18 @@ SPDX-License-Identifier: Apache-2.0
 			<%!
 			public String asLink(final Resource res) {
 				return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", res.getURI(), res.getLocalName());
+			}
+
+                        private boolean isCompound(final List<Pitfall> pitfalls, Property affectedProperty) {
+			    for (final Pitfall pf : pitfalls) {
+				for (final Resource res : pf.getResources()) {
+				    if (res.hasProperty(affectedProperty)) {
+					return true;
+				    }
+				}
+			    }
+
+			    return false;
 			}
 			%>
 			<%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,6 +198,8 @@ SPDX-License-Identifier: Apache-2.0
 
 				final Map<PitfallId, PitfallInfo> pitfallInfos;
 				final Report report;
+				final Model model;
+				final Property affectedProperty;
 				if (srcSpec != null) {
 					final Linter linter = new Linter();
 					final SrcModel srcModel = ModelLoader.load(srcSpec);
@@ -198,9 +212,13 @@ SPDX-License-Identifier: Apache-2.0
 					report = linter.partialExecution(srcModel, null, checkers);
 					pitfallInfos = checkers.stream().map((checker) -> checker.getInfo().detectsPitfalls())
 							.flatMap(Collection::stream).collect(Collectors.toMap(PitfallInfo::getId, Function.identity()));
+					model = report.getOutputModel();
+					affectedProperty = model.getProperty(Linter.NS_OOPS_DEF + "hasAffectedElement");
 				} else {
 					report = null;
 					pitfallInfos = null;
+					model = null;
+					affectedProperty = null;
 				}
 
 				if (excNoHttp) {
@@ -425,22 +443,38 @@ SPDX-License-Identifier: Apache-2.0
 
 						// las que aplican a un solo elemento, se muestra la lista, no pares.
 						else {
-							// TODO Extend this, covering all the cases dictated by PitfallInfo
+						    if (!isCompound(pfs, affectedProperty)) {
 							%>
 							<br>
 
-							&bull; This pitfall appears in the following elements:
+							    &bull; <%out.print(info.getAccomp() == null ? "This pitfall appears in the following elements" : info.getAccomp());%>:
 
 							<br>
 							<%
+						    }
 							for (final Pitfall pf : pfs) {
-								for (final Resource res : pf.getResources()) {
-								final String linkRes = asLink(res);
-								%> &rsaquo; <%out.print(linkRes);%>
-								<br>
-								<%
-							}
-						}
+							    for (final Resource res : pf.getResources()) {
+							        if (res.hasProperty(affectedProperty)) {
+								    %> <br>&bull; <%out.print(info.getAccomp());%>:<br><%
+								    for (final Statement stmt : res.listProperties(affectedProperty).toList()) {
+									RDFNode obj = stmt.getObject();
+									if (obj.isResource()) {
+									    final Resource objRes = obj.asResource();
+									    final String linkRes = asLink(objRes);
+									    %> &nbsp;&nbsp;&nbsp;&rsaquo; <%out.print(linkRes);%><br><%
+									}
+									else {
+									    out.print("<i>unknown</i><br>");									}
+								    }
+							        }
+								else {
+							            final String linkRes = asLink(res);
+								    %> &rsaquo; <%out.print(linkRes);%>
+								    <br>
+								    <%
+								}
+							    }
+						        }
 					} // divs below: Acordion item content end
 
 					if (divs) {
