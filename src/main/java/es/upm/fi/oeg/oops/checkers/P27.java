@@ -49,7 +49,7 @@ public class P27 implements Checker {
             Set.of(new PitfallCategoryId('N', 2)), Importance.CRITICAL, "Defining wrong equivalent properties",
             "Two object properties or two datatype properties are defined as equivalent, "
                     + "using owl:equivalentProperty, " + "even though they do not have the same semantics.",
-            RuleScope.PROPERTY, Arity.TWO);
+            RuleScope.PROPERTY, Arity.TWO, "Possibly inequivalent properties", null);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 

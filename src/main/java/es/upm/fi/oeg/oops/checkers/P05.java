@@ -48,7 +48,7 @@ public class P05 implements Checker {
             Set.of(new PitfallCategoryId('N', 2), new PitfallCategoryId('S', 4)), Importance.CRITICAL,
             "Defining wrong inverse relationships",
             "Two relationships are defined as inverse relations when they are not necessarily inverse.",
-            RuleScope.PROPERTY, Arity.TWO);
+            RuleScope.PROPERTY, Arity.TWO, "The following relations may not be the inverse of each other", null);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 
@@ -62,10 +62,8 @@ public class P05 implements Checker {
             final ObjectProperty property2) {
         final Resource inverseRes = outputModel.createResource(Linter.NS_OOPS_DATA + UUID.randomUUID().toString());
         outputModel.add(inverseRes, RDF.type, notInverseType);
-        Literal value = outputModel.createTypedLiteral(property1.getURI(), XSDDatatype.XSDanyURI);
-        inverseRes.addProperty(valueProp, value);
-        value = outputModel.createTypedLiteral(property2.getURI(), XSDDatatype.XSDanyURI);
-        inverseRes.addProperty(valueProp, value);
+        inverseRes.addProperty(valueProp, property1);
+        inverseRes.addProperty(valueProp, property2);
 
         context.addResult(PITFALL_INFO, inverseRes);
     }

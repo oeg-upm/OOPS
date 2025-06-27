@@ -46,7 +46,7 @@ public class P31 implements Checker {
             Set.of(new PitfallCategoryId('N', 2)), Importance.CRITICAL, "Defining wrong equivalent classes",
             "Two classes are defined as equivalent, " + "using owl:equivalentClass, "
                     + "when they are not necessarily equivalent.",
-            RuleScope.CLASS, Arity.TWO_PLUS, "These classes might not be equivalent", AccompPer.TYPE);
+            RuleScope.CLASS, Arity.TWO_PLUS, "These classes may not be equivalent", AccompPer.TYPE);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 
@@ -228,8 +228,7 @@ public class P31 implements Checker {
             outputModel.add(res, RDF.type, type);
 
             for (final OntClass class2 : pairUris) {
-                final Literal value = outputModel.createTypedLiteral(class2.getURI(), XSDDatatype.XSDanyURI);
-                res.addProperty(valueProp, value);
+                res.addProperty(valueProp, class2);
             }
             context.addResult(info, res);
         }
