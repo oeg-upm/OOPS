@@ -398,10 +398,10 @@ SPDX-License-Identifier: Apache-2.0
 							final String scopeText;
 							if (info.getScope() == RuleScope.ONTOLOGY) {
 								scopeText = "Ontology*";
-							} else if (pitfalls.size() == 1) {
+							} else if (pfs.size() == 1) {
 								scopeText = "1 case";
 							} else {
-								scopeText = pitfalls.size() + " cases";
+								scopeText = pfs.size() + " cases";
 							}
 							%>
 							<span style="float: right; padding-right:15px;"><% out.print(scopeText); %></span>
