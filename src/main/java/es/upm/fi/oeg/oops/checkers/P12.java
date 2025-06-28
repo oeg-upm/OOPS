@@ -48,7 +48,8 @@ public class P12 implements Checker {
             Importance.IMPORTANT, "Equivalent properties not explicitly declared",
             "The ontology lacks information about equivalent properties (owl:equivalentProperty) "
                     + "in the cases of duplicated relationships and/or attributes.",
-            RuleScope.PROPERTY, Arity.TWO_PLUS, "These properties could be defined as equivalent", AccompPer.INSTANCE);
+            RuleScope.PROPERTY, Arity.TWO_PLUS, "The following relations could be defined as equivalent",
+            AccompPer.INSTANCE);
 
     public static final CheckerInfo INFO = new CheckerInfo(PITFALL_INFO);
 
@@ -92,8 +93,7 @@ public class P12 implements Checker {
             outputModel.add(equivalentRes, RDF.type, type);
 
             for (OntProperty p : values) {
-                final Literal value = outputModel.createTypedLiteral(p.getURI(), XSDDatatype.XSDanyURI);
-                equivalentRes.addProperty(valueProp, value);
+                equivalentRes.addProperty(valueProp, p);
             }
             context.addResult(PITFALL_INFO, equivalentRes);
         }

@@ -37,7 +37,7 @@ public class P13 implements Checker {
             "This pitfall appears when any relationship "
                     + "(except for those that are defined as symmetric properties using owl:SymmetricProperty) "
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
-            RuleScope.PROPERTY, Arity.TWO, "Suggestions for relationships without inverse: '%s'", AccompPer.INSTANCE);
+            RuleScope.PROPERTY, Arity.TWO, "Suggestions for relationships without inverse", AccompPer.INSTANCE);
 
     private static final PitfallInfo PITFALL_INFO_N = new PitfallInfo(new PitfallId(13, 'N'),
             Set.of(new PitfallCategoryId('N', 3), new PitfallCategoryId('N', 7), new PitfallCategoryId('S', 5)),
@@ -45,7 +45,7 @@ public class P13 implements Checker {
             "This pitfall appears when any relationship "
                     + "(except for those that are defined as symmetric properties using owl:SymmetricProperty) "
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
-            RuleScope.PROPERTY, Arity.ONE, "No suggestions for these relationships without inverse: '%s'",
+            RuleScope.PROPERTY, Arity.ONE, "No suggestions for these relationships without inverse",
             AccompPer.INSTANCE);
 
     private static final PitfallInfo PITFALL_INFO_S = new PitfallInfo(new PitfallId(13, 'S'),
@@ -56,7 +56,7 @@ public class P13 implements Checker {
                     + "does not have an inverse relationship (owl:inverseOf) defined within the ontology.",
             RuleScope.PROPERTY, Arity.ONE,
             // // TODO This message is a stub, make it real:
-            "Symmetric or transitive suggestion: '%s'", AccompPer.INSTANCE);
+            "Symmetric or transitive suggestion", AccompPer.INSTANCE);
 
     public static final CheckerInfo INFO = new CheckerInfo(TITLE,
             Set.of(PITFALL_INFO_Y, PITFALL_INFO_N, PITFALL_INFO_S));
